@@ -1,3 +1,16 @@
 return {
-    "lukas-reineke/indent-blankline.nvim",
+        "lukas-reineke/indent-blankline.nvim",
+        main = 'ibl',
+        config = function ()
+                require("ibl").setup({
+                        exclude = {
+                                filetypes = {
+                                        "dashboard"
+                                },
+                                buftypes = {
+                                        "terminal",
+                                }
+                        }
+                })
+        end
 }
