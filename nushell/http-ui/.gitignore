@@ -1,0 +1,8 @@
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+venv/
+
+# Runtime state
+history.json

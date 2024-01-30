@@ -1,0 +1,50 @@
+promptToReturnFromSubprocess: false
+os:
+  editPreset: 'nvim'
+gui:
+  language: 'en'
+customCommands:
+  - key: "<c-g>"
+    description: "AI commit message (opencode)"
+    context: "files"
+    command: |
+      MSG=$($HOME/.config/bin/opencode-commit 2>/dev/null)
+      if [ -n "$MSG" ]; then
+        git commit -m "$MSG"
+      else
+        echo "Failed to generate message"
+      fi
+    output: terminal
+  - key: "<c-g>"
+    description: "AI reword commit (opencode)"
+    context: "commits"
+    command: |
+      MSG=$($HOME/.config/bin/opencode-reword {{.SelectedCommit.Hash}} 2>/dev/null)
+      if [ -n "$MSG" ]; then
+        HASH="{{.SelectedCommit.Hash}}"
+        if [ "$HASH" = "$(git rev-parse HEAD 2>/dev/null)" ]; then
+          git commit --amend -m "$MSG"
+        else
+          UPSTREAM="$HASH^"
+          git rev-parse "$UPSTREAM" >/dev/null 2>&1 || UPSTREAM="--root"
+          GIT_SEQUENCE_EDITOR="sed -i '0,/^pick/s//reword/'" \
+          GIT_EDITOR="sh -c 'echo \"$MSG\" > \"\$1\"' --" \
+          git rebase -i "$UPSTREAM"
+        fi
+      else
+        echo "Failed to generate message"
+      fi
+    output: terminal
+git:
+  autoForwardBranches: 'allBranches'
+  branchPrefix: 'feature/'
+  localBranchSortOrder: date #recency
+  remoteBranchSortOrder: date #alphabetical
+  commitPrefix:
+    - pattern: "^\\w+\\/(\\w+-\\w+).*"
+      replace: '$1 '
+    - pattern: "^([^_]+)_.*" # Take all text prior to the first underscore
+      replace: '$1 '
+  pagers:
+    - colorArg: always
+      pager: delta --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"

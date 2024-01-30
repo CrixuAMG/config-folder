@@ -1,0 +1,89 @@
+########################################
+# Ignore everything by default
+########################################
+*
+
+########################################
+# Allow core repository files
+########################################
+!.gitignore
+!.gitconfig
+!.gitkeep
+!.editorconfig
+!README.md
+!install.sh
+
+########################################
+# Allow configuration directories
+########################################
+!nvim/
+!nvim/**
+
+!nvim-custom/
+!nvim-custom/**
+
+!btop/
+!btop/**
+
+!kitty/
+!kitty/**
+
+!bat/
+!bat/**
+
+!nushell/
+!nushell/**
+
+!docs/
+!docs/**
+
+!_installer/
+!_installer/**
+!yabai/
+!yabai/**
+!skhd/
+!skhd/**
+!sketchybar/
+!sketchybar/**
+
+########################################
+# Allow standalone config files
+########################################
+!starship.toml
+!vial.vil
+!atuin/config.toml
+!lazygit/
+!lazygit/**
+
+!bin/
+!bin/**
+
+########################################
+# Ignore editor / IDE files
+########################################
+nvim/.idea/
+
+########################################
+# Ignore generated / runtime files
+########################################
+nvim/undo/*
+nushell/history.txt
+
+########################################
+# Ignore logs
+########################################
+btop/*.log
+btop/btop.log.*
+lazygit/state.yml
+
+########################################
+# Ignore plugin secrets / local configs
+########################################
+nvim/lua/plugins/gitlab.lua
+nvim/lua/plugins/jira*
+
+########################################
+# Kitty session files
+########################################
+kitty/session.json
+kitty/sessions/*.kitty
