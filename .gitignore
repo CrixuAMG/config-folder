@@ -4,5 +4,6 @@
 # ... except:
 !.gitignore
 !nvim/
+!nvim/**
 
 !README.md
