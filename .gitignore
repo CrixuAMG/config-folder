@@ -3,6 +3,7 @@
 
 # ... except:
 !.gitignore
+!install.sh
 !nvim/
 !nvim/**
 
