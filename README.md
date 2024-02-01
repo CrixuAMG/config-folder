@@ -2,4 +2,5 @@
 
 ## Installation
 
-`git pull` should always update the tmux configuration file.
+After pulling the latest version of this repository, run `~/.config/install.sh` to update your configurations.
+
