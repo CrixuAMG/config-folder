@@ -1,6 +1,7 @@
 return {
         "akinsho/toggleterm.nvim",
         lazy = false,
+        enabled = false,
         init = function()
         end,
         opts = {
@@ -23,6 +24,7 @@ return {
                 shell = vim.o.shell,
         },
         config = function()
+                require('toggleterm').setup({})
                 local Terminal  = require('toggleterm.terminal').Terminal
 
                 local lazygit = Terminal:new({
