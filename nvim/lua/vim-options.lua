@@ -6,4 +6,8 @@ vim.cmd("set tabstop=4")
 vim.cmd("set shiftwidth=4")
 vim.cmd("set shiftround")
 vim.cmd("set rnu")
+
+vim.cmd("set noswapfile")
+vim.cmd("set termguicolors")
+
 vim.g.mapleader = " "
