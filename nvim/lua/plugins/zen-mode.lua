@@ -1,6 +1,7 @@
 return {
     {
         "folke/zen-mode.nvim",
+        Event = 'VeryLazy',
         opts = {
             -- your configuration comes here
             -- or leave it empty to use the default settings
@@ -36,6 +37,7 @@ return {
         }
     },
     {
-        "folke/twilight.nvim"
+        "folke/twilight.nvim",
+        Event = 'VeryLazy',
     }
 }
