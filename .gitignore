@@ -6,5 +6,7 @@
 !install.sh
 !nvim/
 !nvim/**
+!tmux/
+!tmux/**
 !starship.toml
 !README.md
