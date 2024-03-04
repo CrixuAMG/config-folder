@@ -11,7 +11,7 @@ else
 fi
 
 brew install --cask kitty
-brew install zoxide atuin starship zsh man
+brew install zoxide atuin starship zsh man ripgrep fd
 
 echo "Installing configurations..."
 
