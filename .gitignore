@@ -6,8 +6,6 @@
 !install.sh
 !nvim/
 !nvim/**
-!tmux/
-!tmux/**
 !zellij/
 !zellij/**
 !starship.toml
