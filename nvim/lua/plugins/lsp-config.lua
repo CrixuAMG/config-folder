@@ -14,7 +14,7 @@ return {
         lazy = false,
         opts = {
             auto_install = true,
-            ensure_installed = { 'html', 'cssls', 'phpactor', 'volar', 'emmet-ls' }
+            ensure_installed = { 'html', 'cssls', 'phpactor', 'volar' }
         },
     },
     {
