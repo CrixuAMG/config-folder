@@ -1,59 +1,24 @@
 return {
     {
-        "williamboman/mason.nvim",
+        "dundalek/lazy-lsp.nvim",
         dependencies = {
-            "williamboman/mason-lspconfig.nvim"
-        },
-        lazy = false,
-        config = function()
-            require("mason").setup()
-        end
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
-        lazy = false,
-        opts = {
-            auto_install = true,
-            ensure_installed = { 'html', 'cssls', 'phpactor', 'volar' }
-        },
-    },
-    {
-        "neovim/nvim-lspconfig",
-        lazy = false,
-        event = {'BufReaqdPre', 'BufNewFile'},
-        dependencies = {
+            "neovim/nvim-lspconfig",
+            {"VonHeikemen/lsp-zero.nvim", branch = "v3.x"},
             "hrsh7th/cmp-nvim-lsp",
-            { "antosha417/nvim-lsp-file-operations", config = true }
+            "hrsh7th/nvim-cmp",
         },
         config = function()
-            local lspconfig = require("lspconfig")
-            local cmp_nvim_lsp = require("cmp_nvim_lsp")
-            local capabilities = cmp_nvim_lsp.default_capabilities()
-            capabilities.textDocument.completion.completionItem.snippetSupport = true
+            local lsp_zero = require("lsp-zero")
 
-            lspconfig.lua_ls.setup({
-                capabilities = capabilities
-            })
-            lspconfig.phpactor.setup({
-                capabilities = capabilities
-            })
-            lspconfig.html.setup({
-                capabilities = capabilities
-            })
-            lspconfig.cssls.setup({
-                capabilities = capabilities
-            })
-            lspconfig.volar.setup({
-                capabilities = capabilities,
-                filetypes = { 'vue', 'typescript', 'javascript' }
-            })
+            lsp_zero.on_attach(function(client, bufnr)
+                -- see :help lsp-zero-keybindings to learn the available actions
+                lsp_zero.default_keymaps({
+                    buffer = bufnr,
+                    preserve_mappings = false
+                })
+            end)
 
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-            vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-            vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-            vim.keymap.set({ "n" }, "<leader>ca", vim.lsp.buf.code_action, {})
-
-            vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
-        end
-    }
+            require("lazy-lsp").setup {}
+        end,
+    },
 }
