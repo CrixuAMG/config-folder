@@ -1,5 +1,6 @@
 # Ignore everything...
 *
+btop/*.log
 
 # ... except:
 !.gitignore
@@ -8,5 +9,7 @@
 !nvim/**
 !zellij/
 !zellij/**
+!btop/
+!btop/**
 !starship.toml
 !README.md
