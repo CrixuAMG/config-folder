@@ -11,7 +11,7 @@ else
 fi
 
 brew install --cask kitty
-brew install neovim zoxide atuin starship zsh btop ripgrep fd adr-tools
+brew install neovim zoxide atuin starship zsh btop ripgrep fd adr-tools bat 
 
 echo "Installing nix..."
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
