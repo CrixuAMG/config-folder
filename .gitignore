@@ -13,3 +13,5 @@ btop/*.log
 !btop/**
 !starship.toml
 !README.md
+btop/btop.log
+btop/btop.log.1
