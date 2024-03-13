@@ -10,8 +10,9 @@ else
     echo "Found brew"
 fi
 
-brew install --cask kitty
-brew install neovim zoxide atuin starship zsh btop ripgrep fd adr-tools bat 
+brew install neovim zoxide atuin starship zsh btop ripgrep fd adr-tools bat tlrc
+
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
 echo "Installing nix..."
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
@@ -20,9 +21,9 @@ echo "Installed nix"
 echo "Installing configurations..."
 
 echo "Copying .zshrc"
-cp $HOME/.config/.zshrc $HOME/.zshrc
-source $HOME/.zshrc
+cp "$HOME/.config/.zshrc" "$HOME/.zshrc"
+source "$HOME/.zshrc"
 
 echo "Copying Starship configuration file"
-cp $HOME/.config/starship.toml ~/
+cp "$HOME/.config/starship.toml" "$HOME/"
 echo "Updated Starship configuration"

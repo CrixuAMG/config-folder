@@ -11,6 +11,8 @@ btop/*.log
 !zellij/**
 !btop/
 !btop/**
+!kitty/
+!kitty/**
 !starship.toml
 !README.md
 btop/btop.log
