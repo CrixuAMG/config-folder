@@ -10,7 +10,7 @@ else
     echo "Found brew"
 fi
 
-brew install neovim zoxide atuin starship zsh btop ripgrep fd adr-tools bat tlrc
+brew install neovim zoxide atuin starship zsh btop ripgrep fd adr-tools bat tlrc thefuck
 
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
