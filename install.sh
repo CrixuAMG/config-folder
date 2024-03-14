@@ -14,6 +14,24 @@ brew install neovim zoxide atuin starship zsh btop ripgrep fd adr-tools bat tlrc
 
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
+# Check if the OS is Linux
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    echo "Setting up symbolic links for Linux..."
+    # Create symbolic links for kitty and kitten
+    ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/
+
+    # Copy the kitty.desktop file
+    cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
+
+    # If needed, add the kitty-open.desktop file
+    cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
+
+    # Update paths in kitty.desktop files
+    sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
+    sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
+    echo "Done!"
+fi
+
 echo "Installing nix..."
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 echo "Installed nix"
