@@ -6,6 +6,10 @@ return {
             'nvim-lua/plenary.nvim',
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
             'nvim-tree/nvim-web-devicons',
+            {
+                "isak102/telescope-git-file-history.nvim",
+                dependencies = {"tpope/vim-fugitive"}
+            }
         },
         config = function()
             local builtin = require('telescope.builtin')
@@ -41,6 +45,7 @@ return {
             })
             require("telescope").load_extension("ui-select")
             require("telescope").load_extension("fzf")
+            require("telescope").load_extension("git_file_history")
         end
     }
 }
