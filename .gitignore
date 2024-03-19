@@ -17,3 +17,4 @@ btop/*.log
 !README.md
 btop/btop.log
 btop/btop.log.1
+lazygit/state.yml
