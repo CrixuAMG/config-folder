@@ -10,7 +10,10 @@ else
     echo "Found brew"
 fi
 
-brew install neovim zoxide atuin starship zsh btop ripgrep fd adr-tools bat tlrc thefuck ranger
+brew install neovim starship fish btop ripgrep fd adr-tools bat tlrc thefuck ranger
+
+# Install zoxide (cd replacement)
+curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | fish
 
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 

@@ -1,6 +1,9 @@
 # Ignore everything...
 *
 btop/*.log
+btop/btop.log
+btop/btop.log.1
+lazygit/state.yml
 
 # ... except:
 !.gitignore
@@ -15,6 +18,5 @@ btop/*.log
 !kitty/**
 !starship.toml
 !README.md
-btop/btop.log
-btop/btop.log.1
-lazygit/state.yml
+!fish/
+!fish/**
