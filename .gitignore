@@ -20,3 +20,4 @@ lazygit/state.yml
 !README.md
 !fish/
 !fish/**
+fish/.config.fish.swp
