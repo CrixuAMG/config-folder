@@ -13,7 +13,6 @@
   "gitsigns.nvim": { "branch": "main", "commit": "078041e9d060a386b0c9d3a8c7a7b019a35d3fb0" },
   "glow.nvim": { "branch": "main", "commit": "238070a686c1da3bccccf1079700eb4b5e19aea4" },
   "harpoonline": { "branch": "main", "commit": "b55648d903e33236bd47fc9f9892b14c4cfea749" },
-  "huez.nvim": { "branch": "main", "commit": "cc18cb58572ecb0ac4d0da3e2e8720d58b79bafc" },
   "image.nvim": { "branch": "master", "commit": "0dd8bdbb8855bc98c534a902c91dc9eddb8155b1" },
   "lazy-lsp.nvim": { "branch": "master", "commit": "c44049bc79cf73431d49a47292bbecd3d4fe4e5f" },
   "lazy.nvim": { "branch": "main", "commit": "08954f723bf2d442ea020551e3acc956f4dc6dc7" },
