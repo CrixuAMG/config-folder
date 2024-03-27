@@ -10,7 +10,7 @@ else
     echo "Found brew"
 fi
 
-brew install neovim starship fish btop ripgrep fd adr-tools bat tlrc thefuck ranger
+brew install neovim starship fish lazygit btop ripgrep fd adr-tools bat tlrc thefuck ranger
 
 # Install zoxide (cd replacement)
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | fish
@@ -41,9 +41,9 @@ echo "Installed nix"
 
 echo "Installing configurations..."
 
-echo "Copying .zshrc"
-cp "$HOME/.config/.zshrc" "$HOME/.zshrc"
-source "$HOME/.zshrc"
+#echo "Copying .zshrc"
+#cp "$HOME/.config/.zshrc" "$HOME/.zshrc"
+#source "$HOME/.zshrc"
 
 echo "Copying Starship configuration file"
 cp "$HOME/.config/starship.toml" "$HOME/"
