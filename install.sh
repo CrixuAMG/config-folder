@@ -48,3 +48,9 @@ echo "Installing configurations..."
 echo "Copying Starship configuration file"
 cp "$HOME/.config/starship.toml" "$HOME/"
 echo "Updated Starship configuration"
+
+if [[ "$(uname)" == "Darwin" ]]; then
+    echo "Copying Lazygit configuration file"
+    cp ~/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
+fi
+
