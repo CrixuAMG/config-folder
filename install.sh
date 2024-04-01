@@ -35,16 +35,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     echo "Done!"
 fi
 
-echo "Installing nix..."
-sh <(curl -L https://nixos.org/nix/install) --no-daemon
-echo "Installed nix"
-
-echo "Installing configurations..."
-
-#echo "Copying .zshrc"
-#cp "$HOME/.config/.zshrc" "$HOME/.zshrc"
-#source "$HOME/.zshrc"
-
 echo "Copying Starship configuration file"
 cp "$HOME/.config/starship.toml" "$HOME/"
 echo "Updated Starship configuration"
@@ -52,5 +42,13 @@ echo "Updated Starship configuration"
 if [[ "$(uname)" == "Darwin" ]]; then
     echo "Copying Lazygit configuration file"
     cp ~/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
+
+    echo "Installing nix..."
+    sh <(curl -L https://nixos.org/nix/install)
+    echo "Installed nix"
+else
+    echo "Installing nix..."
+    sh <(curl -L https://nixos.org/nix/install) --no-daemon
+    echo "Installed nix"
 fi
 

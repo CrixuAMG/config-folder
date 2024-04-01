@@ -21,6 +21,11 @@ return {
                 },
                 never_show = {},
             },
+        },
+        window = {
+            mappings = {
+                ["P"] = { "toggle_preview", config = { use_float = false, use_image_nvim = true } },
+            }
         }
     },
     config = function()

@@ -12,3 +12,8 @@ vim.cmd("set noswapfile")
 vim.cmd("set termguicolors")
 
 vim.g.mapleader = " "
+
+-- Disable netrw to use nvim neotree instead
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
