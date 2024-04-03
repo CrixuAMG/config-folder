@@ -10,12 +10,14 @@ else
     echo "Found brew"
 fi
 
-brew install neovim starship fish lazygit btop ripgrep fd adr-tools bat tlrc thefuck ranger
+brew tap homebrew/cask-fonts 
+brew install neovim starship fish btop ripgrep fd adr-tools bat tlrc thefuck ranger
 
 # Install zoxide (cd replacement)
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | fish
 
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin \
+    launch=n
 
 # Check if the OS is Linux
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -46,6 +48,8 @@ if [[ "$(uname)" == "Darwin" ]]; then
     echo "Installing nix..."
     sh <(curl -L https://nixos.org/nix/install)
     echo "Installed nix"
+
+    brew install lazygit
 else
     echo "Installing nix..."
     sh <(curl -L https://nixos.org/nix/install) --no-daemon
