@@ -13,13 +13,12 @@ return {
         },
         config = function()
             local builtin = require('telescope.builtin')
-            vim.keymap.set('n', '<C-p>', builtin.find_files, {})
-            vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-            vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-            vim.keymap.set('n', '<leader>fs', builtin.grep_string, {})
-            vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-            vim.keymap.set('n', '<leader>fh', builtin.search_history, {})
-            vim.keymap.set('n', '<leader>fr', builtin.oldfiles, {})
+            vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Fuzzy find files" })
+            vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Fuzzy find text" })
+            vim.keymap.set('n', '<leader>fs', builtin.grep_string, { desc = "Find occurrences of string" })
+            vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Display open buffers" })
+            vim.keymap.set('n', '<leader>fh', builtin.search_history, { desc = "Show previous fuzzy searches" })
+            vim.keymap.set('n', '<leader>fr', builtin.oldfiles, { desc = "Fuzzy find recent files" })
         end
     },
     {
@@ -34,6 +33,7 @@ return {
                     }
                 },
                 defaults = {
+                    path_display = { "smart" },
                     file_ignore_patterns = {
                         "yarn.lock",
                         "composer.lock",
