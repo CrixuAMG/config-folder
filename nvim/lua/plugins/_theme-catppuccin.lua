@@ -4,6 +4,7 @@ return {
     priority = 1000,
     config = function()
         require('catppuccin').setup({
+            flavour = "frappe",
             integrations = {
                 cmp = true,
                 gitsigns = true,
