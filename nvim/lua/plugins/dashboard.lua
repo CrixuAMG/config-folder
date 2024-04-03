@@ -4,6 +4,7 @@ return {
     config = function()
         require('dashboard').setup {
             -- config
+            shortcut_type = "number",
             config = {
                 week_header = {
                     enable = true
