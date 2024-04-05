@@ -33,3 +33,8 @@ opt.clipboard:append("unnamedplus")
 
 opt.splitright = true
 opt.splitbelow = true
+
+local keymap = vim.keymap
+
+keymap.set("n", "<TAB>", ":bnext<CR>", { desc = "Next buffer" })
+keymap.set("n", "<S-TAB>", ":bprev<CR>", { desc = "Next buffer" })
