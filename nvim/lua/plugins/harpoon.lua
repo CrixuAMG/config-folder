@@ -10,7 +10,7 @@ return {
         "<leader>a",
         function()
           local harpoon = require("harpoon")
-          harpoon:list():append()
+          harpoon:list():add()
         end,
         desc = "Add to Harpoon",
       },
@@ -23,7 +23,7 @@ return {
         desc = "Toggle Harpoon Quick Menu",
       },
       {
-        "<C-h>",
+        "<C-1>",
         function()
           local harpoon = require("harpoon")
           harpoon:list():select(1)
@@ -31,7 +31,7 @@ return {
         desc = "which_key_ignore",
       },
       {
-        "<C-t>",
+        "<C-2>",
         function()
           local harpoon = require("harpoon")
           harpoon:list():select(2)
@@ -39,7 +39,7 @@ return {
         desc = "which_key_ignore",
       },
       {
-        "<C-n>",
+        "<C-3>",
         function()
           local harpoon = require("harpoon")
           harpoon:list():select(3)
@@ -47,7 +47,7 @@ return {
         desc = "which_key_ignore",
       },
       {
-        "<C-s>",
+        "<C-4>",
         function()
           local harpoon = require("harpoon")
           harpoon:list():select(4)
