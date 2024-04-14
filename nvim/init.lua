@@ -22,5 +22,6 @@ local opts = {
 }
 
 require("vim-options")
+require("keymap")
 require("lazy").setup("plugins", opts)
 
