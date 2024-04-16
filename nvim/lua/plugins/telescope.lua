@@ -33,7 +33,6 @@ return {
                     }
                 },
                 defaults = {
-                    path_display = { "smart" },
                     file_ignore_patterns = {
                         "yarn.lock",
                         "composer.lock",

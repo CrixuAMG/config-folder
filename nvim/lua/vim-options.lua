@@ -11,6 +11,8 @@ vim.cmd("set number")
 vim.cmd("set noswapfile")
 vim.cmd("set termguicolors")
 
+vim.cmd("set title")
+
 -- tpope/commentary
 vim.cmd("filetype plugin indent on")
 
