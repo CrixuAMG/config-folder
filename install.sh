@@ -1,5 +1,12 @@
 #!/bin/bash
 
+if [ ! -d "fonts" ]; then
+    git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts fonts
+    git -C fonts sparse-checkout add patched-fonts/Meslo
+
+    ./fonts/install.sh Meslo
+fi
+
 echo "Looking for brew..."
 if ! command -v brew &> /dev/null
 then
@@ -11,7 +18,13 @@ else
 fi
 
 brew tap homebrew/cask-fonts 
-brew install neovim starship fish btop ripgrep fd adr-tools bat tlrc thefuck zellij
+brew install neovim starship fish btop ripgrep fd adr-tools bat tlrc thefuck zellij yarn
+
+# Install python packages
+pip install pynvim
+
+# Install yarn packages 
+yarn global add neovim
 
 # Install zoxide (cd replacement)
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | fish
