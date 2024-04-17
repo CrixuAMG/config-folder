@@ -36,10 +36,5 @@ opt.clipboard:append("unnamedplus")
 opt.splitright = true
 opt.splitbelow = true
 
-vim.api.nvim_create_autocmd('VimEnter', {
-    command = "AerialToggle!"
-})
-vim.api.nvim_create_autocmd('VimEnter', {
-    command = "Neotree show"
-})
+vim.keymap.set("n", "<leader>ide", ':AerialToggle!<CR> :Neotree toggle left  reveal_force_cwd<CR>', { desc = 'Start IDE mode' })
 
