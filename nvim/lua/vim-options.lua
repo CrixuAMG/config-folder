@@ -36,5 +36,3 @@ opt.clipboard:append("unnamedplus")
 opt.splitright = true
 opt.splitbelow = true
 
-vim.keymap.set("n", "<leader>ide", ':AerialToggle!<CR> :Neotree toggle left  reveal_force_cwd<CR>', { desc = 'Start IDE mode' })
-
