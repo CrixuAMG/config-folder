@@ -36,3 +36,10 @@ opt.clipboard:append("unnamedplus")
 opt.splitright = true
 opt.splitbelow = true
 
+vim.api.nvim_create_autocmd('VimEnter', {
+    command = "AerialToggle!"
+})
+vim.api.nvim_create_autocmd('VimEnter', {
+    command = "Neotree show"
+})
+
