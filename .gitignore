@@ -16,6 +16,8 @@ lazygit/state.yml
 !btop/**
 !kitty/
 !kitty/**
+!bat/
+!bat/**
 !starship.toml
 !README.md
 !fish/
