@@ -7,6 +7,8 @@ return {
             has_breadcrumbs = true,
             bg_theme = "peach"
         })
+
+       vim.keymap.set("x", "<leader>ss", ":CodeSnap<cr>", { desc = "Take a Codesnap screenshot", silent=true })
     end
 }
 
