@@ -25,5 +25,3 @@ require("vim-options")
 require("keymap")
 require("lazy").setup("plugins", opts)
 
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
-

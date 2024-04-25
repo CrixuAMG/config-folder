@@ -12,6 +12,19 @@ return {
             }
         },
         config = function()
+            local actions = require('telescope.actions')
+            require('telescope').setup({
+                defaults = {
+                    mappings = {
+                        i = {
+                            ["<C-h>"] = "which_key",
+                            ["<C-o>"] = function(prompt_bufnr) require("telescope.actions").select_default(prompt_bufnr) require("telescope.builtin").resume() end,
+                            ["<C-q>"] = actions.send_to_qflist,
+                        }
+                    }
+                }
+            })
+
             local builtin = require('telescope.builtin')
             vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Fuzzy find files" })
             vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = "Fuzzy find text" })
@@ -19,6 +32,24 @@ return {
             vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Display open buffers" })
             vim.keymap.set('n', '<leader>fh', builtin.search_history, { desc = "Show previous fuzzy searches" })
             vim.keymap.set('n', '<leader>fr', builtin.oldfiles, { desc = "Fuzzy find recent files" })
+
+            vim.cmd([[
+                function!   QuickFixOpenAll()
+                    if empty(getqflist())
+                        return
+                    endif
+                    let s:prev_val = ""
+                    for d in getqflist()
+                        let s:curr_val = bufname(d.bufnr)
+                        if (s:curr_val != s:prev_val)
+                            exec "edit " . s:curr_val
+                        endif
+                        let s:prev_val = s:curr_val
+                    endfor
+                endfunction
+            ]])
+
+            vim.api.nvim_set_keymap('n', '<leader>ka' , ':call QuickFixOpenAll()<CR>', { noremap=true, silent=false })
         end
     },
     {

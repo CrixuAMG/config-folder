@@ -12,6 +12,12 @@ return {
         },
         config = function()
             require("aerial").setup({
+                -- Open relative to window, not pinned to the far left/right
+                placement_editor_edge = false,
+                close_automatic_events = {
+                    "unfocus",
+                },
+                open_automatic = true,
                 -- optionally use on_attach to set keymaps when aerial has attached to a buffer
                 on_attach = function(bufnr)
                     -- Jump forwards/backwards with '{' and '}'
