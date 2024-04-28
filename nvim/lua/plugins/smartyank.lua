@@ -1,3 +1,4 @@
 return  {
-    'ibhagwan/smartyank.nvim'
+    'ibhagwan/smartyank.nvim',
+    enabled = false
 }
