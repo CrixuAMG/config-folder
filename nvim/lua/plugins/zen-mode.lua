@@ -30,8 +30,8 @@ return {
                 twilight = {
                     enabled = true
                 },
-                tmux = {
-                    enabled = false,
+                kitty = {
+                    enabled = true,
                 }
             }
         }
