@@ -1,10 +1,13 @@
 alias vim "nvim"
+alias ls "eza --long --git --header"
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
 
     starship init fish | source
     zoxide init fish --cmd=cd | source
+    thefuck --alias | source
+    fzf --fish | source
 
     function bind_bang
         switch (commandline -t)[-1]
@@ -30,3 +33,4 @@ if status is-interactive
         bind '$' bind_dollar
     end
 end
+
