@@ -24,3 +24,5 @@ lazygit/state.yml
 !fish/**
 fish/.config.fish.swp
 fish/conf.d/nix.fish
+!obsidian/**
+nvim/.idea
