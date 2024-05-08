@@ -2,7 +2,8 @@
   "extras": [
     "lazyvim.plugins.extras.editor.aerial",
     "lazyvim.plugins.extras.editor.harpoon2",
-    "lazyvim.plugins.extras.lang.json"
+    "lazyvim.plugins.extras.lang.json",
+    "lazyvim.plugins.extras.lang.typescript"
   ],
   "news": {
     "NEWS.md": "3314"
