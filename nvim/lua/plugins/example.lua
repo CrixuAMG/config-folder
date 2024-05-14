@@ -51,6 +51,11 @@ return {
                 function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
                 desc = "Find Plugin File",
             },
+            {
+                "<leader>fc",
+                function() require("telescope.builtin").live_grep() end,
+                desc = "Live grep",
+            },
         },
         -- change some options
         opts = {
@@ -149,15 +154,6 @@ return {
                 "tsx",
                 "typescript",
             })
-        end,
-    },
-
-    -- the opts function can also be used to change the default opts:
-    {
-        "nvim-lualine/lualine.nvim",
-        event = "VeryLazy",
-        opts = function(_, opts)
-            table.insert(opts.sections.lualine_x, "😄")
         end,
     },
 
