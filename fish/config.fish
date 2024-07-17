@@ -8,6 +8,7 @@ if status is-interactive
     zoxide init fish --cmd=cd | source
     thefuck --alias | source
     fzf --fish | source
+    atuin init fish | source
 
     function bind_bang
         switch (commandline -t)[-1]
