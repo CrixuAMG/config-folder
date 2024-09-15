@@ -7,6 +7,7 @@ lazygit/state.yml
 
 # ... except:
 !.gitignore
+!.gitconfig
 !install.sh
 !nvim/
 !nvim/**
