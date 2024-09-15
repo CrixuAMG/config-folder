@@ -98,6 +98,17 @@ return {
             servers = {
                 -- tsserver will be automatically installed with mason and loaded with lspconfig
                 tsserver = {},
+                stylelint_lsp = {
+                    cmd = { "stylelint-lsp", "--stdio" },
+                    filetypes = { "css", "scss", "vue" },
+                    settings = {
+                        stylelintplus = {
+                            autoFixOnSave = true,
+                            autoFixOnFormat = true,
+                            validateOnSave = true,
+                        },
+                    },
+                },
             },
             -- you can do any additional lsp server setup here
             -- return true if you don't want this server to be setup with lspconfig

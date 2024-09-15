@@ -1,5 +1,9 @@
 alias vim nvim
+alias lg lazygit
+alias lq lazysql
 alias ls "eza --long --git --header --icons=always"
+alias z zellij
+alias db "harlequin -a mysql -u root --password password"
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
@@ -9,6 +13,7 @@ if status is-interactive
     thefuck --alias | source
     fzf --fish | source
     atuin init fish | source
+    chezmoi completion fish --output=~/.config/fish/completions/chezmoi.fish
 
     function bind_bang
         switch (commandline -t)[-1]
