@@ -26,3 +26,4 @@ lazygit/state.yml
 fish/.config.fish.swp
 fish/conf.d/nix.fish
 nvim/.idea
+nvim/lua/plugins/gitlab.lua

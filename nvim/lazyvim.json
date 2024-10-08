@@ -19,11 +19,8 @@
         "lazyvim.plugins.extras.lang.vue",
         "lazyvim.plugins.extras.lang.yaml",
         "lazyvim.plugins.extras.test.core",
-        "lazyvim.plugins.extras.util.chezmoi",
         "lazyvim.plugins.extras.util.dot",
-        "lazyvim.plugins.extras.util.gitui",
-        "lazyvim.plugins.extras.util.mini-hipatterns",
-        "lazyvim.plugins.extras.util.project"
+        "lazyvim.plugins.extras.util.mini-hipatterns"
     ],
     "news": {
         "NEWS.md": "6520"
