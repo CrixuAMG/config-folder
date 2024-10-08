@@ -6,8 +6,6 @@ vim.cmd("set autowrite")
 vim.cmd("set autoread")
 
 vim.cmd("set expandtab")
-vim.cmd("set tabstop=4")
-vim.cmd("set shiftwidth=4")
 vim.cmd("set shiftround")
 vim.cmd("set rnu")
 vim.cmd("set number")
@@ -28,6 +26,9 @@ vim.g.loaded_netrwPlugin = 1
 
 local opt = vim.opt
 
+opt.tabstop = 4
+opt.shiftwidth = 4
+
 opt.ignorecase = true
 opt.smartcase = true
 
@@ -40,3 +41,7 @@ opt.clipboard:append("unnamedplus")
 opt.splitright = true
 opt.splitbelow = true
 
+-- Keep the cursor at the vertical center part of the screen
+opt.scrolloff = 999
+
+opt.inccommand = 'split'

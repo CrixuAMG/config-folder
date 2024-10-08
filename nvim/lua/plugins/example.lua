@@ -183,6 +183,37 @@ return {
     -- add jsonls and schemastore packages, and setup treesitter for json, json5 and jsonc
     { import = "lazyvim.plugins.extras.lang.json" },
 
+    {
+        "neovim/nvim-lspconfig",
+        opts = {
+            -- make sure mason installs the server
+            servers = {
+                jsonls = {
+                    -- lazy-load schemastore when needed
+                    on_new_config = function(new_config)
+                        new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+                        vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
+                    end,
+                    settings = {
+                        json = {
+                            format = {
+                                enable = true,
+                            },
+                            validate = { enable = true },
+                            -- extra = {
+                            --     {
+                            --         description = 'Visymo Json Template Schema',
+                            --         fileMatch = {'*.json'},
+                            --         url = 'ttps://example.com/schema/foo.json',
+                            --     },
+                            -- },
+                        },
+                    },
+                },
+            },
+        },
+    },
+
     -- add any tools you want to have installed below
     {
         "williamboman/mason.nvim",
