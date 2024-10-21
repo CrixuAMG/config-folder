@@ -1,11 +1,11 @@
 return {
     {
-        'vim-scripts/copypath.vim',
+        "vim-scripts/copypath.vim",
         config = function()
             vim.cmd([[
             let g:copypath_copy_to_unnamed_register = 1
             ]])
-        end
+        end,
     },
     {
         "OXY2DEV/helpview.nvim",
@@ -15,7 +15,22 @@ return {
         -- ft = "help",
 
         dependencies = {
-            "nvim-treesitter/nvim-treesitter"
-        }
-    }
+            "nvim-treesitter/nvim-treesitter",
+        },
+    },
+    {
+        "stevearc/quicker.nvim",
+        config = function()
+            require("quicker").setup({})
+        end,
+    },
+    {
+        "nvchad/showkeys",
+        cmd = "ShowkeysToggle",
+        opts = {
+            timeout = 1,
+            maxkeys = 5,
+            position = "top-center",
+        },
+    },
 }

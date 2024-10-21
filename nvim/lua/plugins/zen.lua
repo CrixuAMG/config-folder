@@ -5,7 +5,7 @@ return {
             -- your configuration comes here
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
-        }
+        },
     },
     {
         "folke/zen-mode.nvim",
@@ -15,7 +15,7 @@ return {
             -- refer to the configuration section below
             options = {
                 enabled = true,
-                ruler = false,   -- disables the ruler text in the cmd line area
+                ruler = false, -- disables the ruler text in the cmd line area
                 showcmd = false, -- disables the command in the last line of the screen
                 -- you may turn on/off statusline in zen mode by setting 'laststatus'
                 -- statusline will be shown only if 'laststatus' == 3
@@ -23,7 +23,7 @@ return {
             },
             plugins = {
                 twilight = {
-                    enabled = true
+                    enabled = true,
                 },
                 todo = { enabled = false },
                 gitsigns = { enabled = false },
@@ -31,10 +31,12 @@ return {
                     enabled = true,
                     font = "+4", -- font size increment
                 },
-            }
+            },
         },
         config = function()
-            vim.keymap.set('n', 'zm', function() require("zen-mode").toggle() end, { desc = "Toggle zenmode" })
-        end
-    }
+            vim.keymap.set("n", "zm", function()
+                require("zen-mode").toggle()
+            end, { desc = "Toggle zenmode" })
+        end,
+    },
 }
