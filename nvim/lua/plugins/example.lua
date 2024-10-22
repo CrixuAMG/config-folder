@@ -141,6 +141,8 @@ return {
                 "lua",
                 "markdown",
                 "markdown_inline",
+                "php",
+                "twig",
                 "python",
                 "query",
                 "regex",
