@@ -1,0 +1,1958 @@
+cd brand
+cd ../brand-websites/
+ps -aux
+ps
+ps | grep redis
+sudo service redis-server restart
+sudo systemctl restart redis
+redis-cli<\n>SHUTDOWN
+redis-cli
+ps
+ps | fzf
+http get https://google.com
+http -h
+atuin
+echo $SHELL
+$env.SHELL
+cd brand
+zoxide
+cd brand
+z brand
+zoxide brand
+cd /var/www/html/brand-websites/
+rm -rf ../brand-websites_bak/
+cd art
+cd ../artemis/
+vim
+cd /var/www/html/artemis/
+composer reset-db
+cd /var/www/html/artemis/
+composer reset-db
+lazygit
+composer reset-db
+db
+pwd
+./updater-new.sh
+./updater-new.sh --tag=sb
+ls
+rm -rf autoupdater.sh
+mv updater-new.sh autoupdater.sh
+./autoupdater.sh
+open .
+cd art
+cd ../artemis/
+composer reset-db
+composer install
+lazygit
+composer install
+composer reset-db
+http get https://artemis.visymo.com.ckaal.ldev.nl/api/brand-config/aldiscover
+ls
+eza
+ls -la
+ls
+atuin
+<\n>atuin init nu | save ~/.local/share/atuin/init.nu
+vim ~/.config/nushell/config.nu
+watch -d --color -n5 bin/console app:queue:consume command -vvv
+watch -d -n5 bin/console app:queue:consume command -vvv
+watch -d -n 5 bin/console app:queue:consume command -vvv
+watch -n5 bin/console app:queue:consume command -vvv
+watch -n=5 bin/console app:queue:consume command -vvv
+watch -d5 bin/console app:queue:consume command -vvv
+watch -d=5 bin/console app:queue:consume command -vvv
+watch -d=5 bin/console app:queue:consume command
+/usr/bin/watch -n5 bin/console app:queue:consume command
+http get https://artemis.visymo.com/api/brand-config/zapmeta
+composer reset-db
+composer cache:clear
+composer clear-cache
+composer reset-db
+rm -rf var/cache/**
+rm -rf var/cache/
+composer reset-db
+composer install
+db
+zoxide init nushell | save -f ~/.zoxide.nu<\n>
+cd brand
+vim ~/.config/nushell/config.nu
+cd brand
+cd ../brand-websites/
+cd art
+cd ../art
+cd ../artemis/
+cd brand
+cat ~/.zoxide.nu
+vim ~/.config/nushell/env.nu
+cd brand
+cat ~/.config/fish/conf.d/
+cat ~/.config/fish/config.fish
+vim ~/.config/nushell/env.nu
+cd brand
+cd art
+clear
+composer reset-db
+cd auto
+cd updater
+ls
+rm -rf git_composer*
+ls
+vim IDEAS.md
+echo .editorconfig >> ~/.gitignore
+cat ~/.gitignore
+vim ~/.gitignore
+git rm --cached .editorconfig
+nvim IDEAS.md
+composer reset-db
+brew update && brew upgrade
+brew update and brew upgrade
+brew update; brew upgrade
+../autoupdater/autoupdater.sh --tag=sb
+db
+fish db
+mariadb artemis < query.sql
+vim query.sql
+mariadb artemis < query.sql
+mariadb -p artemis < query.sql
+mysql -p artemis < query.sql
+mariadb < query.sql
+cat ~/.config/fish/config.fish
+mariadb -u root -p artemis < query.sql
+vim query.sql
+mariadb artemis
+git status
+composer reset-db
+mariadb artemis
+RENAME TABLE brand_config TO brand;
+ALTER TABLE one_trust DROP PRIMARY KEY, ADD brand_id SMALLINT UNSIGNED NOT NULL, ADD UNIQUE (brand_config_id);
+ALTER TABLE google_tag_manager DROP PRIMARY KEY, ADD brand_id SMALLINT UNSIGNED NOT NULL, ADD UNIQUE (brand_config_id);
+ALTER TABLE google_publisher_tag DROP PRIMARY KEY, ADD brand_id SMALLINT UNSIGNED NOT NULL, ADD UNIQUE (brand_config_id);
+ALTER TABLE spam_click_detect DROP PRIMARY KEY, ADD brand_id SMALLINT UNSIGNED NOT NULL, ADD UNIQUE (brand_config_id);
+ALTER TABLE web_search DROP PRIMARY KEY, ADD brand_id SMALLINT UNSIGNED NOT NULL, ADD UNIQUE (brand_config_id);
+ALTER TABLE display_search_related DROP PRIMARY KEY, ADD brand_id SMALLINT UNSIGNED NOT NULL, ADD UNIQUE (brand_config_id);
+ALTER TABLE search DROP PRIMARY KEY, ADD brand_id SMALLINT UNSIGNED NOT NULL, ADD UNIQUE (brand_config_id);
+ALTER TABLE display_search DROP PRIMARY KEY, ADD brand_id SMALLINT UNSIGNED NOT NULL, ADD UNIQUE (brand_config_id);
+ALTER TABLE microsoft_search_related DROP PRIMARY KEY, ADD brand_id SMALLINT UNSIGNED NOT NULL, ADD UNIQUE (brand_config_id);
+ALTER TABLE info_pages DROP PRIMARY KEY, ADD brand_id SMALLINT UNSIGNED NOT NULL, ADD UNIQUE (brand_config_id);
+ALTER TABLE pageview_conversion DROP PRIMARY KEY, ADD brand_id SMALLINT UNSIGNED NOT NULL, ADD UNIQUE (brand_config_id);
+ALTER TABLE antelope_brand DROP PRIMARY KEY, ADD brand_id SMALLINT UNSIGNED NOT NULL, ADD UNIQUE (brand_config_id);
+ALTER TABLE tracking DROP PRIMARY KEY, ADD brand_id SMALLINT UNSIGNED NOT NULL, ADD UNIQUE (brand_config_id);
+ALTER TABLE article DROP PRIMARY KEY, ADD brand_id SMALLINT UNSIGNED NOT NULL, ADD UNIQUE (brand_config_id);
+ALTER TABLE content_page DROP PRIMARY KEY, ADD brand_id SMALLINT UNSIGNED NOT NULL, ADD UNIQUE (brand_config_id);
+ALTER TABLE content_page_home DROP PRIMARY KEY, ADD brand_id SMALLINT UNSIGNED NOT NULL, ADD UNIQUE (brand_config_id);
+ALTER TABLE json_template DROP PRIMARY KEY, ADD brand_id SMALLINT UNSIGNED NOT NULL, ADD UNIQUE (brand_config_id);
+UPDATE one_trust SET brand_id = brand_config_id;
+UPDATE google_tag_manager SET brand_id = brand_config_id;
+UPDATE google_publisher_tag SET brand_id = brand_config_id;
+UPDATE spam_click_detect SET brand_id = brand_config_id;
+UPDATE web_search SET brand_id = brand_config_id;
+UPDATE display_search_related SET brand_id = brand_config_id;
+UPDATE search SET brand_id = brand_config_id;
+UPDATE display_search SET brand_id = brand_config_id;
+UPDATE microsoft_search_related SET brand_id = brand_config_id;
+UPDATE info_pages SET brand_id = brand_config_id;
+UPDATE pageview_conversion SET brand_id = brand_config_id;
+UPDATE antelope_brand SET brand_id = brand_config_id;
+UPDATE tracking SET brand_id = brand_config_id;
+UPDATE article SET brand_id = brand_config_id;
+UPDATE content_page SET brand_id = brand_config_id;
+UPDATE content_page_home SET brand_id = brand_config_id;
+UPDATE json_template SET brand_id = brand_config_id;
+Alter TABLE one_trust DROP COLUMN brand_config_id, DROP CONSTRAINT one_trust_brand_config, ADD CONSTRAINT one_trust_brand FOREIGN KEY (brand_id) REFERENCES brand (id) ON DELETE CASCADE ON UPDATE NO ACTION;
+Alter TABLE google_tag_manager DROP COLUMN brand_config_id, DROP CONSTRAINT google_tag_manager_brand_config, ADD CONSTRAINT google_tag_manager_brand FOREIGN KEY (brand_id) REFERENCES brand (id) ON DELETE CASCADE ON UPDATE NO ACTION;
+Alter TABLE google_publisher_tag DROP COLUMN brand_config_id, DROP CONSTRAINT google_publisher_tag_brand_config, ADD CONSTRAINT google_publisher_tag_brand FOREIGN KEY (brand_id) REFERENCES brand (id) ON DELETE CASCADE ON UPDATE NO ACTION;
+Alter TABLE spam_click_detect DROP COLUMN brand_config_id, DROP CONSTRAINT spam_click_detect_brand_config, ADD CONSTRAINT spam_click_detect_brand FOREIGN KEY (brand_id) REFERENCES brand (id) ON DELETE CASCADE ON UPDATE NO ACTION;
+Alter TABLE web_search DROP COLUMN brand_config_id, DROP CONSTRAINT web_search_brand_config, ADD CONSTRAINT web_search_brand FOREIGN KEY (brand_id) REFERENCES brand (id) ON DELETE CASCADE ON UPDATE NO ACTION;
+composer reset-db
+cd ../artemis/
+composer reset-db
+mariadb -p artemis < queries_before_deploy.sql
+mariadb -h
+mariadb --help
+vim ~/.config
+n!!
+nvim ~/.config
+mariadb artemis
+df -h | grep home
+ls -la ~/.cache
+ls -la ~/.cache | grep JetBrains
+df -h | grep home
+ls -la ~/.cache | grep JetBrains
+ls -la ~/.cache/JetBrains/
+btop
+bin/console app:database:sync-brands-with-config
+composer install
+bin/console app:database:sync-brands-with-config
+find brands.json
+bin/console serp:develop:config:download y && sudo composer import-config
+bin/console serp:develop:config:download y; sudo composer import-config
+../autoupdater/autoupdater.sh --tag=sb
+cd /etc/httpd/conf.d/
+ls
+sudo vim visymolabel.conf
+sudo vim whitelabel.conf
+sudo vim explorads.conf
+sudo vim whitelabel.conf
+sudo service httpd restart
+bin/console serp:develop:config:download y; sudo composer import-config
+sudo composer import-config && bin/console serp:config:dump-bundles --env=prod && bin/console serp:config:dump-bundles --env=dev  && UA=1 bin/phpunit-all --filter=BrandModuleConfig && sudo composer import-config
+cd comp
+sudo composer import-config; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+tail -f var/log/dev-2024-11-15.log
+git checkout master
+git add . && git reset --hard HEAD && git pull && composer install
+git add .; git reset --hard HEAD; git checkout master; composer install
+yarn && yarn dev
+yarn; yarn dev
+rm -rf brand-websites/**/tests/Frontend/Resources/answerduo*
+bin/phpunit-whitelabel --testsuite=frontend
+bin/phpunit-all
+UA=1 bin/phpunit-all
+bin/phpunit-whitelabel --testsuite=frontend
+bin/console serp:develop:config:download y; sudo composer import-config
+bin/phpunit-whitelabel --testsuite=frontend
+bin/console serp:develop:config:download y; sudo composer import-config; bin/phpunit-whitelabel --testsuite=frontend
+bin/console serp:develop:config:download; sudo composer import-config;
+git checkout develop brand-websites/visymolabel/config/websites/breanto-serp.json
+composer reset-db
+cd /etc/httpd/conf.d/
+vim visymolabel.conf
+vim whitelabel.conf
+sudo composer import-config; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+bin/console serp:develop:config:download; sudo composer import-config;
+sudo composer import-config; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+bin/phpunit-all
+bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist
+UA=1 bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist
+bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist
+UA=1 bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist
+UA=1 bin/phpunit-all
+sudo composer import-config; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+bin/console
+bin/console-explorads
+bin/console-explorads serp:config:dump-bundles
+bin/console-explorads serp:develop:config:download
+UA=1 bin/phpunit-all --filter=BrandModuleConfig
+git checkout develop docs/brand_module_config/brand_module_config.json
+UA=1 bin/phpunit-all --filter=BrandModuleConfig
+bin/phpunit-all --filter=BrandModuleConfig
+yarn dev
+sudo composer import-config
+yarn dev
+sudo composer import-config; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+yarn dev
+bin/phpunit-emslabel --testsuite=frontend
+sudo composer import-config; yarn dev
+yarn dev
+../autoupdater/autoupdater.sh --tag=sb
+cd ../composite-search-api/
+git checkout master
+git add .; git reset --hard HEAD; git checkout master; composer install
+vim src/Domain/SearchEngine/DataSource/ContentPageIndexTypeSelector.php
+tail -f var/log/dev-2024-11-15.log
+git checkout develop
+git add .; git reset --hard HEAD; git checkout develop; composer install
+tail -f var/log/dev-2024-11-15.log
+cd ../brand-websites/
+composer update visymo/composite-search-api
+composer require visymo/composite-search-api
+clear
+cd ../composite-search-api/
+git add .; git reset --hard HEAD; git checkout master; composer install
+git pull
+cd ../autosuggest-api/
+tail -f var/log/dev-2024-11-15.log
+git pull
+lazygit
+git pull
+composer install
+yarn dev
+yarn watch
+clear && bin/visymo-cs run:phpstan && bin/visymo-cs run:phpcs && yarn lint
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs; yarn lint
+rm -rf .idea/
+bin/console serp:develop:config:download y; sudo composer import-config
+sudo composer import-config; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+bin/phpunit-all
+bin/console doctrine:schema:update --dump-sql
+composer reset-db
+bin/console doctrine:schema:update --dump-sql
+composer reset-db
+bin/console doctrine:schema:update --dump-sql
+composer reset-db; bin/console doctrine:schema:update --dump-sql 
+composer reset-db; bin/console doctrine:schema:update --dump-sql
+brew update; brew upgrade
+composer reset-db; bin/console doctrine:schema:update --dump-sql
+/usr/bin/watch -n5 bin/console app:queue:consume command
+vim
+echo $SHELL
+vim ~/.config/nushell/env.nu
+vim
+nvim
+composer reset-db; bin/console doctrine:schema:update --dump-sql
+cd brand
+bin/console serp:develop:config:download y; sudo composer import-config
+bin/console serp:develop:config:download y; sudo composer import-config; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+bin/console serp:develop:config:download y; sudo composer import-config
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+sudo composer import-config
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/console serp:develop:config:download y; sudo composer import-config
+bin/console app:config:update-brand-config project brand -vvv
+/usr/bin/watch -n5 bin/console app:queue:consume command
+bin/console app:config:update-brand-config project bra -vvv
+bin/console app:config:update-brand-config project zapmeta -vvv
+bin/console app:config:update-brand-config emslabel zapmeta -vvv
+/usr/bin/watch -n5 bin/console app:queue:consume command
+composer reset-db; bin/console doctrine:schema:update --dump-sql
+git checkout develop brand-websites/
+bin/phpunit-emslabel --filter=WebsiteSettingsHelperTest
+UA=1 bin/phpunit-emslabel --filter=WebsiteSettingsHelperTest
+bin/phpunit-emslabel --filter=WebsiteSettingsHelperTest
+clear && bin/console-emslabel serp:test:tail-logs -sap
+clear; bin/console-emslabel serp:test:tail-logs -sap
+bin/phpunit-emslabel --filter=WebsiteSettingsHelperTest
+UA=1 bin/phpunit-emslabel --filter=WebsiteSettingsHelperTest
+bin/phpunit-emslabel --filter=WebsiteSettingsHelperTest
+UA=1 bin/phpunit-emslabel --filter=WebsiteSettingsHelperTest
+bin/phpunit-all
+vim
+brew update; brew upgrade
+http get https://artemis.visymo.com/api/brand-config/zapmeta | fzf
+http get https://artemis.visymo.com/api/brand-config/aldiscover
+nvim
+cd .conf
+composer install; yarn dev; sudo composer import-config
+config nu
+db
+config nu
+db
+config nu
+db
+nu
+ls var/log
+ls
+which lks
+which ls
+cd cont
+vim
+fish
+config nu
+exit
+lazygit
+cd cont
+vim
+git status
+git pull
+git status
+cd comp
+vim
+git checkout develop
+git pull
+composer install
+tail -f var/log/dev-api-2024-11-19.log
+tail -f var/log/dev-2024-11-19.log
+vim
+tail -f var/log/dev-2024-11-19.log
+cat var/log/dev-2024-11-19.log
+cd comp
+git checkout master
+git add .; git reset --hard HEAD; git checkout master; composer install
+cat var/log/dev-2024-11-19.log
+git branch
+git fetch --all
+git branch
+lazygit
+git add .; git reset --hard HEAD; git checkout master; git pull; composer install
+composer install
+git checkout develop
+git pull
+lazygit
+composer install
+lazygit
+vim
+cd .conf
+vim
+composer
+bin/console
+cd comp
+composer install
+bin/console
+../autoupdater/autoupdater.sh --tag=sb
+clear; tail -f var/log/dev-2024-11-19.log
+clear; tail -f var/log/dev-2024-11-19.log
+git add .; git reset --hard HEAD; git checkout master; git pull; composer install
+composer require visymo/composite-search-api-client
+composer update visymo/composite-search-api-client
+composer update visymo/composite-search-api-client -ww
+composer update visymo/composite-search-api-client -w
+composer update visymo/composite-search-api-client -W
+clear; tail -f var/log/dev-2024-11-19.log
+cd cont
+cd art
+vim
+git add .; git reset --hard HEAD; git checkout master; git pull; composer install
+/usr/bin/watch -n5 bin/console app:queue:consume command
+cd art
+vim .env
+vim 
+cd cont
+rabbitmqctl add_vhost artemis
+sudo rabbitmqctl add_vhost artemis
+cd art
+vim .env
+/usr/bin/watch -n5 bin/console app:queue:consume command
+vim .env
+vim
+git status
+git add .; git reset --hard HEAD; git checkout master; git pull; composer install
+bin/phpunit-all && bin/phpunit-all --testsuite=blackbox
+yarn dev --project=emslabel && bin/console-emslabel serp:develop:test:frontend --brand=izito --os=macos --browser=chrome --page=page
+yarn dev --project=emslabel; bin/console-emslabel serp:develop:test:frontend --brand=izito --os=macos --browser=chrome --page=page
+bin/phpunit-all; bin/phpunit-all --testsuite=blackbox
+yarn watch
+db
+composer reset-db; bin/console doctrine:schema:update --dump-sql
+git checkout master src/Infrastructure/UserInterface/Web/Component
+bin/console app:develop:config:download-antelope-brand
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+/usr/bin/watch -n5 bin/console app:queue:consume command
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+vim last_queries.sql
+mariadb < last_queries.sql
+vim last_queries.sql
+mariadb < last_queries.sql
+composer reset-db; mariadb < last_queries.sql
+db
+composer reset-db
+cd cms
+yarn
+yarn dev
+cd public/
+ls
+cd build/fonts/
+ls
+vim bootstrap-icons.woff
+vim bootstrap-icons.woff2
+composer reset-db
+composer
+composer reset-db
+composer install
+composer reset-db
+vim  src/Infrastructure/Persistence/DoctrineOrm/Schema/schema.sql
+yarn dev
+cd branmd
+cd brand
+ls
+vim ../../../.gitattributes
+yarn dev
+git status
+git checkout master ../../../.gitattributes
+git status
+vim .gitattributes
+cd cms
+vim package.json
+vim ../brand-websites/package.json
+yarn --cwd ../../../ dev
+git diff
+ls -la ../../../node_modules/bootstrap-icons/font/fonts/
+cd brand
+cd brand-websites/emslabel/public/build/shared/fonts/DroidArabicKufi/
+ls
+db
+/usr/bin/watch -n5 bin/console app:queue:consume command
+yarn watch
+ls
+ls var/log/
+tail -f var/log/dev-2024-11-19.log
+composer reset-db; bin/console doctrine:schema:update --dump-sql
+/usr/bin/watch -n5 bin/console app:queue:consume command
+yarn watch
+yarn lint
+brew update; brew upgrade
+bin/console serp:develop:test:frontend --brand=breanto --os=macos --browser=chrome --page=page
+bin/console serp:develop:test:frontend --brand=astartex --os=macos --browser=chrome --page=page
+bin/console serp:develop:test:frontend --os=macos --browser=chrome --page=page
+yarn watch
+yarn lint; yarn dev; bin/console serp:develop:test:frontend
+cd /etc/httpd/conf.d/
+vim whitelabel.conf
+sudo vim explorads.conf
+sudo vim visymolabel.conf
+sudo vim whitelabel.conf
+sudo service httpd restart
+yarn dev --brand=foblue
+yarn dev --brand=foblue; bin/console-visymolabel serp:develop:test:frontend --brand=foblue
+bin/phpunit-whitelabel --testsuite=frontend
+yarn dev --brand=seekweb
+yarn watch --brand=seekweb
+yarn dev --brand=seekweb && bin/console-visymolabel serp:develop:test:frontend --brand=seekweb
+yarn dev --brand=seekweb; bin/console-visymolabel serp:develop:test:frontend --brand=seekweb
+bin/phpunit-visymolabel --testsuite=frontend
+yarn dev; bin/phpunit-all --testsuite=frontend
+yarn dev --brand=prorateer
+yarn dev --brand=blendedsearch,zapmeta
+yarn dev --brand=blendedsearch,zapmeta,prorateer
+yarn watch --brand=blendedsearch,zapmeta,prorateer
+yarn watch --brand=blendedsearch,zapmeta,prorateer,discravo
+bin/console-explorads serp:develop:test:frontend --page=ws
+yarn lint
+http get https://artemis.visymo.com/api/brand-config/aldiscover
+http get https://artemis.visymo.com.ckaal.ldev.nl/api/brand-config/aldiscover
+bin/console serp:develop:config:download y; sudo composer import-config
+bin/phpunit-all
+rm -rf brand-websites/**/tests/Frontend/Resources/answerduo*
+rm -rf brand-websites/**/tests/Frontend/Resources/aldiscover*
+rm -rf brand-websites/**/tests/Frontend/Resources/foblue*
+rm -rf brand-websites/**/tests/Frontend/Resources/heartsrch*
+rm -rf brand-websites/**/tests/Frontend/Resources/oltly*
+rm -rf brand-websites/**/tests/Frontend/Resources/seekdept*
+rm -rf brand-websites/**/tests/Frontend/Resources/topioz*
+rm -rf brand-websites/**/tests/Frontend/Resources/trungi*
+sudo composer import-config
+cd /etc/httpd/conf.d/
+sudo vim visudo 
+sudo vim visymolabel.conf
+sudo  vim explorads.conf
+sudo vim whitelabel.conf
+sudo service httpd restart
+yarn lint; yarn dev; bin/console serp:develop:test:frontend --brand=aldiscover,answerduo,foblue,heartsrch,oltly,seekdept,topioz,trungi
+rm -rf brand-websites/**/tests/Frontend/Resources/foblue*
+yarn dev --brand=foblue; bin/console-visymolabel serp:develop:test:frontend --brand=foblue --page=msr
+yarn dev --brand=breanto
+rm -rf brand-websites/visymolabgel/tests/Frontend/Resources/foblue*
+rm -rf brand-websites/visymolabel/tests/Frontend/Resources/foblue*
+rm -rf brand-websites/visymolabel/tests/Frontend/Resources/**/foblue*
+rm -rf brand-websites/explorads/tests/Frontend/Resources/**/answerduo*
+rm -rf brand-websites/explorads/tests/Frontend/Resources/**/aldiscover*
+rm -rf brand-websites/explorads/tests/Frontend/Resources/**/trungi*
+rm -rf brand-websites/explorads/tests/Frontend/Resources/**/topioz*
+rm -rf brand-websites/explorads/tests/Frontend/Resources/**/seekdept*
+bin/console serp:develop:test:frontend --brand=foblue --page=dsa --os=macos --browser=safari
+yarn lint; yarn dev; bin/console serp:develop:test:frontend --brand=aldiscover,answerduo,foblue,heartsrch,oltly,seekdept,topioz,trungi
+bin/console serp:develop:config:download y; sudo composer import-config
+bin/phpunit-all
+yarn dev
+yarn watch --brand=favoes
+yarn lint
+sudo composer import-config
+cd debug
+bin/phpunit-all
+bin/phpunit-emslabel --stop-on-defect
+UA=1 bin/phpunit-emslabel --stop-on-defect
+cd cont
+tail -f var/log/dev-2024-11-20.log
+git pull
+vim .env
+UA=1 bin/phpunit-all
+yarn dev
+UA=1 bin/phpunit --configuration=brand-websites/visymolabel/phpunit.xml.dist
+sudo composer import-config && UA=1 bin/phpunit --configuration=brand-websites/visymolabel/phpunit.xml.dist
+sudo composer import-config; UA=1 bin/phpunit --configuration=brand-websites/visymolabel/phpunit.xml.dist
+UA=1 bin/phpunit-all --filter=DebugRequestUrlParametersProviderTest
+bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist
+bin/phpunit-all
+bin/phpunit-all --filter=ConversionTrackingIntegrationTest
+yarn dev
+yarn watch
+vim
+yarn lint
+yarn watch
+bin/console serp:develop:config:download y; sudo composer import-config
+sudo composer  import-config
+http get https://artemis.visymo.com.ckaal.ldev.nl/api/brand-config/aldiscover
+clear; http get https://artemis.visymo.com.ckaal.ldev.nl/api/brand-config/aldiscover
+clear; http get https://artemis.visymo.com.ckaal.ldev.nl/api/brand-config/example/test/2aldiscover
+cdart
+cd art
+bin/console serp:develop:config:download y; sudo composer import-config
+sudo composer  import-config
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+cd art
+composer reset-db
+bin/console serp:develop:config:download y; sudo composer import-config
+bin/phpunit-all
+bin/phpunit-emslabel --stop-on-defect
+bin/phpunit-emslabel --stop-on-defect --filter=JsonSchemaValidatorTest
+clear && bin/phpunit-emslabel --stop-on-defect --filter=JsonSchemaValidatorTest
+clear; bin/phpunit-emslabel --stop-on-defect --filter=JsonSchemaValidatorTest
+bin/phpunit-all
+git merge feature/SF-1202
+bin/phpunit-emslabel --testsuite=frontend
+bin/console serp:develop:config:download; sudo composer import-config;
+bin/phpunit-emslabel --testsuite=frontend
+vim
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs; yarn lint
+sudo composer  import-config
+cd debug
+UA=1 bin/phpunit-all --filter=DebugRequestUrlParametersProviderTest
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+clear; bin/console-emslabel serp:test:tail-logs -sap
+yarn watch --project=emslabel
+yarn watch --brand=seekweb
+bin/phpunit-all
+clear; bin/console-emslabel serp:test:tail-logs -sap
+yarn dev
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-emslabel -filter GoogleCsaStyleIdContainerTest
+bin/phpunit-emslabel --filter GoogleCsaStyleIdContainerTest
+bin/phpunit-emslabel
+bin/phpunit-all
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+cd debug
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all
+brew update; brew upgrade
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+UA=1 bin/phpunit
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+UA=1 bin/phpunit-all --filter=BrandModuleConfig
+bin/console serp:develop:config:download y; sudo composer import-config; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+^clear bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+clear; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+sudo composer  import-config
+bin/phpunit-all
+bin/phpunit-emslabel
+clear; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+bin/console serp:develop:config:download y; sudo composer import-config; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+brew update; brew upgrade
+yarn watch --project=emslabel
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all
+vim /DebugRequestUrlParametersProviderTest
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+cd ../artemis/
+git checkout feature/SF-1205
+git pull
+composer reset-db
+composer reset-db; bin/console doctrine:schema:update --dump-sql
+/usr/bin/watch -n5 bin/console app:queue:consume command
+bin/console serp:develop:config:download y; sudo composer import-config; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+vim
+bin/console serp:develop:config:download y; sudo composer import-config; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+cd art
+bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+vim
+bin/console-visymolabel
+bin/console-visymolabel serp:develop:generate-split-test
+bin/console-visymolabel serp:develop:generate-split-test breanto stsscd
+sudo bin/console-visymolabel serp:develop:generate-split-test breanto stsscd
+bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config; sudo bin/console-visymolabel serp:develop:generate-split-test breanto stsscd
+bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+find *-ead.json
+find -n *-ead.json
+find -h
+locate -h
+clearf
+clear
+cd art
+composer reset-db; bin/console doctrine:schema:update --dump-sql
+UA=1 bin/phpunit
+UA=1 bin/phpunit-all
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+UA=1 bin/phpunit-all; clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit --configuration=brand-websites/visymolabel/phpunit.xml.dist
+time bin/console-visymolabel serp:config:import
+time sudo bin/console-visymolabel serp:config:import
+vim
+time sudo bin/console-visymolabel serp:config:import
+time sudo bin/console-visymolabel serp:config:import\
+time sudo bin/console-visymolabel serp:config:import
+composer | grep diff
+composer
+composer status
+composer status -v | grep shared
+composer status -v
+time sudo bin/console-visymolabel serp:config:import
+clear; time sudo bin/console-visymolabel serp:config:import
+clear; time sudo bin/console-visymolabel serp:config:update
+clear; time sudo bin/console-visymolabel serp:
+bin/console serp:develop:config:download; sudo composer import-config;
+clear; bin/console serp:develop:config:download; sudo composer import-config;
+clear; time sudo bin/console-visymolabel serp:config:import
+pwd
+yarn dev; bin/phpunit-all --testsuite=frontend
+cd art
+composer reset-db; bin/console doctrine:schema:update --dump-sql
+composer install
+composer reset-db; bin/console doctrine:schema:update --dump-sql
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit
+sudo bin/console-visymolabel serp:develop:generate-split-test breanto stsscd
+sudo composer  import-config
+brew update; brew upgrade
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs; bin/phpunit
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all
+bin/phpunit-emslabel --filter SpamClickDetectSettingsFactoryTest
+bin/phpunit-brand-website-bundle --filter SpamClickDetectSettingsFactoryTest
+bin/phpunit-all
+bin/phpunit-brand-website-bundle --filter ContentPageUrlGeneratorTest
+bin/phpunit-visymo-label-bundle --filter ContentPageUrlGeneratorTest
+bin/phpunit-visymolabel --filter ContentPageUrlGeneratorTest
+bin/phpunit-visymolabel 
+bin/phpunit-visymolabel
+clear; bin/phpunit-all
+git checkout develop brand-websites/visymolabel/config/websites/breanto-serp.json
+git checkout develop bundles/brand-website-bundle/tests/Integration/ContentPage/Url/ContentPageUrlGeneratorTest.php
+clear; bin/phpunit-all
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+clear; bin/phpunit-all
+UA=1 bin/phpunit-all; clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+clear; bin/phpunit-all
+composer install
+sudo composer import-config
+time sudo bin/console-visymolabel serp:config:import
+clear; time sudo bin/console-visymolabel serp:config:import | save benchmark.txt
+tail -f benchmark.txt
+clear; time sudo bin/console-visymolabel serp:config:import | save benchmark.txt
+clear; time sudo bin/console-visymolabel serp:config:import | save benchmark.txt!!
+clear; time sudo bin/console-visymolabel serp:config:import | save benchmark.txt -ap
+echo benchmark.txt >> ~/.gitignore
+cat ~/.gitignore
+vim ~/.gitignore
+clear; time sudo bin/console-visymolabel serp:config:import | save benchmark.txt -ap
+tail -f benchmark.txt
+clear; time sudo bin/console-visymolabel serp:config:import
+vim
+clear; time sudo bin/console-visymolabel serp:config:import
+cat ~/.zshrc
+cat ~/.zshrc | grep sed
+nu config
+vim ~/.config/nushell/env.nu
+cs
+vim ~/.config/nushell/env.nu
+vim ~/.config/nushell/config.nu
+vim ~/.config/nushell/env.nu
+vim ~/.config/nushell/config.nu
+cs
+log
+vim ~/.config/nushell/config.nu
+log
+nu
+clear; time sudo bin/console-visymolabel serp:config:import
+time php '/var/www/html/brand-websites/brand-websites/visymolabel/../../vendor/visymo/shared/cachetool-custom.phar' opcache:invalidate:scripts --fcgi='/var/run/php-fpm/serp.sock' --force '/var/www/html/brand-websites/brand-websites/visymolabel/config/websites/apetsearch-serp.php' --visymo-memory-fix
+sudo time php '/var/www/html/brand-websites/brand-websites/visymolabel/../../vendor/visymo/shared/cachetool-custom.phar' opcache:invalidate:scripts --fcgi='/var/run/php-fpm/serp.sock' --force '/var/www/html/brand-websites/brand-websites/visymolabel/config/websites/apetsearch-serp.php' --visymo-memory-fix 
+clear; time sudo bin/console-visymolabel serp:config:import
+time sudo bin/console-visymolabel serp:config:import
+php -m
+pecl
+dnf search php-pear
+pear
+sudo dnf install php-pear.noarch
+pear
+pecl
+pecl list-all | grep apc
+pecl search apc
+pecl install APCu
+php -m 
+php -m | grep apc
+php --ini
+sudo vim /etc/php.d/16-apc.ini
+sudo service php-fpm restart; php -m | grep apc
+ls /usr/lib64/php/modules/
+ls
+pecl install APCu
+sudo mv /etc/php.d/16-apc.ini ~/16-apc.ini
+sudo service php-fpm restart; php -m | grep apc
+pecl install APCu
+sudo pecl install APCu
+phpize
+sudo vim /etc/php.d/15-xdebug.ini
+sudo service php-fpm restart; php -m | grep apc
+sudo pecl install APCu
+sudo yum install php-devel
+sudo pecl install APCu
+sudo mv ~/16-apc.ini /etc/php.d/16-apc.ini
+sudo service php-fpm restart; php -m | grep apc
+time sudo bin/console-visymolabel serp:config:import
+perf
+brew search perf
+php -m | grep apc
+time sudo bin/console-visymolabel serp:config:import
+php -v
+sudo vim /etc/php.d/15-xdebug.ini
+sudo service php-fpm restart; php -v
+sudo vim /etc/php.d/15-xdebug.ini
+sudo service php-fpm restart; php -v
+watch
+/usr/bin/watch -n5 ls -la /tmp
+cd /tmp
+ls
+clear; ls
+time sudo bin/console-visymolabel serp:config:import
+xdebug.trace_output_dir
+sudo ufw status
+sudo vim /etc/php.d/15-xdebug.ini
+sudo service php-fpm restart; php -v
+time sudo bin/console-visymolabel serp:config:import
+clear; ls
+clear; ls | grep cachegrind
+brew search kcachegrind
+brew install qcachegrind
+qcachegrind
+brew install qcachegrind && qcachegrind
+brew install qcachegrind; qcachegrind
+df -h | grep home
+rm -rf /etc/php.d/16-apc.ini
+sudo rm -rf /etc/php.d/16-apc.ini
+sudo service php-fpm restart; php -v
+qcachegrind
+cat  /usr/share/glib-2.0/schemas/org.gtk.Settings.FileChooser.gschema.xml
+cd /usr/share/glib-2.0/schemas/
+ls
+cp org.gtk.Settings.FileChooser.gschema.xml _org.gtk.Settings.FileChooser.gschema.xml
+sudo cp org.gtk.Settings.FileChooser.gschema.xml _org.gtk.Settings.FileChooser.gschema.xml
+sudo vim /usr/share/glib-2.0/schemas/org.gtk.Settings.FileChooser.gschema.xml
+glib-compile-schemas .
+sudo glib-compile-schemas .
+sudo vim /usr/share/glib-2.0/schemas/org.gtk.Settings.FileChooser.gschema.xml
+rm -rf org.gtk.Settings.FileChooser.gschema.xml
+sudo rm -rf org.gtk.Settings.FileChooser.gschema.xml
+sudo cp _org.gtk.Settings.FileChooser.gschema.xml org.gtk.Settings.FileChooser.gschema.xml
+sudo glib-compile-schemas .
+sudo vim /etc/php.d/15-xdebug.ini
+sudo service php-fpm restart; php -v
+clear
+time sudo bin/console-visymolabel serp:config:import
+df -h | grep home
+brew
+brew doctor
+brew cleanup -s -n
+brew cleanup -s 
+diskonaut ~
+df -h | grep home
+time sudo bin/console-visymolabel serp:config:import
+yarn upgrade prettier
+yarn lint
+yarn lint --fix
+yarn lint
+yarn dev
+yarn; yarn lint; yarn dev
+time sudo bin/console-visymolabel serp:config:import
+sudo bin/console-visymolabel serp:develop:generate-split-test breanto stsscd
+sudo composer import-config
+composer install
+cs
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+sudo bin/console-visymolabel serp:develop:generate-split-test breanto stsscd; sudo composer import-config
+bin/phpunit-all
+bin/phpunit-visymolabel 
+sudo bin/console-visymolabel serp:config:import
+sudo composer import-config
+sudo bin/console-visymolabel serp:develop:generate-split-test breanto stsscdnee; sudo composer import-config
+sudo composer import-config
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all
+sudo bin/console-visymolabel serp:config:import
+clear; time sudo bin/console-visymolabel serp:config:import
+mkdir tempie
+cd tempie/
+phar extract -f ../vendor/visymo/shared/cachetool-custom.phar
+ls
+phar -h
+phar
+phar help
+phar pack
+phar pack -f new.phar
+php --ini
+sudo vim /etc/php.ini
+sudo service php-fpm restart; php -v
+phar pack -f new.phar
+phar pack -f new.phar -d ./tmp
+bin/cachetool
+ls
+chmox +x bin/cachetool
+chmod +x bin/cachetool
+bin/cachetool
+php bin/cachetool
+php bin/cachetool self:update
+touch phar.php
+./phar.php
+chmod +x phar.php
+./phar.php
+php ./phar.php 
+clear; time sudo bin/console-visymolabel serp:config:import
+clear; time sudo ../bin/console-visymolabel serp:config:import
+php ./phar.php; clear; time sudo ../bin/console-visymolabel serp:config:import
+php ./phar.php; clear; composer dumpautoload -o; time sudo ../bin/console-visymolabel serp:config:import
+composer config --global use-parent-dir true
+php ./phar.php; clear; composer dumpautoload -o; time sudo ../bin/console-visymolabel serp:config:import
+composer require hollodotme/fastcgi
+composer search hollodotme
+composer require hollodotme/fast-cgi-client
+php ./phar.php; clear; composer dumpautoload -o; time sudo ../bin/console-visymolabel serp:config:import
+cd ..
+mkdir opcache-browser
+composer require amnuts/opcache-gui
+vim index.php
+php -h
+cd opcache-browser/
+cd ..
+ls
+rm -rf composer* vendor index.php
+cd opcache-browser/
+composer require amnuts/opcache-gui
+vin index.php
+vim index.php
+php -s
+php -h
+php ./phar.php; clear; composer dumpautoload -o; time sudo ../bin/console-visymolabel serp:config:import
+bin/phpunit-emslabel; php ./phar.php; clear; composer dumpautoload -o; time sudo ../bin/console-visymolabel serp:config:import
+../bin/phpunit-emslabel; php ./phar.php; clear; composer dumpautoload -o; time sudo ../bin/console-visymolabel serp:config:import
+cd ..; bin/phpunit-emslabel; cd tempie; php ./phar.php; clear; composer dumpautoload -o; time sudo ../bin/console-visymolabel serp:config:import
+cd art
+composer install; yarn; yarn dev;\
+composer install; yarn; yarn dev;
+time sudo composer import-config
+composer require gordalina/cachetool
+composer uninstall hollodotme/fast-cgi-client
+composer remove hollodotme/fast-cgi-client
+composer remove gordalina/cachetool
+composer require hollodotme/fast-cgi-client
+vim ~/.gitignore
+composer install; yarn; yarn dev;
+sudo composer import-config
+composer install
+composer status
+composer status -v
+sudo composer import-config
+php -m
+cd /etc/httpd/conf.d/
+php --ini
+sudo vim /etc/php.d/10-opcache.ini
+sudo service php-fpm restart; php -v
+sudo vim /etc/php.ini
+sudo composer import-config
+sudo vim /etc/php.d/10-opcache.ini
+sudo service php-fpm restart; php -v
+sudo composer import-config
+time sudo composer import-config
+cd ../
+mkdir packagses
+mv packagses packages
+cd packages/
+git clone git@github.com:CrixuAMG/cachetool.git
+cd cachetool/
+composer installl
+composer require crixuamg/cachetool@*
+composer require crixuamg/cachetool
+composer update
+composer install
+sudo composer import-config
+clear; time sudo ../bin/console-visymolabel serp:config:import
+clear; time sudo bin/console-visymolabel serp:config:import
+composer install
+sudo composer import-config
+composer require amnuts/opcache-gui --dev
+composer install
+composer clear-cache
+sudo service php-fpm restart; php -v
+clear
+composer install
+composer remove hollodotme/fast-cgi-client
+clear; time sudo bin/console-visymolabel serp:config:import
+bin/phpunit-emslabel; cd tempie; php ./phar.php; clear; composer dumpautoload -o; time sudo ../bin/console-visymolabel serp:config:import
+cd ..; bin/phpunit-emslabel; cd tempie; php ./phar.php; clear; composer dumpautoload -o; time sudo ../bin/console-visymolabel serp:config:import
+clear; time sudo ../bin/console-visymolabel serp:config:import
+cd ..; bin/phpunit-emslabel; cd tempie; php ./phar.php; clear; composer dumpautoload -o; time sudo ../bin/console-visymolabel serp:config:import
+php ./tempie/phar.php; clear; composer dumpautoload -o; time sudo bin/console-visymolabel serp:config:import
+cd tempie/
+phar pack -f new.phar 
+phar pack
+ls
+php ./phar.php
+php ./phar.php; clear; composer dumpautoload -o; time sudo ../bin/console-visymolabel serp:config:import
+sudo ../bin/console-visymolabel serp:config:import
+php ./phar.php; clear; composer dumpautoload -o; time sudo ../bin/console-visymolabel serp:config:import
+php -S 127.0.0.1:1234
+composer require amnuts/opcache-gui
+php ./phar.php; clear; composer dumpautoload -o; time sudo ../bin/console-visymolabel serp:config:import
+php ./phar.php; clear; time sudo ../bin/console serp:config:import
+php ./phar.php; clear; cd ..; time sudo /bin/console serp:config:import; cd tempie
+cd tempie; php ./phar.php; clear; cd ..; time sudo bin/console serp:config:import; cd tempie
+php ./phar.php; clear; composer dumpautoload -o; time sudo ../bin/console-visymolabel serp:config:import
+../bin/console serp:config:import
+cd ..; bin/console serp:config:import
+cd tempie/
+cd ..; bin/console serp:config:import; cd tempie;
+bin/console serp:config:import
+sudo service php-fpm restart; php -v
+bin/console serp:config:import
+php ./phar.php; clear; composer dumpautoload -o; time sudo ../bin/console-visymolabel serp:config:import
+cd tempie/
+php ./phar.php; clear; composer dumpautoload -o; time sudo ../bin/console-visymolabel serp:config:import
+vim
+php ./phar.php; clear; composer dumpautoload -o; time sudo ../bin/console-visymolabel serp:config:import
+cd tempie/
+brew info bench
+brew install bench
+php ./phar.php; clear; bench sudo ../bin/console-visymolabel serp:config:import
+cd ../../develop-brand-websites/
+ls
+lazygit
+clear
+php ./phar.php; clear; bench 'sudo ../bin/console-visymolabel serp:config:import'
+bench 'sudo bin/console-visymolabel serp:config:import'
+composer install
+clear; bench 'sudo bin/console-visymolabel serp:config:import'
+clear; bench 'sudo bin/console-visymolabel serp:config:import'
+clear; bench 'sudo ../bin/console-visymolabel serp:config:import'
+php ./phar.php; clear; bench 'sudo ../bin/console-visymolabel serp:config:import'
+php ./phar.php; clear; time sudo ../bin/console-visymolabel serp:config:import
+clear; bench 'sudo ../bin/console-visymolabel serp:config:import'
+bin/phpunit-all
+cd ..
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+clear; bench 'sudo ../bin/console-visymolabel serp:config:import'
+cd shared
+git pull
+clear; cd ..; time bench 'sudo bin/console serp:config:import'
+clear; cd ..; bench 'sudo bin/console serp:config:import'
+cd brand-websites/
+clear; bench 'sudo bin/console serp:config:import'
+bench 'sudo bin/console serp:config:import'
+clear; bench 'sudo bin/console serp:config:import'
+cd vendor/visymo/shared/
+ls
+phar unpack
+phar help
+mkdir tmp
+cp cachetool-custom.phar tmp/
+cd tmp
+phar extract -f ./cachetool-custom.phar
+time sudo bin/console-visymolabel serp:config:import
+time sudo bin/console serp:config:import
+clear; bench 'sudo bin/console serp:config:import'
+cd ..
+ls tmp/
+vim tmp/phar.php
+git status
+lazygit
+ls
+git status
+cp cachetool-custom.phar tmp.phar
+git checkout develop cachetool-custom.phar
+git checkout master cachetool-custom.phar
+clear; bench 'sudo bin/console serp:config:import'
+time sudo bin/console-visymolabel serp:config:import
+cp cachetool-custom.phar tmp.phar
+cp /var/www/html/shared/cachetool-custom.phar ./
+rm -rf cachetool-custom.phar
+time sudo bin/console-visymolabel serp:config:import
+cd tempie/
+mkdir phar
+cd shared
+ls
+cp cachetool-custom.phar tmp/
+mkdir tmp
+cp cachetool-custom.phar tmp/
+cd tmp
+ls
+phar extract -f ./cachetool-custom.phar
+php ./phar.php
+mkdir tmp
+cp new.phar tmp/
+cd tmp
+phar extract -f ./new.phar
+phar help
+php ./phar.php; cp new.phar tmp/; cd tmp; phar extract -f new.phar
+cd ..; php ./phar.php; cp new.phar tmp/; cd tmp; phar extract -f new.phar
+cd ..; rm -rf tmp/*; php ./phar.php; cp new.phar tmp/; cd tmp; phar extract -f new.phar
+cd ..
+composer require barkley/create-phar<\n>
+cd tempie
+composer init
+cd tempie
+cd tmp
+composer global require humbug/box
+cd ..
+$(composer config home)/vendor/bin/box compile --config=box.json
+composer config home
+/home/c.kaal/.config/composer/vendor/bin/box compile --config=box.json
+cd phar
+/home/c.kaal/.config/composer/vendor/bin/box compile --config=box.json
+composer update visymo/shared
+time sudo bin/console-visymolabel serp:config:import
+time sudo ../../bin/console-visymolabel serp:config:import
+composer update visymo/shared; time sudo ../../bin/console-visymolabel serp:config:import 
+composer update visymo/shared --no-cache; time sudo ../../bin/console-visymolabel serp:config:import
+composer
+composer cc
+composer update visymo/shared; time sudo ../../bin/console-visymolabel serp:config:import
+/home/c.kaal/.config/composer/vendor/bin/box compile --config=box.json
+ls
+cd ..
+ls
+rm -rf *.phar
+cd phar
+/home/c.kaal/.config/composer/vendor/bin/box compile --config=box.json
+cd ..
+ls
+cp cachetool.phar /var/www/html/shared/custom-cachetool.phar
+composer update visymo/shared; time sudo ../../bin/console-visymolabel serp:config:import
+composer update visymo/shared; time sudo ../bin/console-visymolabel serp:config:import
+cd tempie
+ls
+./cachetool.phar
+php ./cachetool.phar
+composer update visymo/shared; time sudo ../bin/console-visymolabel serp:config:import
+cd phar/
+/home/c.kaal/.config/composer/vendor/bin/box compile --config=box.json
+ls
+ls ..
+rm ../cachetool.phar
+composer update visymo/shared; time sudo ../bin/console-visymolabel serp:config:import
+/home/c.kaal/.config/composer/vendor/bin/box compile --config=box.json
+cd phar
+/home/c.kaal/.config/composer/vendor/bin/box compile --config=box.json
+cp ../cachetool-custom.phar /var/www/html/shared/
+cd ..
+composer update visymo/shared; time sudo ../bin/console-visymolabel serp:config:import
+cd ..
+cd brand
+cd brand
+bench 'sudo bin/console serp:config:import'
+composer remove amnuts/opcache-gui
+UA=1 bin/phpunit-all; clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+composer install
+cd ../develop-brand-websites/
+composer install
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+UA=1 bin/phpunit-all; clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-emslabel --stop-on-defect
+ls
+ls -la
+cp .env ../develop-brand-websites/
+bin/phpunit-emslabel --stop-on-defect
+composer install
+bin/phpunit-emslabel --stop-on-defect
+bench 'sudo bin/console serp:config:import'
+UA=1 bin/phpunit-all; clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+sudo composer dumpautoload -o
+APP_ENV=test bin/console-emslabel serp:config:import
+bin/console-emslabel serp:config:import
+composer install
+bin/console-emslabel serp:config:import
+bin/console-emslabel serp:config:import\
+bin/console-emslabel serp:config:import
+time serp:develop:brand-style:import
+time bin/console serp:develop:brand-style:import
+time sudo bin/console-visymolabel serp:config:import
+time bin/console serp:develop:brand-style:import
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+UA=1 bin/phpunit-all; clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+sudo time php '/var/www/html/brand-websites/brand-websites/visymolabel/../../vendor/visymo/shared/cachetool-custom.phar' opcache:invalidate:scripts --fcgi='/var/run/php-fpm/serp.sock' --force '/var/www/html/brand-websites/brand-websites/visymolabel/config/websites/apetsearch-serp.php' --visymo-memory-fix
+sudo time php '/var/www/html/brand-websites/brand-websites/visymolabel/../../vendor/visymo/shared/cachetool-custom.phar' opcache:invalidate:scripts --fcgi='/var/run/php-fpm/serp.sock' --force '/var/www/html/brand-websites/brand-websites/visymolabel/config/websites/apetsearch-serp.php'
+cd /var/www/html/brand-websites/brand-websites/visymolabel/../../vendor/visymo/shared/
+ls
+cd brand
+cd tempie/
+cd phar
+/home/c.kaal/.config/composer/vendor/bin/box compile --config=box.json
+cp ../cachetool-custom.phar ../../vendor/visymo/shared/
+sudo time php '/var/www/html/brand-websites/brand-websites/visymolabel/../../vendor/visymo/shared/cachetool-custom.phar' opcache:invalidate:scripts --fcgi='/var/run/php-fpm/serp.sock' --force '/var/www/html/brand-websites/brand-websites/visymolabel/config/websites/apetsearch-serp.php'
+/home/c.kaal/.config/composer/vendor/bin/box compile --config=box.json
+/home/c.kaal/.config/composer/vendor/bin/box compile --config=box.json; cp ../cachetool-custom.phar ../../vendor/visymo/shared/
+sudo time php '/var/www/html/brand-websites/brand-websites/visymolabel/../../vendor/visymo/shared/cachetool-custom.phar' opcache:invalidate:scripts --fcgi='/var/run/php-fpm/serp.sock' --force '/var/www/html/brand-websites/brand-websites/visymolabel/config/websites/apetsearch-serp.php'
+/home/c.kaal/.config/composer/vendor/bin/box compile --config=box.json; cp ../cachetool-custom.phar ../../vendor/visymo/shared/
+sudo time php '/var/www/html/brand-websites/brand-websites/visymolabel/../../vendor/visymo/shared/cachetool-custom.phar' opcache:invalidate:scripts --fcgi='/var/run/php-fpm/serp.sock' --force '/var/www/html/brand-websites/brand-websites/visymolabel/config/websites/apetsearch-serp.php'
+time sudo bin/console-visymolabel serp:config:import
+cd ../..
+composer update visymo/shared
+time sudo bin/console-visymolabel serp:config:import
+log
+clear; log
+sudo composer import-config
+clear; log
+composer dumpautoload -o
+yarn watch
+/usr/bin/watch -n5 bin/console app:queue:consume command
+yarn lint
+php test.php
+rm -rf brand-websites/**/tests/Frontend/Resources/*ead*
+rm -rf brand-websites/**/tests/Frontend/Resources/expected/*ead*
+rm -rf brand-websites/**/tests/Frontend/Resources/expected/**/*ead*
+rm -rf brand-websites/**/tests/Frontend/Resources/**/*ead*
+php test.php
+brew update; brew upgrade
+bin/console serp:develop:config:download y; sudo composer import-config; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+time sudo bin/console-visymolabel serp:config:import
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all
+cd shared
+sudo composer import-config
+brew update; brew upgrade
+cd website
+yarn watch
+yarn && yarn watch
+yarn; yarn watch
+yarn; yarn dev
+composer install; yarn; yarn dev
+yarn; yarn dev
+composer install; yarn; yarn dev
+yarn; yarn dev
+rm -rf .idea
+yarn; yarn dev
+composer install; yarn; yarn dev
+bin/phpunit-all
+bin/phpunit-emslabel --stop-on-defect
+UA=1 bin/phpunit-all; clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all
+bin/console serp:develop:test:frontend --browser=chrome --os=windows --device=desktop
+bin/console serp:develop:test:frontend --browser=chrome --os=windows --device=desktop --brand=astartex
+yarn dev
+bin/console serp:develop:test:frontend --browser=chrome --os=windows --device=desktop --brand=astartex
+yarn dev
+bin/console serp:develop:test:frontend --browser=chrome --os=windows --device=desktop --brand=astartex
+bin/console serp:develop:test:frontend --browser=chrome --os=windows --device=desktop --brand=astartex --page=dsrw
+bin/console-explorads serp:develop:test:frontend --browser=chrome --os=windows --device=desktop --brand=astartex --page=dsrw
+bin/console serp:develop:test:frontend
+clear; bin/console serp:develop:config:download; sudo composer import-config; bin/console serp:develop:test:frontend;
+bin/console-explorads serp:develop:test:frontend --browser=chrome --os=windows --device=desktop --brand=astartex --page=dsrw
+clear; bin/console serp:develop:config:download; sudo composer import-config;
+bin/console serp:develop:test:frontend --brand=foble --os=macos --browser=chrome
+bin/console serp:develop:test:frontend --brand=foblue --os=macos --browser=chrome
+bin/console serp:develop:test:frontend --brand=foblue --os=macos --browser=chrome --page=msr
+bin/console-explorads serp:develop:test:frontend --browser=chrome --os=windows --device=desktop --brand=astartex --page=dsrw
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/console-explorads serp:develop:test:frontend --browser=chrome --os=windows --device=desktop --brand=astartex --page=dsrw
+bin/phpunit-all
+bin/console-explorads serp:develop:test:frontend --browser=chrome --os=windows --device=desktop --brand=astartex --page=dsrw
+bin/phpunit-explorads --stop-on-defect
+bin/console-explorads serp:develop:test:frontend --browser=chrome --os=windows --device=desktop --brand=astartex --page=dsrw
+bin/phpunit-explorads --stop-on-defect
+bin/console-explorads serp:develop:test:frontend --browser=chrome --os=windows --device=desktop --brand=astartex --page=dsrw
+bin/phpunit-explorads --stop-on-defect
+bin/phpunit-explorads --stop-on-defect --testdox
+yarn watch
+yarn dev
+bin/console-explorads serp:develop:test:frontend --browser=chrome --os=windows --device=desktop --brand=astartex --page=dsrw
+bin/console-explorads serp:develop:test:frontend --browser=chrome --os=windows --device=desktop --brand=astartex --page=dsrw
+bin/phpunit-explorads --stop-on-defect --testdox
+clear; bin/console serp:develop:config:download; sudo composer import-config;
+sudo composer import-config
+brew update; brew upgrade
+log
+sudo composer import-config
+log
+bin/phpunit-all --testsuite=blackbox
+bin/phpunit-emslabel --testsuite=blackbox --stop-on-defect
+git fetch --prune
+sudo composer import-config
+bin/console serp:develop:config:download y; sudo composer import-config
+bin/console-emslabel serp:config:import
+bin/console-emslabel serp:config:import | from json | explore
+bin/console-emslabel serp:config:import
+bin/console-emslabel serp:config:import | from json | explore
+bin/console-emslabel serp:config:import | from json | get brand
+bin/console-emslabel serp:config:import
+sudo bin/console-emslabel serp:config:import
+bin/console-emslabel serp:config:import | from json | get brand | get brand_slug
+bin/console-emslabel serp:config:import | from json | get brand
+bin/console-emslabel serp:config:import | from json | get brand | get slug search web_search
+bin/console-emslabel serp:config:import | from json | get brand | get slug search web_search | to yaml
+bin/console-emslabel serp:config:import | from json | get brand | get slug search web_search
+bin/console-emslabel serp:config:import | from json | get brand | get slug search web_search | table
+bin/console-emslabel serp:config:import | from json | get brand | get slug search web_search | explore
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all
+bin/console-emslabel serp:develop:test:frontend
+bin/console-emslabel serp:config:import
+bin/console-emslabel serp:config:import | from json
+bin/console-emslabel serp:config:import | from json | explore
+go install github.com/jsha/minica@latest
+minica --domains '*.ldev.nl'
+GOPATH=~/go minica --domains '*.ldev.nl'
+ls ~/go/
+ls ~/go/bin
+~/go/bin/minica --domains '*.ldev.nl'
+brew install minica
+minica --domains '*.ldev.nl'
+ls
+rm -rf *.pem _.ldev.nl/
+cd /etc/ca-certificates
+dpkg -L ca-certificates
+cd /usr/share/ca-certificates
+cd /etc/ssl/certs/
+ls
+vim dev-office-chain.pem
+minica --domains '*.ldev.nl'
+sudo minica --domains '*.ldev.nl'
+which minica
+sudo /home/linuxbrew/.linuxbrew/bin/minica --domains '*.ldev.nl'
+cd /etc/ssl/certs/
+ls
+while openssl x509 -noout -text; do :; done < minica.pem
+bin/console-emslabel serp:config:import
+sudo bin/console-emslabel serp:config:import
+clear; sudo bin/console-emslabel serp:config:import
+sudo bin/console serp:config:import
+sudo bin/console-explorads serp:config:import
+sudo bin/console-visymolabel serp:config:import
+git checkout develop brand-websites/whitelabel
+ls
+cd brand
+git checkout develop brand-websites/whitelabel
+rm -rf brand-websites/**/tests/Frontend/Resources/**/*-macos-*chrome*
+bin/console-emslabel serp:develop:test:frontend --browser=chrome --os=macos
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/console-emslabel serp:develop:test:frontend --browser=chrome --os=macos
+bin/console-visymolabel serp:develop:test:frontend --page=dsrw --brand=visymo --os=windows --browser=chrome
+bin/console serp:develop:test:frontend --page=dsrw --brand=visymo --os=windows --browser=chrome
+brew update; brew upgrade
+vim
+cd art
+composer install; yarn; yarn dev
+sudo bin/console-visymolabel serp:config:import
+bin/console serp:develop:config:download; sudo composer import-config;
+sudo bin/console-visymolabel serp:config:import
+df -h | grep home
+diskonaut ~
+brew cleanup -s 
+df -h | grep home
+diskonaut ~
+brew cleanup --prune=all
+df -h | grep home
+f
+df -h | grep home
+diskonaut ~
+npm 
+yarn cache clean
+df -h | grep home
+bin/phpunit-all
+php -v
+sudo vim /etc/php.d/15-xdebug.ini
+sudo service php-fpm restart; php -v
+php -v
+sudo service php-fpm restart; php -v
+bin/phpunit-all
+bin/phpunit-visymolabel --stop-on-deprecation
+bin/phpunit-visymolabel --stop-on-deprecation --testdox
+composer install
+bin/phpunit-visymolabel --stop-on-deprecation --testdox
+bin/phpunit-visymolabel --stop-on-deprecation
+composer install
+ls -la /tmp
+df -h
+composer install
+php -i
+php -i | grep temp
+composer install
+cd /
+ls -la
+cd tmp
+ls
+rm -rf /tmp/**
+rm -rf /tmp/*
+sudo rm -rf /tmp/*
+sudo rm -rf /tmp/**
+ls 
+ls -la
+composer install
+bin/phpunit-all
+composer install; bin/phpunit-all 
+composer install; bin/phpunit-all
+all
+bin/phpunit-all
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all
+php -v
+sudo service php-fpm restart; php -v
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all
+brew update; brew upgrade
+yarn dev 
+bin/console serp:develop:test:frontend --page=dsrw --brand=astartex
+composer install
+cd brand
+composer install
+bench 'sudo bin/console serp:config:import'
+bench 'sudo bin/console serp:config:import'; bin/phpunit-emslabel
+cd tempie/
+cd ..
+cd tempie/phar/
+/home/c.kaal/.config/composer/vendor/bin/box compile --config=box.json; cp ../cachetool-custom.phar ../../vendor/visymo/shared/
+/home/c.kaal/.config/composer/vendor/bin/box compile --config=box.json; cp ../cachetool-custom.phar ../../vendor/visymo/shared/; cd ..
+cd phar
+/home/c.kaal/.config/composer/vendor/bin/box compile --config=box.json; cp ../cachetool-custom.phar ../../vendor/visymo/shared/; cd ../..
+cd tempie/phar; /home/c.kaal/.config/composer/vendor/bin/box compile --config=box.json; cp ../cachetool-custom.phar ../../vendor/visymo/shared/; cd ../..
+sudo bin/console-visymolabel serp:config:import
+bench 'sudo bin/console serp:config:import'; bin/phpunit-emslabel
+rm -rf vendor; composer install
+bench 'sudo bin/console serp:config:import'; bin/phpunit-emslabel
+composer install
+bench 'sudo bin/console serp:config:import'; bin/phpunit-emslabel
+sudo bin/console-visymolabel serp:config:import
+cd tempie/phar; /home/c.kaal/.config/composer/vendor/bin/box compile --config=box.json; cp ../cachetool-custom.phar ../../vendor/visymo/shared/; cd ../..
+bench 'sudo bin/console serp:config:import'; bin/phpunit-emslabel
+sudo bin/console-visymolabel serp:config:import
+bench 'sudo bin/console serp:config:import'; bin/phpunit-emslabel
+git checkout feature/SF-1068-2 brand-websites/explorads/tests/Frontend/Resources/expected/ resources/themes/white-label/assets/scss/
+sudo bin/console-visymolabel serp:config:import
+bench 'sudo bin/console serp:config:import'; bin/phpunit-emslabel
+sudo bin/console-visymolabel serp:config:import
+bench 'sudo bin/console serp:config:import'; bin/phpunit-emslabel
+composer require amnuts/opcache-gui
+sudo service php-fpm restart; php -v
+bench 'sudo bin/console serp:config:import'; bin/phpunit-emslabel
+sudo composer import-config
+sudo composer import-config --invalidate_opcache
+sudo composer import-config
+composer install
+sudo composer import-config
+bin/console-emslabel serp:config:import
+rm -rf vendor; composer install
+bin/console-emslabel serp:config:import
+sudo bin/console-emslabel serp:config:import
+composer dumpautoload -o
+sudo bin/console-emslabel serp:config:import
+composer install
+sudo bin/console-emslabel serp:config:import
+git checkout develop composer.json
+composer install
+composer update visymo/shared
+git checkout develop bundles/brand-website-bundle/src/Resources/config/services/services.yaml
+git checkout develop bundles/brand-website-bundle/tests/Stub/Vendor/Shared/OpcacheInvalidatorStub.php
+bin/phpunit-all
+sudo composer import-config --invalidate_opcache
+sudo bin/console-emslabel serp:config:import
+sudo bin/console-emslabel serp:config:import --invalidate_opcache
+sudo composer import-config --invalidate_opcache
+sudo composer import-config -- --invalidate_opcache
+sudo bin/console serp:config:import
+sudo bin/console serp:config:import --invalidate_opcache
+sudo bin/console serp:config:import -- --invalidate_opcache
+sudo bin/console serp:config:import --invalidate_opcache
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+sudo bin/console serp:config:import --invalidate_opcache
+bin/phpunit-all
+time sudo bin/console serp:config:import --invalidate_opcache
+bench 'sudo bin/console serp:config:import'; bin/phpunit-emslabel
+bench 'sudo bin/console serp:config:import --invalidate_config'; bin/phpunit-emslabel
+bench 'sudo bin/console serp:config:import --invalidate_opcache'; bin/phpunit-emslabel
+http get https://artemis.visymo.com.ckaal.ldev.nl/api/brand-config/aldiscover
+http get https://artemis.visymo.com.ckaal.ldev.nl/api/brand-config/aldiscover | from json | get slug name redirect_domains
+http get https://artemis.visymo.com.ckaal.ldev.nl/api/brand-config/aldiscover| get slug name redirect_domains
+bench 'sudo bin/console serp:config:import --invalidate_opcache'; bin/phpunit-emslabel
+sudo bin/console serp:config:import --invalidate_opcache
+bin/console serp:develop:test:frontend 
+sudo bin/console serp:config:import --invalidate_opcache
+sudo composer import-config --invalidate_opcache
+bench 'sudo bin/console serp:config:import'; bin/phpunit-emslabel
+bench 'sudo bin/console serp:config:import'; bin/phpunit-emslabel
+bench 'sudo bin/console serp:config:import --invalidate_opcache'; bin/phpunit-emslabel
+bin/phpunit-all
+cd quick
+composer install
+btop
+brew update; brew upgrade
+btop
+brew update; brew upgrade
+vim
+sudo composer import-config
+ls /etc/apache2/sites-enabled/
+cd /etc/ssl/certs/
+ls
+sudo composer import-config
+bin/console serp:develop:test:frontend --os=windows --browser=chrome
+bin/phpunit-all
+tbls
+brew install devtoys
+brew info devtodo
+yum search devtoys
+dnf search devtoys
+composer dumpautoload -o
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+sudo composer import-config
+sudo bin/console-visymolabel serp:config:import
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all
+bin/console-visymolabel serp:develop:config:download; sudo composer import-config;
+bin/console-whitelabel serp:develop:config:download; sudo composer import-config;
+bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist
+bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist --stop-on-defect
+/usr/bin/watch -n3 bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist --stop-on-defect
+http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id {<\n>	"online": {<\n>		"answio": [4397598827,4397598827,3011335583,9385170977],<\n>		"brightenio": [3011335583,9385170977]<\n>	},<\n>	"direct": [1,2,3]<\n>}
+vim vbb.json
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id | from json
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id?force=true | from json
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id | from json
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id | from json
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id/1 | from json
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id/2 | from json
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id/force | from json
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id/2 | from json
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id/1 | from json
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id | from json
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id/force | from json
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id/force | from json
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id/force
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id/force -f
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id/force -f | get body statys
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id/force -f | get body status
+brew update; brew upgrade
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id/force -f | get body status
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -f | get body status
+btop
+cd quick
+sudo bin/console-visymolabel serp:config:import
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+sudo bin/console-visymolabel serp:config:import
+bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist --stop-on-defect
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+sudo bin/console-visymolabel serp:config:import
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+sudo bin/console-visymolabel serp:config:import
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist --stop-on-defect
+clear; bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist --stop-on-defect
+/usr/bin/watch -n5 bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist --stop-on-defect
+clear; bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist --stop-on-defect --filter=SearchRouteHelperTest
+bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist --stop-on-defect --filter=SearchRouteHelperTest
+bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist --filter=SearchRouteHelperTest
+yarn dev
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+time bin/console-emslabel serp:develop:brand-style:import
+time sudo bin/console-emslabel serp:develop:brand-style:import
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+sudo bin/console-visymolabel serp:config:import
+bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist --filter=SearchRouteHelperTest
+bin/phpunit-all
+clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+brew update; brew upgrade
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -f | get body status
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -f
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id/force -f
+http -h
+http put -h
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe
+open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+cd .conf
+vim
+clear; open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+bin/phpunit-all; clear; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+git checkout develop bundles/brand-website-bundle/src/Startpage/Controller/StartpageController.php
+git checkout develop bundles/brand-website-bundle/src/Search/Controller/SearchHomeController.php
+bin/phpunit-all; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/console
+bin/console visymo:log:tail -asp
+bin/console visymo:log:tail -slp
+clear; open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+vim
+vim
+bin/phpunit-all
+bin/phpunit-all; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all
+bin/phpunit-all --stop-on-defect
+bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist --filter=SearchRouteHelperTest
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit
+bin/phpunit; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/visymo-cs run:phpstan
+/usr/bin/watch -n5 bin/console app:queue:consume command
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all --stop-on-defect
+bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist --filter=SearchRouteHelperTest
+bin/phpunit-all
+bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist --filter=SearchRouteHelperTest
+bin/phpunit; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+clear; open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+clear; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+clear; open --raw vbb.json | http put https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+clear; open --raw vbb.json | http get https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+clear; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+clear; open --raw vbb.json | http get https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+clear; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+clear; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body | save response.html
+clear; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body | save response.html -f
+clear; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+clear; open --raw vbb.json | http get https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+clear; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+bin/phpunit; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/console serp:develop:config:download y; sudo composer import-config
+bin/phpunit; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+clear; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+clear; composer reset-db; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+clear; composer reset-db; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body s
+clear; composer reset-db; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body | save -f response.html
+clear; composer reset-db; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body
+clear; composer reset-db; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id/force -fe | get body
+yarn
+/usr/bin/watch -n5 bin/console app:queue:consume command
+yarn dev
+bin/phpunit; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+yarn
+ls
+yarn watch
+ls node_modules/ace-builds/src-min-noconflict/
+yarn watch
+cd public/
+ls
+cd build/
+ls
+cd js
+ls
+yarn watch
+yarn add ace-linters --dev
+yarn watch
+yarn dev; bin/phpunit-all --testsuite=frontend
+bin/console serp:develop:config:download; sudo composer import-config;
+yarn; yarn dev
+bin/console serp:develop:test:frontend --brand=foblue,answerduo
+bin/console serp:develop:test:frontend --brand=foblue,answerduo,favosearch
+cd .conf
+vim
+ls
+ls -h
+ls | where modified = "three weeks ago"
+ls | where modified = three weeks ago
+cd ../bw-sf-1271/
+composer install
+bin/console serp:develop:test:frontend --brand=answerduo,favosearch
+brew update; brew upgrade
+vim
+git checkout develop brand-websites/**/config/websites/*
+git checkout develop brand-websites/**/config/websites/*-serp.json
+git checkout develop brand-websites/**/config/websites
+git checkout develop brand-websites/emslabel/config/websites
+git checkout develop brand-websites/emslabel/config/websites/**
+git checkout develop brand-websites/**/config/websites/*-serp.json
+composer require roave/security-advisories
+composer require league/commonmark
+bin/phpunit-all
+sudo vim /etc/php.d/10-opcache.ini
+sudo service php-fpm restart; php -v
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+ls brand-websites/visymolabel/config/websites/
+ls -h
+ls brand-websites/visymolabel/config/websites/*.json
+ls -la brand-websites/visymolabel/config/websites/*.json
+bin/console-visymolabel serp:config:import --no_invalidate_opcache
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+sudo bin/console-visymolabel serp:config:import
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+sudo bin/console-visymolabel serp:config:import
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+clear; sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+brew search spotlight
+brew search raycast
+brew info yacas
+clear
+clear; sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+git pull
+cd art
+clear; sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+ls -la brand-websites/visymolabel/config/websites/*.json | grep blendedsearch
+ls -la brand-websites/visymolabel/config/websites/*.php | grep blendedsearch
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache; ls -la brand-websites/visymolabel/config/websites/*.php | grep blendedsearch
+ls -la brand-websites/visymolabel/config/websites/*.php | grep blendedsearch
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+lazygit
+composer reset-db
+bin/console serp:develop:config:download y; sudo composer import-config
+composer install
+rm -rf var/cache/**
+sudo rm -rf var/cache/**
+composer reset-db
+sudo vim /etc/php.d/10-opcache.ini
+sudo service php-fpm restart; php -v
+bin/phpunit; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+cd art; bin/phpunit; bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/console serp:develop:config:download y; sudo composer import-config
+cd art; composer reset-db
+bin/console serp:develop:config:download y; sudo composer import-config
+cd art; composer reset-db
+bin/console serp:develop:config:download y; sudo composer import-config
+cd art; composer reset-db
+sudo composer import-config --invalidate_opcache
+sudo composer import-config --no_invalidate_opcache
+composer import-config; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+vim
+sudo composer import-config; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+UA=1 bin/phpunit-all;
+bin/console serp:develop:config:download; sudo composer import-config; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+UA=1 bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist --testsuite=config
+bin/phpunit --configuration=brand-websites/whitelabel/phpunit.xml.dist --testsuite=config
+UA=1 bin/phpunit-all --filter=testBundlesConfig;
+UA=1 bin/phpunit-all --filter=testBundlesConfig --testsuite=config;
+sudo vim /etc/php.d/10-opcache.ini
+sudo service php-fpm restart; php -v
+sudo composer import-config --no_invalidate_opcache
+sudo service php-fpm restart; php -v
+sudo composer import-config --no_invalidate_opcache
+sudo service php-fpm restart; php -v
+sudo composer import-config --no_invalidate_opcache
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+sudo composer import-config --no_invalidate_opcache
+sudo vim /etc/php.d/10-opcache.ini
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+sudo vim /etc/php.d/10-opcache.ini
+sudo service php-fpm restart; php -v
+bin/console serp:develop:config:download; sudo composer import-config; bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev; UA=1 bin/phpunit-all --filter=BrandModuleConfig; sudo composer import-config
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit-all
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev
+UA=1 bin/phpunit-all --filter=testBundlesConfig --testsuite=config;
+bin/phpunit-emslabel --testsuite=config
+bin/phpunit-all --filter=SymfonyConfigurationTest
+composer dumpautoload -o
+sudo vim /etc/php.d/10-opcache.ini
+sudo service php-fpm restart; php -v
+composer install
+bin/phpunit-all --filter=SymfonyConfigurationTest
+bin/phpunit-emslabel --testsuite=config
+git checkout develop brand-websites/**/config/websites/*-serp.json
+bin/phpunit-emslabel --testsuite=config
+bin/phpunit-all
+bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev
+vim
+sudo service php-fpm restart; php -v
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+sudo service php-fpm restart; php -v
+bin/console serp:develop:config:download y; sudo composer import-config
+UA=1 bin/phpunit-all --filter=testBundlesConfig --testsuite=config;
+cd art
+vim vbb.json
+vim ~/.gitignore
+git rm --cached vbb.json
+find . -iname "*seekweb*"
+/usr/bin/find . -iname "*seekweb*"
+bin/phpunit-all --testsuite=config
+ls bundles/brand-website-bundle/tests/Configuration/Symfony/_asserts/
+ls bundles/brand-website-bundle/tests/Configuration/Symfony/dumps/
+git checkout develop bundles/brand-website-bundle/tests/Configuration/Symfony
+bin/console serp:config:dump-bundles --env=prod; bin/console serp:config:dump-bundles --env=dev
+git checkout develop bundles/brand-website-bundle/tests/Configuration/Symfony
+vim
+yarn --version
+npm i -g yarn --dry
+npm i -g yarn
+npm install -g npm@10.9.2
+sudo npm install -g npm@10.9.2
+sudo npm i -g yarn
+sudo corepack enable
+yarn --version
+yarn
+node --verson
+node -v
+hash r-
+hash -r
+hash
+/usr/bin/hash -r
+yarn --version
+node -v
+cd art
+sudo service php-fpm restart; php -v
+sudo composer import-config --no_invalidate_opcache
+sudo service php-fpm restart; php -v
+sudo composer import-config --no_invalidate_opcache
+sudo service httpd restart<\n>sudo service php-fpm restart<\n>
+sudo composer import-config --no_invalidate_opcache
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+sudo composer import-config --no_invalidate_opcache
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+cd art
+clear; composer reset-db; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body
+composer install
+clear; composer reset-db; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body
+clear; composer reset-db; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+bin/phpunit
+sudo service httpd restart<\n>sudo service php-fpm restart
+bin/phpunit
+composer require --dev doctrine/doctrine-fixtures-bundle
+php bin/console make:fixtures
+bin/phpunit-all --testsuite=blackbox
+php bin/console --env=test doctrine:fixtures:load<\n>
+composer dumpautoload -o
+php bin/console --env=test doctrine:fixtures:load
+bin/phpunit
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;\
+clear; composer reset-db; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit
+db
+bin/phpunit
+cs
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit
+bin/phpunit --testdox
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit
+db
+bin/phpunit
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit
+vim
+vim
+composer reset-db
+bin/console serp:develop:config:download y; sudo composer import-config
+sudo service httpd restart<\n>sudo service php-fpm restart
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+composer dumpautoload -o
+sudo service httpd restart<\n>sudo service php-fpm restart
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+sudo service httpd restart<\n>sudo service php-fpm restart
+composer reset-db
+db
+bin/phpunit
+db
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit
+composer dumpautoload -o
+bin/phpunit
+composer reset-db; bin/console doctrine:schema:update --dump-sql
+bin/phpunit
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit
+sudo service httpd restart<\n>sudo service php-fpm restart
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+composer reset-db; bin/console doctrine:schema:update --dump-sql
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+clear; composer reset-db; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+clear; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+clear; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe
+sudo service httpd restart<\n>sudo service php-fpm restart
+clear; composer reset-db; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+clear; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe
+clear; composer reset-db; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe
+clear; composer reset-db; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+sudo service httpd restart<\n>sudo service php-fpm restart
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+brew update; brew upgrade
+brew update; brew upgrade
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+sudo bin/console-visymolabel serp:config:import 
+sudo bin/console-visymolabel serp:config:import
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache
+db
+sudo service httpd restart<\n>sudo service php-fpm restart
+cd art
+composer require symfony/asset-mapper symfony/asset symfony/twig-pack
+yarn watch
+composer require symfony/asset-mapper symfony/asset symfony/twig-pack
+yarn watch
+yarn
+yarn watch
+rm -rf node_modules/
+yarn
+yarn watch
+yarn dev
+php bin/console asset-map:compile
+php bin/console importmap:require node_modules/ace-builds/src-min-noconflict/ace.js
+php bin/console importmap:require ./node_modules/ace-builds/src-min-noconflict/ace.js
+php bin/console importmap:require ace-builds
+php bin/console importmap:require ace_linters
+php bin/console importmap:require ace-linters
+yarn remove ace-builds ace-linters
+yarn add ace-builds ace-linters
+php bin/console asset-map:compile
+bin/console asset-map:compile
+php bin/console asset-map:compile
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit
+yarn lint
+composer assets
+yarn watch
+rm -rf public/assets/; composer assets!
+rm -rf public/assets/; composer assets
+yarn
+rm -rf public/assets/; composer assets
+bin/phpunit-emslabel --filter TwigTemplateLinterTest
+time bin/phpunit-emslabel --filter TwigTemplateLinterTest
+time bin/phpunit-emslabel --testsuite=config
+sudo composer import-config
+time bin/phpunit-emslabel --testsuite=config
+time bin/phpunit-emslabel --filter TwigTemplateLinterTest
+time bin/phpunit-emslabel --testsuite=config
+bin/phpunit-all --testsuite=blackbox
+bin/phpunit-emslabel --testsuite=blackbox --stop-on-defect
+../autoupdater/autoupdater.sh --tag=sb
+bin/phpunit-emslabel --testsuite=blackbox --stop-on-defect
+bin/phpunit-emslabel --testsuite=blackbox 
+cd ../composite-search-api/
+git checkout master
+git add .; git reset --hard HEAD; git checkout master; git pull; composer install
+cd ../content-api/
+git add .; git reset --hard HEAD; git checkout master; git pull; composer install
+cd ../composite-search-api/
+tail -f var/log/dev-api-2024-12-12.log
+vim
+cd ../cont
+cd ../content-api/
+vim
+git checkout develop
+git add .; git reset --hard HEAD; git checkout develop; git pull; composer install
+git add .; git reset --hard HEAD; git checkout master; git pull; composer install
+cat .env.dist | grep ELAST
+vim .env
+cat .env.dist | grep ELAST
+bin/phpunit-emslabel --testsuite=blackbox
+bin/phpunit
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit
+clear; composer reset-db; open --raw vbb.json | http post https://artemis.visymo.com.ckaal.ldev.nl/api/vbb-style-id -fe | get body status
+db
+bin/visymo-cs run:phpstan; bin/visymo-cs run:phpcs;
+bin/phpunit
+yarn dev
+time bin/console-visymolabel serp:config:import
+time sudo bin/console-visymolabel serp:config:import
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache; 
+sudo service httpd restart<\n>sudo service php-fpm restart
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache;
+yarn set version stable
+corepack enable
+sudo corepack enable
+yarn set version stable
+yarn -v
+yarn
+yarn dev
+rm -rf node_modules/
+yarn; yarn dev
+ls
+bin/console serp:develop:config:download; sudo composer import-config;
+yarn
+yarn dev
+brew update; brew upgrade
+sudo bin/console-visymolabel serp:config:import --no_invalidate_opcache;
+brew remove eza
+cd .conf
+vim

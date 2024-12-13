@@ -21,9 +21,7 @@ lazygit/state.yml
 !bat/**
 !starship.toml
 !README.md
-!fish/
-!fish/**
-fish/.config.fish.swp
-fish/conf.d/nix.fish
+!nushell/
+!nushell/**
 nvim/.idea
 nvim/lua/plugins/gitlab.lua

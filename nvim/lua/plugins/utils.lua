@@ -33,14 +33,27 @@ return {
             position = "top-center",
         },
     },
+    -- {
+    --     "miversen33/sunglasses.nvim",
+    --     event = "UIEnter",
+    --     config = function()
+    --         require("sunglasses").setup({
+    --             filter_type = "SHADE",
+    --             filter_percent = .65
+    --         })
+    --     end
+    -- },
     {
-        "miversen33/sunglasses.nvim",
-        event = "UIEnter",
+        "atiladefreitas/lazyclip",
         config = function()
-            require("sunglasses").setup({
-                filter_type = "SHADE",
-                filter_percent = .65
+            require("lazyclip").setup({
+                -- your custom config here (optional)
             })
-        end
+        end,
+        keys = {
+            { "Cw", desc = "Open Clipboard Manager" },
+        },
+        -- Optional: Load plugin when yanking text
+        event = { "TextYankPost" },
     }
 }
