@@ -25,3 +25,4 @@ lazygit/state.yml
 !nushell/**
 nvim/.idea
 nvim/lua/plugins/gitlab.lua
+nushell/history.txt
