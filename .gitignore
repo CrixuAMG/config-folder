@@ -26,3 +26,4 @@ lazygit/state.yml
 nvim/.idea
 nvim/lua/plugins/gitlab.lua
 nushell/history.txt
+btop/btop.log
