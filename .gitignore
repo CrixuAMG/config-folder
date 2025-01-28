@@ -11,6 +11,8 @@ lazygit/state.yml
 !install.sh
 !nvim/
 !nvim/**
+!nvim/-custom/
+!nvim-custom/**
 !zellij/
 !zellij/**
 !btop/
