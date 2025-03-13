@@ -225,8 +225,8 @@ $env.config = {
     }
 
     filesize: {
-        metric: false # true => KB, MB, GB (ISO standard), false => KiB, MiB, GiB (Windows standard)
-        format: "auto" # b, kb, kib, mb, mib, gb, gib, tb, tib, pb, pib, eb, eib, auto
+        unit: "metric"
+        precision: 1 
     }
 
     cursor_shape: {
@@ -910,6 +910,8 @@ alias lg = lazygit
 alias z = zellij
 alias db = rainfrog --driver=mysql --username=root --password=password --host=localhost --port=3306 --database=artemis
 
-# alias cs = ./bin/visymo-cs run:phpcs; ./bin/visymo-cs run:phpstan
-alias log = /var/www/html/brand-websites/bin/console-whitelabel serp:test:tail-logs -asp
+alias cs = ./bin/visymo-cs run:phpcs; ./bin/visymo-cs run:phpstan
+alias log = /var/www/html/brand-websites/bin/console-visymolabel serp:test:tail-logs -asp
+alias au = /var/www/html/auto-updater/autoupdater.sh
 
+def oracle [arg?] { cd /var/www/html/oracle; yarn ($arg | default 'install'); cd - }
