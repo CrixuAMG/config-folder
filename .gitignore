@@ -9,6 +9,7 @@ lazygit/state.yml
 !.gitignore
 !.gitconfig
 !install.sh
+!.editorconfig
 !nvim/
 !nvim/**
 !nvim/-custom/

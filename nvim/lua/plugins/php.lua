@@ -41,6 +41,14 @@ return {
                 ---@type table<string, conform.FormatterConfigOverride|fun(bufnr: integer): nil|conform.FormatterConfigOverride>
                 formatters = {
                     injected = { options = { ignore_errors = true } },
+                    phpcbf = {
+                        command = "phpcbf",
+                        args = {
+                            "--standard=PSR12",
+                            "-" -- Read from stdin
+                        },
+                        stdin = true,
+                    },
                     -- # Example of using dprint only when a dprint.json file is present
                     -- dprint = {
                     --   condition = function(ctx)

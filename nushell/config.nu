@@ -910,7 +910,7 @@ alias lg = lazygit
 alias z = zellij
 alias db = rainfrog --driver=mysql --username=root --password=password --host=localhost --port=3306 --database=artemis
 
-alias cs = ./bin/visymo-cs run:phpcs; ./bin/visymo-cs run:phpstan
+# alias cs = ./bin/visymo-cs run:phpcs; ./bin/visymo-cs run:phpstan
 alias log = /var/www/html/brand-websites/bin/console-visymolabel serp:test:tail-logs -asp
 alias au = /var/www/html/auto-updater/autoupdater.sh
 
