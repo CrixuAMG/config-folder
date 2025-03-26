@@ -114,3 +114,5 @@ zoxide init nushell --cmd=cd | save -f ~/.zoxide.nu
 
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
+
+$env.COMPOSER_ALLOW_SUPERUSER = "1"

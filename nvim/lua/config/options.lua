@@ -1,7 +1,3 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
-
 vim.cmd("set autowrite")
 vim.cmd("set autoread")
 
@@ -9,6 +5,7 @@ vim.cmd("set expandtab")
 vim.cmd("set shiftround")
 vim.cmd("set rnu")
 vim.cmd("set number")
+vim.cmd("set cursorline")
 
 vim.cmd("set noswapfile")
 vim.cmd("set termguicolors")
@@ -45,3 +42,4 @@ opt.splitbelow = true
 opt.scrolloff = 999
 
 opt.inccommand = 'split'
+

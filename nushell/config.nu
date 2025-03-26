@@ -910,8 +910,42 @@ alias lg = lazygit
 alias z = zellij
 alias db = rainfrog --driver=mysql --username=root --password=password --host=localhost --port=3306 --database=artemis
 
-# alias cs = ./bin/visymo-cs run:phpcs; ./bin/visymo-cs run:phpstan
-alias log = /var/www/html/brand-websites/bin/console-visymolabel serp:test:tail-logs -asp
+alias log = /var/www/html/brand-websites/bin/console serp:test:tail-logs
 alias au = /var/www/html/auto-updater/autoupdater.sh
 
 def oracle [arg?] { cd /var/www/html/oracle; yarn ($arg | default 'install'); cd - }
+
+def toggle_xdebug [] {
+    let file_path = "/etc/php.d/15-xdebug.ini"
+    let content = (open $file_path)
+
+    if ($content | lines | where $it == ";zend_extension=xdebug.so" | count) {
+        let new_content = ($content | lines | each {|line|
+            if ($line == ";zend_extension=xdebug.so") {
+                "zend_extension=xdebug.so"
+            } else {
+                $line
+            }
+        } | str join "\n")
+
+        $new_content > $file_path
+        echo "Xdebug is now enabled"
+    } else {
+        let new_content = ($content | lines | each {|line|
+            if ($line == "zend_extension=xdebug.so") {
+                ";zend_extension=xdebug.so"
+            } else {
+                $line
+            }
+        } | str join "\n")
+
+        $new_content > $file_path
+        echo "Xdebug is now disabled"
+    }
+
+    sudo systemctl restart php-fpm
+    echo "Restarted PHP-FPM"
+}
+
+alias xd = toggle_xdebug
+
