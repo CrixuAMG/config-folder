@@ -13,27 +13,6 @@ return {
             },
             picker = {
                 enabled = true,
-                layout = {
-                    width = 0.5,    -- 50% of screen width
-                    height = 0.5,   -- 50% of screen height
-                    position = "center",
-                },
-                fuzzy = {
-                    enable = true,  -- enable fuzzy finding
-                    max_matches = 50, -- maximum number of matches to show
-                },
-                sorting = "score",  -- sort by match score
-                preview = {
-                    enable = true,  -- enable preview window
-                    side = "right", -- preview on the right side
-                },
-                keymaps = {
-                    -- customize keymaps if needed
-                    close = "<Esc>",
-                    next = "<C-n>",
-                    prev = "<C-p>",
-                    confirm = "<CR>",
-                }
             },
             statuscolumn = {
                 enabled = true,

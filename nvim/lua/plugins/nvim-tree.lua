@@ -21,7 +21,7 @@ return {
     })
 
     -- Key mappings
-    vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { silent = true })
-    vim.keymap.set('n', '<leader>f', ':NvimTreeFocus<CR>', { silent = true })
+    vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>:NvimTreeFindFile<CR>', { silent = true })
+    vim.keymap.set('n', '<leader>f', ':NvimTreeFocus<CR>:NvimTreeFindFile<CR>', { silent = true })
   end,
 }
