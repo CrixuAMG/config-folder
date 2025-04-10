@@ -8,13 +8,40 @@ return {
             dashboard = {
                 enabled = true,
             },
+            debug = {
+                enabled = true,
+            },
+            git = {
+                enabled = true,
+            },
+            gitbrowse = {
+                enabled = true,
+            },
+            image = {
+                enabled = true,
+            },
+            indent = {
+                enabled = true,
+            },
             notifier = {
                 enabled = true,
             },
             picker = {
                 enabled = true,
             },
+            quickfile = {
+                enabled = true,
+            },
+            scope = {
+                enabled = true,
+            },
+            scratch = {
+                enabled = true,
+            },
             statuscolumn = {
+                enabled = true,
+            },
+            words = {
                 enabled = true,
             },
         },

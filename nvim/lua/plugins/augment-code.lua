@@ -11,7 +11,8 @@ return {
             "/var/www/html/brand-websites/",
             "/var/www/html/artemis/",
             "/var/www/html/oracle/",
-            "/var/www/html/Hermes/"
+            "/var/www/html/Hermes/",
+            "/var/www/html/visymo-scraper",
         }
 
         -- Additional Augment settings
