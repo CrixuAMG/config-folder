@@ -2,10 +2,28 @@ return {
     {
         "folke/snacks.nvim",
         priority = 1000,
-        lazy = false, 
+        lazy = false,
+        dependencies = {
+            "RileyGabrielson/inspire.nvim"
+        },
         ---@type snacks.Config
         opts = {
             dashboard = {
+                enabled = true,
+            },
+            debug = {
+                enabled = true,
+            },
+            git = {
+                enabled = true,
+            },
+            gitbrowse = {
+                enabled = true,
+            },
+            image = {
+                enabled = true,
+            },
+            indent = {
                 enabled = true,
             },
             notifier = {
@@ -14,7 +32,19 @@ return {
             picker = {
                 enabled = true,
             },
+            quickfile = {
+                enabled = true,
+            },
+            scope = {
+                enabled = true,
+            },
+            scratch = {
+                enabled = true,
+            },
             statuscolumn = {
+                enabled = true,
+            },
+            words = {
                 enabled = true,
             },
         },

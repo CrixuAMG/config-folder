@@ -5,6 +5,7 @@ gui:
   language: 'en'
 
 git:
+  branchPrefix: 'feature/'
   paging:
     colorArg: always
     pager: delta --paging=never --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}"
