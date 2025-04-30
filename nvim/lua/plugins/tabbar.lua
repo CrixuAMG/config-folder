@@ -1,5 +1,6 @@
 return {
     'akinsho/bufferline.nvim',
+    enabled = false,
     version = "*",
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
@@ -33,10 +34,10 @@ return {
         })
 
         -- Sort buffers
-        vim.keymap.set('n', '<leader>bd', ':BufferLineSortByDirectory<CR>', {
+        vim.keymap.set('n', '<leader>bsd', ':BufferLineSortByDirectory<CR>', {
             desc = 'Sort buffers by directory'
         })
-        vim.keymap.set('n', '<leader>bL', ':BufferLineSortByExtension<CR>', {
+        vim.keymap.set('n', '<leader>bsL', ':BufferLineSortByExtension<CR>', {
             desc = 'Sort buffers by language'
         })
     end
