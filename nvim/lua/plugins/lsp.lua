@@ -13,18 +13,18 @@ return {
                     -- PHP
                     "phpactor",
                     "intelephense",
-                    
+
                     -- JavaScript/TypeScript
                     "ts_ls",
-                    
+
                     -- Vue
                     "volar",
-                    
+
                     -- HTML/CSS/SCSS
                     "html",
                     "cssls",
                     "cssmodules_ls",
-                    
+
                     -- Shell scripting
                     "bashls",
 
@@ -39,22 +39,22 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             local lspconfig = require("lspconfig")
-            
+
             -- PHP
             lspconfig.phpactor.setup{}
             lspconfig.intelephense.setup{}
-            
+
             -- JavaScript/TypeScript
             lspconfig.ts_ls.setup{}
-            
+
             -- Vue
             lspconfig.volar.setup{}
-            
+
             -- HTML/CSS/SCSS
             lspconfig.html.setup{}
             lspconfig.cssls.setup{}
             lspconfig.cssmodules_ls.setup{}
-            
+
             -- Shell scripting
             lspconfig.bashls.setup{}
 
@@ -74,7 +74,7 @@ return {
                         },
                     }
                 };
- 
+
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, {});
                 vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {});
                 vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {});
