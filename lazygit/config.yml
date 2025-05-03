@@ -5,6 +5,7 @@ gui:
   language: 'en'
 
 git:
+  autoForwardBranches: 'allBranches'
   branchPrefix: 'feature/'
   commitPrefix:
     - pattern: "^\\w+\\/(\\w+-\\w+).*"
