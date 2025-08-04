@@ -17,13 +17,14 @@ else
     echo "Found brew"
 fi
 
-brew tap homebrew/cask-fonts 
-brew install neovim starship fish btop ripgrep fd adr-tools bat tlrc thefuck zellij yarn
+brew tap homebrew/cask-fonts
+brew install neovim starship nushell btop ripgrep fd adr-tools bat thefuck zellij yarn zoxide git-delta
+brew install --cask alt-tab
 
 # Install python packages
 pip install pynvim
 
-# Install yarn packages 
+# Install yarn packages
 yarn global add neovim
 
 # Install zoxide (cd replacement)
@@ -48,7 +49,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
     sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
     echo "Done!"
-    
+
     echo "Installing nix..."
     sh <(curl -L https://nixos.org/nix/install) --no-daemon
     echo "Installed nix"

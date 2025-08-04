@@ -226,7 +226,7 @@ $env.config = {
 
     filesize: {
         unit: "metric"
-        precision: 1 
+        precision: 1
     }
 
     cursor_shape: {
@@ -948,4 +948,3 @@ def toggle_xdebug [] {
 }
 
 alias xd = toggle_xdebug
-
