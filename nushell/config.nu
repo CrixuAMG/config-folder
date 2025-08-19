@@ -948,3 +948,5 @@ def toggle_xdebug [] {
 }
 
 alias xd = toggle_xdebug
+
+alias fuck = thefuck $"(history | last 1 | get command | get 0)"

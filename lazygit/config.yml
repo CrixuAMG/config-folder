@@ -7,6 +7,8 @@ gui:
 git:
   autoForwardBranches: 'allBranches'
   branchPrefix: 'feature/'
+  localBranchSortOrder: date #recency
+  remoteBranchSortOrder: date #alphabetical
   commitPrefix:
     - pattern: "^\\w+\\/(\\w+-\\w+).*"
       replace: '$1 '
