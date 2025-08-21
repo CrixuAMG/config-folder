@@ -26,6 +26,7 @@ lazygit/state.yml
 !README.md
 !nushell/
 !nushell/**
+!vial.vil
 nvim/.idea
 nvim/lua/plugins/gitlab.lua
 nvim/lua/plugins/jirac.lua
