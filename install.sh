@@ -3,8 +3,10 @@
 if [ ! -d "fonts" ]; then
     git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts fonts
     git -C fonts sparse-checkout add patched-fonts/Meslo
+    git -C fonts sparse-checkout add patched-fonts/FiraCode
 
     ./fonts/install.sh Meslo
+    ./fonts/install.sh FiraCode
 fi
 
 echo "Looking for brew..."
@@ -17,7 +19,6 @@ else
     echo "Found brew"
 fi
 
-brew tap homebrew/cask-fonts
 brew install neovim starship nushell btop ripgrep fd adr-tools bat thefuck zellij yarn zoxide git-delta
 brew install --cask alt-tab
 
@@ -28,7 +29,7 @@ pip install pynvim
 yarn global add neovim
 
 # Install zoxide (cd replacement)
-curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | fish
+curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | nu
 
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin \
     launch=n

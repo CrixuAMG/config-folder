@@ -950,3 +950,30 @@ def toggle_xdebug [] {
 alias xd = toggle_xdebug
 
 alias fuck = thefuck $"(history | last 1 | get command | get 0)"
+
+# --- Kitty session management for Nushell (modern) ---
+
+load-env {
+    KITTY_SESSION_PATH: ($env.HOME | path join ".config" "kitty" "session.json")
+}
+
+def kitty-save [] {
+    let path = $env.KITTY_SESSION_PATH
+    print $"Saving Kitty layout to: ($path)"
+    ^kitty +kitten layouts --dump | save -f $path
+}
+
+def kitty-restore [] {
+    let path = $env.KITTY_SESSION_PATH
+    if ($path | path exists) {
+        print $"Restoring Kitty layout from: ($path)"
+        ^kitty +kitten layouts --load $path
+    } else {
+        print $"No session file found at: ($path)"
+    }
+}
+
+def exit [] {
+    kitty-save
+    exit
+}

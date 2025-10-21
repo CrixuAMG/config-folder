@@ -27,8 +27,10 @@ lazygit/state.yml
 !nushell/
 !nushell/**
 !vial.vil
+
 nvim/.idea
 nvim/lua/plugins/gitlab.lua
 nvim/lua/plugins/jirac.lua
 nushell/history.txt
 btop/btop.log
+kitty/session.json
