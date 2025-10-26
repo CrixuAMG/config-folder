@@ -116,4 +116,5 @@ mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
 
 $env.COMPOSER_ALLOW_SUPERUSER = 1
+$env.PKG_CONFIG_PATH = "/usr/lib/pkgconfig"
 

@@ -951,29 +951,114 @@ alias xd = toggle_xdebug
 
 alias fuck = thefuck $"(history | last 1 | get command | get 0)"
 
-# --- Kitty session management for Nushell (modern) ---
+# --- Kitty session management for Nushell (project-based) ---
 
 load-env {
-    KITTY_SESSION_PATH: ($env.HOME | path join ".config" "kitty" "session.json")
+    KITTY_SESSIONS_DIR: ($env.HOME | path join ".config" "kitty" "sessions")
 }
 
-def kitty-save [] {
-    let path = $env.KITTY_SESSION_PATH
-    print $"Saving Kitty layout to: ($path)"
-    ^kitty +kitten layouts --dump | save -f $path
-}
-
-def kitty-restore [] {
-    let path = $env.KITTY_SESSION_PATH
-    if ($path | path exists) {
-        print $"Restoring Kitty layout from: ($path)"
-        ^kitty +kitten layouts --load $path
+# Helper function to get git root directory
+def get-git-root [] {
+    let result = (do -i { git rev-parse --show-toplevel } | complete)
+    if $result.exit_code == 0 {
+        $result.stdout | str trim
     } else {
-        print $"No session file found at: ($path)"
+        null
     }
 }
 
-def exit [] {
+# Helper function to get session path for current project
+def get-session-path [] {
+    let git_root = (get-git-root)
+
+    if $git_root != null {
+        # Use git root directory name as session identifier
+        let project_name = ($git_root | path basename)
+        let session_file = $"($project_name).kitty"
+        $env.KITTY_SESSIONS_DIR | path join $session_file
+    } else {
+        # Fallback to default session if not in a git repo
+        $env.KITTY_SESSIONS_DIR | path join "default.kitty"
+    }
+}
+
+# Save kitty session for current project
+def kitty-save [] {
+    # Check if we're running inside kitty
+    if ($env.TERM? != "xterm-kitty") {
+        print "Not running in kitty terminal"
+        return
+    }
+
+    let path = (get-session-path)
+    let git_root = (get-git-root)
+
+    # Create sessions directory if it doesn't exist
+    mkdir ($env.KITTY_SESSIONS_DIR)
+
+    if $git_root != null {
+        let project_name = ($git_root | path basename)
+        print $"Saving Kitty session for project '($project_name)' to: ($path)"
+    } else {
+        print $"Saving Kitty session \(not in git repo\) to: ($path)"
+    }
+
+    # Use kitty's remote control to save the current session
+    ^kitten @ action $"save_as_session --save-only --relocatable ($path)"
+}
+
+# Restore kitty session for current project
+def kitty-restore [] {
+    # Check if we're running inside kitty
+    if ($env.TERM? != "xterm-kitty") {
+        print "Not running in kitty terminal"
+        return
+    }
+
+    let path = (get-session-path)
+    let git_root = (get-git-root)
+
+    if ($path | path exists) {
+        if $git_root != null {
+            let project_name = ($git_root | path basename)
+            print $"Restoring Kitty session for project '($project_name)' from: ($path)"
+        } else {
+            print $"Restoring Kitty session from: ($path)"
+        }
+
+        # Use kitty's goto_session action to restore the session
+        ^kitten @ action $"goto_session ($path)"
+    } else {
+        if $git_root != null {
+            let project_name = ($git_root | path basename)
+            print $"No session file found for project '($project_name)' at: ($path)"
+        } else {
+            print $"No session file found at: ($path)"
+        }
+        print "Run 'kitty-save' or 'ks' to save the current session"
+    }
+}
+
+# List all saved kitty sessions
+def kitty-sessions [] {
+    if ($env.KITTY_SESSIONS_DIR | path exists) {
+        print "Saved Kitty sessions:"
+        ls $env.KITTY_SESSIONS_DIR | where type == file and name =~ ".kitty$" | each { |file|
+            let name = ($file.name | path basename | str replace ".kitty" "")
+            let modified = ($file.modified | format date "%Y-%m-%d %H:%M:%S")
+            print $"  • ($name) - last saved: ($modified)"
+        }
+    } else {
+        print "No sessions directory found. Run 'kitty-save' to create your first session."
+    }
+}
+
+# Aliases for convenience
+alias ks = kitty-save
+alias kr = kitty-restore
+alias kl = kitty-sessions
+
+def --env exit [] {
     kitty-save
-    exit
+    ^exit
 }

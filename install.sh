@@ -1,73 +1,69 @@
 #!/bin/bash
+set -e  # Exit on error
 
-if [ ! -d "fonts" ]; then
-    git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts fonts
-    git -C fonts sparse-checkout add patched-fonts/Meslo
-    git -C fonts sparse-checkout add patched-fonts/FiraCode
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+INSTALLER_DIR="$SCRIPT_DIR/_installer"
 
-    ./fonts/install.sh Meslo
-    ./fonts/install.sh FiraCode
-fi
+# Source common utilities
+source "$INSTALLER_DIR/common.sh"
 
-echo "Looking for brew..."
-if ! command -v brew &> /dev/null
-then
-    echo "Brew was not found, installing now..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Print banner
+print_section "Development Environment Installer"
+print_info "This script will install and configure your development environment"
+print_info "Detected OS: $(detect_os)"
+echo ""
+
+# Detect OS
+OS=$(detect_os)
+
+if [[ "$OS" == "unknown" ]]; then
+    print_error "Unsupported operating system"
     exit 1
-else
-    echo "Found brew"
 fi
 
-brew install neovim starship nushell btop ripgrep fd adr-tools bat thefuck zellij yarn zoxide git-delta
-brew install --cask alt-tab
+# Install fonts
+echo ""
+source "$INSTALLER_DIR/fonts.sh"
+install_fonts
 
-# Install python packages
-pip install pynvim
+# Install Homebrew
+echo ""
+source "$INSTALLER_DIR/homebrew.sh"
+install_homebrew
+install_brew_packages
 
-# Install yarn packages
-yarn global add neovim
+# Install additional packages
+echo ""
+source "$INSTALLER_DIR/packages.sh"
+install_python_packages
+echo ""
+install_yarn_packages
+echo ""
+install_zoxide
+echo ""
+install_kitty
 
-# Install zoxide (cd replacement)
-curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | nu
-
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin \
-    launch=n
-
-# Check if the OS is Linux
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    echo "Setting up symbolic links for Linux..."
-    # Create symbolic links for kitty and kitten
-    ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/
-
-    # Copy the kitty.desktop file
-    cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
-
-    # If needed, add the kitty-open.desktop file
-    cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
-
-    # Update paths in kitty.desktop files
-    sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
-    sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
-    echo "Done!"
-
-    echo "Installing nix..."
-    sh <(curl -L https://nixos.org/nix/install) --no-daemon
-    echo "Installed nix"
+# Platform-specific setup
+echo ""
+if [[ "$OS" == "linux" ]]; then
+    source "$INSTALLER_DIR/linux.sh"
+    setup_linux_specific
+elif [[ "$OS" == "macos" ]]; then
+    source "$INSTALLER_DIR/macos.sh"
+    setup_macos_specific
 fi
 
-echo "Copying Starship configuration file"
-cp "$HOME/.config/starship.toml" "$HOME/"
-echo "Updated Starship configuration"
+# Setup configuration files
+echo ""
+source "$INSTALLER_DIR/config.sh"
+setup_config_files
 
-if [[ "$(uname)" == "Darwin" ]]; then
-    echo "Copying Lazygit configuration file"
-    cp ~/.config/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
-
-    echo "Installing nix..."
-    sh <(curl -L https://nixos.org/nix/install)
-    echo "Installed nix"
-
-    brew install lazygit
-fi
-
+# Final message
+print_section "Installation Complete!"
+echo ""
+print_info "Next steps:"
+print_info "1. Restart your terminal or run: exec \$SHELL"
+print_info "2. If using kitty for the first time, restart it to apply the configuration"
+print_info "3. Run 'nu' to start Nushell"
+echo ""
