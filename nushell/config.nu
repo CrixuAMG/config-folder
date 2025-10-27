@@ -913,7 +913,15 @@ alias db = rainfrog --driver=mysql --username=root --password=password --host=lo
 alias log = /var/www/html/brand-websites/bin/console serp:test:tail-logs
 alias au = /var/www/html/auto-updater/autoupdater.sh
 
-def oracle [arg?] { cd /var/www/html/oracle; yarn ($arg | default 'install'); cd - }
+def oracle [...args] {
+    cd /var/www/html/oracle
+    if ($args | is-empty) {
+        yarn
+    } else {
+        yarn ...$args
+    }
+    cd -
+}
 
 def toggle_xdebug [] {
     let file_path = "/etc/php.d/15-xdebug.ini"

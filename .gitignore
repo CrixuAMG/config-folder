@@ -34,3 +34,4 @@ nvim/lua/plugins/jirac.lua
 nushell/history.txt
 btop/btop.log
 kitty/session.json
+kitty/sessions/*.kitty
