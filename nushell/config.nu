@@ -957,8 +957,6 @@ def toggle_xdebug [] {
 
 alias xd = toggle_xdebug
 
-alias fuck = thefuck $"(history | last 1 | get command | get 0)"
-
 # --- Kitty session management for Nushell (project-based) ---
 
 load-env {
@@ -990,59 +988,53 @@ def get-session-path [] {
     }
 }
 
-# Save kitty session for current project
+# Detect last executed program from history
+def get-foreground-cmd [] {
+    history | last | get command
+}
+
+# Save kitty session + last command
 def kitty-save [] {
-    # Check if we're running inside kitty
     if ($env.TERM? != "xterm-kitty") {
         print "Not running in kitty terminal"
         return
     }
 
     let path = (get-session-path)
-    let git_root = (get-git-root)
-
-    # Create sessions directory if it doesn't exist
     mkdir ($env.KITTY_SESSIONS_DIR)
 
-    if $git_root != null {
-        let project_name = ($git_root | path basename)
-        print $"Saving Kitty session for project '($project_name)' to: ($path)"
-    } else {
-        print $"Saving Kitty session \(not in git repo\) to: ($path)"
-    }
+    # Save foreground command used in this session
+    let cmd = (get-foreground-cmd)
+    let cmd_file = $"($path).cmds"
+    echo $cmd | save --force $cmd_file
 
-    # Use kitty's remote control to save the current session
+    print $"Saving Kitty session and command to: ($path)"
     ^kitten @ action $"save_as_session --save-only --relocatable ($path)"
 }
 
-# Restore kitty session for current project
+# Restore kitty session + restart command
 def kitty-restore [] {
-    # Check if we're running inside kitty
     if ($env.TERM? != "xterm-kitty") {
         print "Not running in kitty terminal"
         return
     }
 
     let path = (get-session-path)
-    let git_root = (get-git-root)
+    let cmd_file = $"($path).cmds"
 
     if ($path | path exists) {
-        if $git_root != null {
-            let project_name = ($git_root | path basename)
-            print $"Restoring Kitty session for project '($project_name)' from: ($path)"
-        } else {
-            print $"Restoring Kitty session from: ($path)"
-        }
-
-        # Use kitty's goto_session action to restore the session
+        print $"Restoring Kitty session from: ($path)"
         ^kitten @ action $"goto_session ($path)"
-    } else {
-        if $git_root != null {
-            let project_name = ($git_root | path basename)
-            print $"No session file found for project '($project_name)' at: ($path)"
-        } else {
-            print $"No session file found at: ($path)"
+
+        if ($cmd_file | path exists) {
+            let cmd = (open $cmd_file | str trim)
+            if $cmd != "" {
+                print $"Re-launching previous program: ($cmd)"
+                ^kitten @ launch --type=tab $cmd
+            }
         }
+    } else {
+        print $"No saved session at: ($path)"
         print "Run 'kitty-save' or 'ks' to save the current session"
     }
 }
@@ -1070,3 +1062,12 @@ def --env exit [] {
     kitty-save
     ^exit
 }
+
+def run-bg [cmd: string] {
+    if (which $cmd | is-empty) {
+        print $"Error: program '($cmd)' not found"
+    } else {
+        ^$cmd &      # run in background
+    }
+}
+ alias chrome = google-chrome-stable
