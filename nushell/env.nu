@@ -118,3 +118,6 @@ starship init nu | save -f ~/.cache/starship/init.nu
 $env.COMPOSER_ALLOW_SUPERUSER = 1
 $env.PKG_CONFIG_PATH = "/usr/lib/pkgconfig"
 
+$env.TERM = "xterm-256color"
+$env.COLORTERM = "truecolor"
+

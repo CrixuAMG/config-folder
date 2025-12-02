@@ -186,6 +186,10 @@ return {
                 end,
                 desc = "Buffer Local Keymaps (which-key)",
             },
+            {
+                keys = "<c-w>",
+                loop = true, -- this will keep the popup open until you hit <esc>
+            }
         },
     },
     {
