@@ -27,9 +27,6 @@ return {
 
                     -- Shell scripting
                     "bashls",
-
-                    -- Lua
-                    "lua_ls",
                 },
                 automatic_installation = true,
             })
@@ -59,29 +56,29 @@ return {
             lspconfig.bashls.setup{}
 
             -- Lua
-            lspconfig.lua_ls.setup{
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = { 'vim' }
-                        },
-                        workspace = {
-                            library = vim.api.nvim_get_runtime_file("", true),
-                            checkThirdParty = false,
-                        },
-                        telemetry = {
-                            enable = false,
-                        },
-                    }
-                };
-
-                vim.keymap.set("n", "K", vim.lsp.buf.hover, {});
-                vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {});
-                vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {});
-                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {});
-                vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {});
-                vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, {});
-            }
+            -- lspconfig.lua_ls.setup{
+            --     settings = {
+            --         Lua = {
+            --             diagnostics = {
+            --                 globals = { 'vim' }
+            --             },
+            --             workspace = {
+            --                 library = vim.api.nvim_get_runtime_file("", true),
+            --                 checkThirdParty = false,
+            --             },
+            --             telemetry = {
+            --                 enable = false,
+            --             },
+            --         }
+            --     };
+            --
+            --     vim.keymap.set("n", "K", vim.lsp.buf.hover, {});
+            --     vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {});
+            --     vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {});
+            --     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {});
+            --     vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {});
+            --     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, {});
+            -- }
         end
     },
     {
@@ -94,7 +91,7 @@ return {
             'neovim/nvim-lspconfig',
         },
         opts = {
-            packages = { 'lua_ls', 'stylua', 'prettier' }
+            packages = { 'stylua', 'prettier' }
         },
     }
 }
