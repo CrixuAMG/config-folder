@@ -35,59 +35,27 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            local lspconfig = require("lspconfig")
+            -- Neovim 0.11+ uses vim.lsp.enable() with vim.lsp.config
+            -- Define LSP servers to enable
+            local servers = {
+                "phpactor",
+                "intelephense",
+                "ts_ls",
+                "volar",
+                "html",
+                "cssls",
+                "cssmodules_ls",
+                "bashls",
+            }
 
-            -- PHP
-            lspconfig.phpactor.setup{}
-            lspconfig.intelephense.setup{}
-
-            -- JavaScript/TypeScript
-            lspconfig.ts_ls.setup{}
-
-            -- Vue
-            lspconfig.volar.setup{}
-
-            -- HTML/CSS/SCSS
-            lspconfig.html.setup{}
-            lspconfig.cssls.setup{}
-            lspconfig.cssmodules_ls.setup{}
-
-            -- Shell scripting
-            lspconfig.bashls.setup{}
-
-            -- Lua
-            -- lspconfig.lua_ls.setup{
-            --     settings = {
-            --         Lua = {
-            --             diagnostics = {
-            --                 globals = { 'vim' }
-            --             },
-            --             workspace = {
-            --                 library = vim.api.nvim_get_runtime_file("", true),
-            --                 checkThirdParty = false,
-            --             },
-            --             telemetry = {
-            --                 enable = false,
-            --             },
-            --         }
-            --     };
-            --
-            --     vim.keymap.set("n", "K", vim.lsp.buf.hover, {});
-            --     vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {});
-            --     vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {});
-            --     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {});
-            --     vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {});
-            --     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, {});
-            -- }
+            -- Enable all configured servers
+            vim.lsp.enable(servers)
         end
     },
     {
         'owallb/mason-auto-install.nvim',
         dependencies = {
             'williamboman/mason.nvim',
-            -- Optional: LSP configurations in `vim.lsp.config` needs to be loaded
-            -- first to find associated filetypes automatically. If you use
-            -- lspconfig for that, add it as a dependency.
             'neovim/nvim-lspconfig',
         },
         opts = {
