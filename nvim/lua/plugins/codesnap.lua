@@ -1,6 +1,8 @@
 return {
     "mistricky/codesnap.nvim",
     build = "make",
+    -- Disable in Docker (GLIBC version mismatch with generator.so)
+    cond = vim.fn.filereadable("/.dockerenv") == 0,
     config = function ()
         require("codesnap").setup({
             mac_window_bar = false,
