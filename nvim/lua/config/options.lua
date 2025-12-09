@@ -47,3 +47,5 @@ opt.scrolloff = 999
 
 opt.inccommand = 'split'
 
+opt.nrformats = 'bin,hex,alpha'
+
