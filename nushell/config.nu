@@ -927,7 +927,7 @@ def toggle_xdebug [] {
     let file_path = "/etc/php.d/15-xdebug.ini"
     let content = (open $file_path)
 
-    if ($content | lines | where $it == ";zend_extension=xdebug.so" | count) {
+    if ($content | lines | where $it == ";zend_extension=xdebug.so" | length) > 0 {
         let new_content = ($content | lines | each {|line|
             if ($line == ";zend_extension=xdebug.so") {
                 "zend_extension=xdebug.so"
@@ -951,8 +951,8 @@ def toggle_xdebug [] {
         echo "Xdebug is now disabled"
     }
 
-    sudo systemctl restart php-fpm
-    echo "Restarted PHP-FPM"
+    php_fpm_restart
+    print "PHP-FPM restarted"
 }
 
 alias xd = toggle_xdebug

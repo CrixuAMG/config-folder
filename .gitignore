@@ -8,6 +8,7 @@ lazygit/state.yml
 # ... except:
 !.gitignore
 !.gitconfig
+!.gitkeep
 !install.sh
 !_installer/**
 !.editorconfig
@@ -28,10 +29,13 @@ lazygit/state.yml
 !nushell/
 !nushell/**
 !vial.vil
+!docs/
+!docs/**
 
 nvim/.idea
+nvim/undo/*
 nvim/lua/plugins/gitlab.lua
-nvim/lua/plugins/jirac.lua
+nvim/lua/plugins/jira*
 nushell/history.txt
 btop/btop.log
 kitty/session.json
