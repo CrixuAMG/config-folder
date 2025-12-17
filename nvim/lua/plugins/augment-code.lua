@@ -41,30 +41,30 @@ return {
         -- Keybindings
         local opts = { noremap = true, silent = true }
 
-        -- Code assistance
-        vim.keymap.set('n', '<leader>aa', '<cmd>AugmentAssist<CR>', { desc = 'Open Augment assistant', unpack(opts) })
-        vim.keymap.set('n', '<leader>ae', '<cmd>AugmentExplain<CR>', { desc = 'Explain code', unpack(opts) })
-        vim.keymap.set('n', '<leader>ar', '<cmd>AugmentRefactor<CR>', { desc = 'Refactor code', unpack(opts) })
-        vim.keymap.set('v', '<leader>ae', '<cmd>AugmentExplainSelection<CR>',
-            { desc = 'Explain selected code', unpack(opts) })
-
-        -- Documentation
-        vim.keymap.set('n', '<leader>ad', '<cmd>AugmentDoc<CR>', { desc = 'Generate documentation', unpack(opts) })
-        vim.keymap.set('n', '<leader>at', '<cmd>AugmentTest<CR>', { desc = 'Generate test', unpack(opts) })
-
-        -- Code actions
-        vim.keymap.set('n', '<leader>af', '<cmd>AugmentFix<CR>', { desc = 'Quick fix', unpack(opts) })
-        vim.keymap.set('n', '<leader>ai', '<cmd>AugmentImplement<CR>',
-            { desc = 'Implement interface/abstract', unpack(opts) })
-
-        -- Navigation
-        vim.keymap.set('n', '<leader>ag', '<cmd>AugmentGoto<CR>', { desc = 'Go to definition', unpack(opts) })
-        vim.keymap.set('n', '<leader>ar', '<cmd>AugmentReferences<CR>', { desc = 'Find references', unpack(opts) })
-
-        -- Inline assistance
-        vim.keymap.set('i', '<C-a>', '<cmd>AugmentComplete<CR>', { desc = 'Trigger completion', unpack(opts) })
-        vim.keymap.set('i', '<C-l>', '<cmd>AugmentAcceptSuggestion<CR>',
-            { desc = 'Accept inline suggestion', unpack(opts) })
+        -- -- Code assistance
+        -- vim.keymap.set('n', '<leader>aa', '<cmd>AugmentAssist<CR>', { desc = 'Open Augment assistant', unpack(opts) })
+        -- vim.keymap.set('n', '<leader>ae', '<cmd>AugmentExplain<CR>', { desc = 'Explain code', unpack(opts) })
+        -- vim.keymap.set('n', '<leader>ar', '<cmd>AugmentRefactor<CR>', { desc = 'Refactor code', unpack(opts) })
+        -- vim.keymap.set('v', '<leader>ae', '<cmd>AugmentExplainSelection<CR>',
+        --     { desc = 'Explain selected code', unpack(opts) })
+        --
+        -- -- Documentation
+        -- vim.keymap.set('n', '<leader>ad', '<cmd>AugmentDoc<CR>', { desc = 'Generate documentation', unpack(opts) })
+        -- vim.keymap.set('n', '<leader>at', '<cmd>AugmentTest<CR>', { desc = 'Generate test', unpack(opts) })
+        --
+        -- -- Code actions
+        -- vim.keymap.set('n', '<leader>af', '<cmd>AugmentFix<CR>', { desc = 'Quick fix', unpack(opts) })
+        -- vim.keymap.set('n', '<leader>ai', '<cmd>AugmentImplement<CR>',
+        --     { desc = 'Implement interface/abstract', unpack(opts) })
+        --
+        -- -- Navigation
+        -- vim.keymap.set('n', '<leader>ag', '<cmd>AugmentGoto<CR>', { desc = 'Go to definition', unpack(opts) })
+        -- vim.keymap.set('n', '<leader>ar', '<cmd>AugmentReferences<CR>', { desc = 'Find references', unpack(opts) })
+        --
+        -- -- Inline assistance
+        -- vim.keymap.set('i', '<C-a>', '<cmd>AugmentComplete<CR>', { desc = 'Trigger completion', unpack(opts) })
+        -- vim.keymap.set('i', '<C-l>', '<cmd>AugmentAcceptSuggestion<CR>',
+        --     { desc = 'Accept inline suggestion', unpack(opts) })
     end,
 
     -- Dependencies

@@ -121,3 +121,40 @@ $env.PKG_CONFIG_PATH = "/usr/lib/pkgconfig"
 $env.TERM = "xterm-256color"
 $env.COLORTERM = "truecolor"
 
+def formatted [
+  file: path
+  --n (-n): int = 10
+] {
+  tail -f --lines $n $file
+  | each {|line|
+      let idx = ($line | str index-of "{")
+
+      if $idx == null {
+        $line
+      } else {
+        let prefix = ($line | str substring ..<$idx)
+        let json   = ($line | str substring $idx..)
+
+        # print the prefix
+        echo $prefix
+
+        # split multiple JSON objects and format them
+        $json
+        | str replace "} {" "}\n{"
+        | lines
+        | each {|j|
+            try {
+              $j
+              | from json
+              | to json --indent 2
+              | lines
+              | each {|l| "  " + $l }
+              | each {|l| echo $l }        # force raw text output
+            } catch {
+              # fallback for broken JSON
+              echo ("  " + $j)
+            }
+        }
+      }
+  }
+}
