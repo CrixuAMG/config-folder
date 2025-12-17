@@ -120,4 +120,3 @@ $env.PKG_CONFIG_PATH = "/usr/lib/pkgconfig"
 
 $env.TERM = "xterm-256color"
 $env.COLORTERM = "truecolor"
-
