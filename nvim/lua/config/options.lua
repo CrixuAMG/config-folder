@@ -49,3 +49,6 @@ opt.inccommand = 'split'
 
 opt.nrformats = 'bin,hex,alpha'
 
+opt.undofile = true
+opt.undodir = os.getenv("HOME") .. "/.config/nvim/undo"
+
