@@ -31,7 +31,7 @@ lazygit/state.yml
 
 nvim/.idea
 nvim/lua/plugins/gitlab.lua
-nvim/lua/plugins/jirac.lua
+nvim/lua/plugins/jira*
 nushell/history.txt
 btop/btop.log
 kitty/session.json
