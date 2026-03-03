@@ -1,0 +1,3 @@
+return {
+    "jeangiraldoo/codedocs.nvim"
+}
