@@ -1071,3 +1071,5 @@ def run-bg [cmd: string] {
     }
 }
  alias chrome = google-chrome-stable
+
+source "~/.cargo/env.nu"
