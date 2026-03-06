@@ -8,7 +8,7 @@ return {
                 preset = 'default',
             },
             appearance = {
-                nerd_font_variant = 'momo',
+                nerd_font_variant = 'mono',
             },
             completion = {
                 documentation = {

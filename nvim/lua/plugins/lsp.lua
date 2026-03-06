@@ -5,6 +5,8 @@ local servers = {
     "cssls",
     "cssmodules_ls",
     "bashls",
+    "ts_ls",
+    "volar",
 }
 
 return {
