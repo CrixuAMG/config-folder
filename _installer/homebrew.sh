@@ -34,6 +34,8 @@ install_brew_packages() {
         yarn
         zoxide
         git-delta
+        koekeishiya/formulae/yabai
+        koekeishiya/formulae/skhd
     )
 
     brew install "${packages[@]}"

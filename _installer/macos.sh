@@ -1,26 +1,26 @@
 #!/bin/bash
 # macOS-specific setup and configuration
 
-source "$(dirname "$0")/common.sh"
+source "$(dirname "$0")/_installer/common.sh"
 
 install_macos_casks() {
     print_info "Installing macOS casks..."
-    
+
     local casks=(
         alt-tab
     )
-    
+
     brew install --cask "${casks[@]}"
-    
+
     print_success "macOS casks installed"
 }
 
 setup_lazygit_macos() {
     print_info "Setting up Lazygit..."
-    
+
     # Install lazygit
     brew install lazygit
-    
+
     # Copy lazygit config
     if [ -f ~/.config/lazygit/config.yml ]; then
         mkdir -p ~/Library/Application\ Support/lazygit
@@ -33,21 +33,12 @@ setup_lazygit_macos() {
 
 setup_macos_specific() {
     print_section "macOS-Specific Setup"
-    
+
     # Install casks
     install_macos_casks
-    
+
     # Setup Lazygit
     setup_lazygit_macos
-    
-    # Install Nix
-    if ! command_exists nix; then
-        print_info "Installing Nix package manager..."
-        sh <(curl -L https://nixos.org/nix/install)
-        print_success "Nix installed"
-    else
-        print_success "Nix already installed"
-    fi
 }
 
 # Run if executed directly
