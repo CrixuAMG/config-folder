@@ -34,8 +34,11 @@ install_brew_packages() {
         yarn
         zoxide
         git-delta
+        jq
+        tree
         koekeishiya/formulae/yabai
         koekeishiya/formulae/skhd
+        FelixKratz/formulae/sketchybar
     )
 
     brew install "${packages[@]}"

@@ -37,13 +37,18 @@
 !docs/
 !docs/**
 
+!yabai/
+!yabai/**
+!skhd/
+!skhd/**
+!sketchybar/
+!sketchybar/**
+
 ########################################
 # Allow standalone config files
 ########################################
 !starship.toml
 !vial.vil
-!yabai
-!skhd
 
 ########################################
 # Ignore editor / IDE files

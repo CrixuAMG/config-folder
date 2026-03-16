@@ -46,10 +46,7 @@ install_kitty
 
 # Platform-specific setup
 echo ""
-if [[ "$OS" == "linux" ]]; then
-    source "$INSTALLER_DIR/linux.sh"
-    setup_linux_specific
-elif [[ "$OS" == "macos" ]]; then
+if [[ "$OS" == "macos" ]]; then
     source "$INSTALLER_DIR/macos.sh"
     setup_macos_specific
 fi
