@@ -1070,6 +1070,6 @@ def run-bg [cmd: string] {
         ^$cmd &      # run in background
     }
 }
- alias chrome = google-chrome-stable
+alias chrome = google-chrome-stable
 
-source "~/.cargo/env.nu"
+source-env (if ("~/.cargo/env.nu" | path expand | path exists) { "~/.cargo/env.nu" } else { null })

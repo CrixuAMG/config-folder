@@ -52,3 +52,22 @@ opt.nrformats = 'bin,hex,alpha'
 opt.undofile = true
 opt.undodir = os.getenv("HOME") .. "/.config/nvim/undo"
 
+-- Wildignore: ignore these directories in file searches
+opt.wildignore:append({
+    "*/.git/*",
+    "*/node_modules/*",
+    "*/vendor/*",
+    "*/public/*",
+})
+
+-- Force 4-space indentation for all filetypes (override plugin defaults)
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "scss", "css", "vue", "yaml" },
+    callback = function()
+        vim.bo.tabstop     = 4
+        vim.bo.shiftwidth  = 4
+        vim.bo.softtabstop = 4
+        vim.bo.expandtab   = true
+    end,
+})
+
