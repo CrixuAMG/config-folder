@@ -28,6 +28,21 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             vim.lsp.enable(servers)
+            vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, {
+                desc = "Rename symbol (all references)",
+                noremap = true,
+            })
+            vim.keymap.set("n", "<leader>cR", function()
+                local new_name = vim.fn.input("New filename: ", vim.fn.expand("%:t"))
+                if new_name and new_name ~= "" then
+                    local old_path = vim.fn.expand("%:p")
+                    local new_path = vim.fn.fnamemodify(old_path, ":h") .. "/" .. new_name
+                    vim.cmd.rename({ args = { new_path }, bang = true })
+                end
+            end, {
+                desc = "Rename current file",
+                noremap = true,
+            })
         end
     },
     {
