@@ -49,6 +49,7 @@
 ########################################
 !starship.toml
 !vial.vil
+!atuin/config.toml
 
 ########################################
 # Ignore editor / IDE files
