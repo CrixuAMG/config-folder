@@ -36,6 +36,8 @@ install_brew_packages() {
         git-delta
         jq
         tree
+        tree-sitter
+        tree-sitter-cli
         koekeishiya/formulae/yabai
         koekeishiya/formulae/skhd
         FelixKratz/formulae/sketchybar

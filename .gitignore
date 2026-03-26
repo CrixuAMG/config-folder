@@ -37,6 +37,8 @@
 !docs/
 !docs/**
 
+!_installer/
+!_installer/**
 !yabai/
 !yabai/**
 !skhd/
