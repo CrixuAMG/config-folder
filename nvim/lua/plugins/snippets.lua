@@ -119,13 +119,17 @@ return {
             end, { silent = true })
 
             -- Load snippets from all sources
-            require("luasnip.loaders.from_vscode").lazy_load()
-            require("luasnip.loaders.from_snipmate").lazy_load()
+            require("luasnip.loaders.from_vscode").load()
+            require("luasnip.loaders.from_snipmate").load()
             require("luasnip.loaders.from_lua").load({ paths = vim.fn.expand("~/.config/nvim/snippets") })
 
             -- Extend filetypes for better snippet availability
             ls.filetype_extend("vue", { "html", "javascript", "typescript" })
             ls.filetype_extend("twig", { "html" })
+            ls.filetype_extend("blade", { "html", "php" })
+            ls.filetype_extend("javascriptreact", { "javascript", "html" })
+            ls.filetype_extend("typescriptreact", { "typescript", "javascript", "html" })
+            ls.filetype_extend("svelte", { "html", "javascript", "typescript" })
         end,
         dependencies = {
             "rafamadriz/friendly-snippets",

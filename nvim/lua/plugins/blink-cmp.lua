@@ -34,6 +34,7 @@ return {
             snippets = {
                 preset = 'luasnip',
                 expand = 'auto',
+                parents = 'expand',
             },
             sources = {
                 default = {
@@ -56,8 +57,18 @@ return {
                     },
                     snippets = {
                         score_offset = -5,
+                        opts = {
+                            extended_filetypes = {
+                                vue = { 'html', 'javascript', 'typescript' },
+                                twig = { 'html' },
+                                blade = { 'html', 'php' },
+                                javascriptreact = { 'javascript' },
+                                typescriptreact = { 'typescript', 'javascript' },
+                            },
+                        },
                     },
                 },
+                include_keyword_in_items = true,
             },
             fuzzy = {
                 implementation = 'lua',
