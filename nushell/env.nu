@@ -106,6 +106,7 @@ $env.NU_PLUGIN_DIRS = [
 # $env.PATH = ($env.PATH | uniq)
 
 $env.PATH = ($env.PATH | append "~/.local/bin")
+$env.PATH = ($env.PATH | append "/Applications/Herd.app/Contents/Resources/bin")
 
 $env.EDITOR = "nvim"
 
