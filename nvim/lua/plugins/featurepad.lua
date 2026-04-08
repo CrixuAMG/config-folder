@@ -1,8 +1,9 @@
-return {
-    "crixuamg/featurepad.nvim",
-    config = function()
-        require("featurepad").setup({
-            base_dir = "~/features",
-        })
-    end
-}
+local M = {}
+
+function M.setup()
+    require("featurepad").setup({
+        base_dir = "~/features",
+    })
+end
+
+return M

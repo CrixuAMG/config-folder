@@ -1,8 +1,7 @@
-return {
-    {
-        "echasnovski/mini.align",
-        config = function()
-            require('mini.align').setup()
-        end
-    }
-}
+local M = {}
+
+function M.setup()
+    require('mini.align').setup()
+end
+
+return M

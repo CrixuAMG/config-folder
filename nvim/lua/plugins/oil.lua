@@ -1,27 +1,13 @@
-return {
-    {
-        'stevearc/oil.nvim',
-        ---@module 'oil'
-        ---@type oil.SetupOpts
-        opts = {},
-        -- Optional dependencies
-        dependencies = { { "nvim-mini/mini.icons", opts = {} } },
-        -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
-        -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-        lazy = false,
-        config = function(_, opts)
-            require("oil").setup(opts)
+local M = {}
 
-            vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-        end,
-    },
-    {
-        "JezerM/oil-lsp-diagnostics.nvim",
-        dependencies = { "stevearc/oil.nvim" },
-        opts = {}
-    },
-    {
-        "malewicz1337/oil-git.nvim",
-        dependencies = { "stevearc/oil.nvim" },
-    },
-}
+function M.setup()
+    require("oil").setup({})
+    
+    -- Optional extras found in the original file
+    -- require("oil-lsp-diagnostics").setup({})
+    -- require("oil-git").setup({})
+
+    vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+end
+
+return M

@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-    require('colorizer').setup({})
+    require("packui").setup({})
 end
 
 return M

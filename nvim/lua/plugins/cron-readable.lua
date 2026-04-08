@@ -1,9 +1,10 @@
-return {
-  "crixuamg/cron-readable.nvim",
-  config = function()
+local M = {}
+
+function M.setup()
     require("cron-readable").setup({
         pattern = { "*.yaml", "*.yml" }, -- File patterns to match
-        filename = nil, -- Optional: specific filename to match
+        filename = nil,                 -- Optional: specific filename to match
     })
-  end,
-}
+end
+
+return M
