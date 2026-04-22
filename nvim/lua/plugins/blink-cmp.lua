@@ -15,7 +15,6 @@ return {
                 ['<S-Tab>'] = { 'select_prev', 'fallback' },
                 ['<CR>'] = { 'accept', 'fallback' },
                 ['<Esc>'] = { 'cancel', 'fallback' },
-                ['<C-q>'] = { 'toggle_quick_menu', 'fallback' },
             },
             appearance = {
                 nerd_font_variant = 'mono',
@@ -25,16 +24,23 @@ return {
                 documentation = {
                     auto_show = true,
                     auto_show_delay_ms = 200,
+                    window = {
+                        border = 'rounded',
+                        winhighlight = 'Normal:Normal,CursorLine:Visual,Search:None',
+                    },
                 },
-                menu_behavior = 'insert',
-                accept = {
-                    execute_on_select = false,
+                list = {
+                    selection = {
+                        auto_insert = true,
+                    },
+                },
+                menu = {
+                    border = 'rounded',
+                    winhighlight = 'Normal:Normal,CursorLine:Visual,Search:None',
                 },
             },
             snippets = {
                 preset = 'luasnip',
-                expand = 'auto',
-                parents = 'expand',
             },
             sources = {
                 default = {
@@ -46,7 +52,6 @@ return {
                 providers = {
                     lsp = {
                         score_offset = 15,
-                        fallback_for = { 'omni' },
                     },
                     path = {
                         score_offset = 10,
@@ -72,18 +77,6 @@ return {
             },
             fuzzy = {
                 implementation = 'lua',
-            },
-            window = {
-                completion = {
-                    border = 'rounded',
-                    winhighlight = 'Normal:Normal,CursorLine:Visual,Search:None',
-                    col_offset = 0,
-                    side_padding = 1,
-                },
-                documentation = {
-                    border = 'rounded',
-                    winhighlight = 'Normal:Normal,CursorLine:Visual,Search:None',
-                },
             },
             cmdline = {
                 start_sources = { 'cmdline' },
