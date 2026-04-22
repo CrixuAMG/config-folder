@@ -1,5 +1,5 @@
 local servers = {
-    "intelephense",
+    "phpactor",
     "html",
     "cssls",
     "cssmodules_ls",
@@ -11,7 +11,7 @@ local servers = {
 
 -- Mason-lspconfig doesn't recognize "vue_ls", so exclude it from ensure_installed
 local mason_servers = {
-    "intelephense",
+    "phpactor",
     "html",
     "cssls",
     "cssmodules_ls",
@@ -45,24 +45,12 @@ return {
         config = function()
             local blink_capabilities = require("blink.cmp").get_lsp_capabilities()
 
-            vim.lsp.config("intelephense", {
+            vim.lsp.config("phpactor", {
                 capabilities = blink_capabilities,
-                settings = {
-                    intelephense = {
-                        files = {
-                            associations = { "*.php", "*.phtml" },
-                            exclude = {
-                                "**/.git/**",
-                                "**/node_modules/**",
-                                "**/vendor/**",
-                                "**/public/**",
-                            },
-                        },
-                        completion = {
-                            fullyQualifyGlobalConstantsAndFunctions = false,
-                            triggerParameterHints = true,
-                        },
-                    },
+                filetypes = { "php" },
+                init_options = {
+                    ["language_server_worse_reflection.inlay_hints.enable"] = false,
+                    ["language_server_configuration.auto_config"] = false,
                 },
             })
 
@@ -139,6 +127,7 @@ return {
                     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, vim.tbl_extend("force", opts, { desc = "Go to declaration" }))
                     vim.keymap.set("n", "gr", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "Go to references" }))
                     vim.keymap.set("n", "gi", vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "Go to implementation" }))
+                    vim.keymap.set("n", "gI", vim.lsp.buf.implementation, vim.tbl_extend("force", opts, { desc = "Go to implementation" }))
                     vim.keymap.set("n", "K", vim.lsp.buf.hover, vim.tbl_extend("force", opts, { desc = "Hover documentation" }))
                     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, vim.tbl_extend("force", opts, { desc = "Code action" }))
                     vim.keymap.set("n", "<leader>cf", function() vim.lsp.buf.format({ async = true }) end, vim.tbl_extend("force", opts, { desc = "Format buffer" }))
