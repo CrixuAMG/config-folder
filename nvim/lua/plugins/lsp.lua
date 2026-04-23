@@ -40,13 +40,14 @@ return {
     {
         "neovim/nvim-lspconfig",
         dependencies = {
-            "saghen/blink.cmp",
+            "hrsh7th/nvim-cmp",
+            "hrsh7th/cmp-nvim-lsp",
         },
         config = function()
-            local blink_capabilities = require("blink.cmp").get_lsp_capabilities()
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
             vim.lsp.config("phpactor", {
-                capabilities = blink_capabilities,
+                capabilities = capabilities,
                 filetypes = { "php" },
                 init_options = {
                     ["language_server_worse_reflection.inlay_hints.enable"] = false,
@@ -55,24 +56,24 @@ return {
             })
 
             vim.lsp.config("html", {
-                capabilities = blink_capabilities,
+                capabilities = capabilities,
                 filetypes = { "html", "twig", "blade" },
             })
 
             vim.lsp.config("cssls", {
-                capabilities = blink_capabilities,
+                capabilities = capabilities,
             })
 
             vim.lsp.config("cssmodules_ls", {
-                capabilities = blink_capabilities,
+                capabilities = capabilities,
             })
 
             vim.lsp.config("bashls", {
-                capabilities = blink_capabilities,
+                capabilities = capabilities,
             })
 
             vim.lsp.config("ts_ls", {
-                capabilities = blink_capabilities,
+                capabilities = capabilities,
                 filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
                 init_options = {
                     plugins = {
@@ -86,12 +87,12 @@ return {
             })
 
             vim.lsp.config("tailwindcss", {
-                capabilities = blink_capabilities,
+                capabilities = capabilities,
                 filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "twig", "php", "phtml" },
             })
 
             vim.lsp.config("vue_ls", {
-                capabilities = blink_capabilities,
+                capabilities = capabilities,
                 init_options = {
                     vue = {
                         hybridMode = false,
