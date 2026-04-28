@@ -41,6 +41,7 @@ install_brew_packages() {
         koekeishiya/formulae/yabai
         koekeishiya/formulae/skhd
         FelixKratz/formulae/sketchybar
+        opencode
     )
 
     brew install "${packages[@]}"
