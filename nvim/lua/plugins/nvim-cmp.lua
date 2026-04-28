@@ -72,6 +72,7 @@ return {
                     ["<Esc>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then
                             cmp.abort()
+                            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, true, true), "n", true)
                         else
                             fallback()
                         end

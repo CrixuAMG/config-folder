@@ -13,9 +13,9 @@ M.config = {
     --- Max time to wait for a response (ms)
     timeout = 5000,
     --- Debounce delay before calling OpenCode (ms)
-    debounce_ms = 300,
+    debounce_ms = 100,
     --- Minimum keyword length before triggering
-    min_keyword_length = 2,
+    min_keyword_length = 0,
     --- Build the request payload from cmp context
     ---@param context table nvim-cmp context
     ---@return string
