@@ -1,6 +1,6 @@
 return {
     {
-        'stevearc/oil.nvim',
+        'barrettruth/canola.nvim',
         ---@module 'oil'
         ---@type oil.SetupOpts
         opts = {},
