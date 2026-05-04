@@ -21,3 +21,18 @@ set("n", "<M-.>", "<c-w>5>")
 set("n", "<M-t>", "<C-W>+")
 set("n", "<M-s>", "<C-W>-")
 
+-- Add named arguments for PHP function calls
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "php",
+    callback = function(args)
+        vim.keymap.set("n", "<leader>pa", function()
+            require("php_named_args").add_named_args()
+        end, {
+            buffer = args.buf,
+            desc = "Add PHP named arguments",
+            noremap = true,
+            silent = true,
+        })
+    end,
+})
+
