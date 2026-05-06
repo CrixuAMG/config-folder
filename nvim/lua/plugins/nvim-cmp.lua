@@ -116,6 +116,28 @@ return {
             vim.api.nvim_create_user_command("ToggleOpenCode", function()
                 cmp_opencode.toggle()
             end, { desc = "Toggle OpenCode cmp source" })
+
+            vim.api.nvim_create_user_command("OpenCodeMultiline", function(args)
+                local enable = args.args == "1" or args.args == "true" or args.args == ""
+                cmp_opencode.set_multiline(enable)
+            end, {
+                desc = "Toggle OpenCode multiline suggestions (1/true/on or 0/false/off)",
+                nargs = "?",
+                complete = function()
+                    return { "1", "0", "true", "false", "on", "off" }
+                end,
+            })
+
+            vim.api.nvim_create_user_command("OpenCodeEager", function(args)
+                local enable = args.args == "1" or args.args == "true" or args.args == ""
+                cmp_opencode.set_eager(enable)
+            end, {
+                desc = "Toggle OpenCode eager multiline generation (1/true/on or 0/false/off)",
+                nargs = "?",
+                complete = function()
+                    return { "1", "0", "true", "false", "on", "off" }
+                end,
+            })
         end,
     },
 }
