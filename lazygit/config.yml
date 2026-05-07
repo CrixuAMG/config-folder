@@ -8,7 +8,12 @@ customCommands:
     description: "AI commit message (opencode)"
     context: "files"
     command: |
-      MSG=$(opencode-commit) && git commit -e -m "$MSG"
+      MSG=$(opencode-commit 2>/dev/null)
+      if [ -n "$MSG" ]; then
+        git commit -e -m "$MSG"
+      else
+        echo "Failed to generate message"
+      fi
     output: terminal
 git:
   autoForwardBranches: 'allBranches'
