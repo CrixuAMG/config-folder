@@ -3,6 +3,13 @@ os:
   editPreset: 'nvim'
 gui:
   language: 'en'
+customCommands:
+  - key: "<c-g>"
+    description: "AI commit message (opencode)"
+    context: "files"
+    command: |
+      MSG=$(opencode-commit) && git commit -e -m "$MSG"
+    output: terminal
 git:
   autoForwardBranches: 'allBranches'
   branchPrefix: 'feature/'

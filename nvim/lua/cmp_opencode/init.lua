@@ -1,232 +1,483 @@
 local M = {}
 
--- ---------------------------------------------------------------------------
--- Config
--- ---------------------------------------------------------------------------
+-- ============================================================================
+-- CONFIG
+-- ============================================================================
 
 M.config = {
     enabled = true,
 
-    model = "qwen2.5-coder:7b",
+    server_url = "http://127.0.0.1:4096",
 
-    model_args = {
-        "--temperature", "0.2",
-        "--max-tokens", "256",
-        "--top-p", "0.9",
+    model = "ollama/qwen2.5-coder:7b",
+
+    debounce_ms = 120,
+    timeout = 10000,
+
+    log_file = vim.fn.stdpath("cache")
+        .. "/opencode-cmp.log",
+
+    filetypes = {
+        php = true,
+        lua = true,
+        javascript = true,
+        typescript = true,
+        python = true,
     },
 
-    command = { "opencode", "complete" },
-
-    debounce_ms = 80,
-    timeout = 3000,
-    min_keyword_length = 0,
-
-    multiline = {
-        enabled = true,
-        eager = true,
-        debounce_ms = 200,
-        max_lines = 10,
-        accept_keymap = "<M-Tab>",
-        dismiss_keymap = "<M-e>",
+    context = {
+        max_prefix_chars = 6000,
     },
 
-    -- 🚀 FIM request (BELANGRIJKSTE FIX)
-    build_request = function(context)
-        local bufnr = context.bufnr
-        local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-
-        local row = context.cursor.row
-        local col = context.cursor.col
-
-        local before = vim.list_slice(lines, 1, row)
-        local after = vim.list_slice(lines, row + 1, #lines)
-
-        local current = lines[row] or ""
-
-        local prefix =
-            table.concat(before, "\n") ..
-            "\n" ..
-            current:sub(1, col)
-
-        local suffix =
-            current:sub(col + 1) ..
-            "\n" ..
-            table.concat(after, "\n")
-
-        -- Trim voor performance
-        prefix = prefix:sub(-3000)
-
-        return vim.json.encode({
-            prefix = prefix,
-            suffix = suffix,
-            filepath = vim.api.nvim_buf_get_name(bufnr),
-        })
-    end,
-
-    parse_response = function(lines)
-        local items = {}
-        local text = table.concat(lines, "\n")
-
-        local ok, decoded = pcall(vim.json.decode, text)
-        if ok and type(decoded) == "table" then
-            if vim.islist(decoded) then
-                for _, item in ipairs(decoded) do
-                    local t = type(item) == "table" and (item.text or item.label) or item
-                    if t then
-                        table.insert(items, M._make_item(t, item))
-                    end
-                end
-                return items
-            elseif decoded.text or decoded.label then
-                table.insert(items, M._make_item(decoded.text or decoded.label, decoded))
-                return items
-            end
-        end
-
-        text = vim.trim(text)
-        if text ~= "" then
-            table.insert(items, M._make_item(text))
-        end
-
-        return items
-    end,
+    generation = {
+        temperature = 0.15,
+        top_p = 0.95,
+        max_tokens = 128,
+    },
 }
 
--- ---------------------------------------------------------------------------
--- Helpers
--- ---------------------------------------------------------------------------
+-- ============================================================================
+-- STATE
+-- ============================================================================
 
-local function build_command()
-    local cmd = vim.deepcopy(M.config.command)
+local enabled = true
+local current_job = nil
+local current_timer = nil
 
-    table.insert(cmd, "--model")
-    table.insert(cmd, M.config.model)
+-- ============================================================================
+-- LOGGING
+-- ============================================================================
 
-    for _, arg in ipairs(M.config.model_args) do
-        table.insert(cmd, arg)
-    end
-
-    return cmd
+local function append_log(lines)
+    vim.fn.writefile(
+        lines,
+        M.config.log_file,
+        "a"
+    )
 end
 
-M._make_item = function(text, extra)
-    extra = extra or {}
+local function log(...)
+    local parts = {}
 
-    local is_multiline = text:find("\n") ~= nil
+    for i = 1, select("#", ...) do
+        local value = select(i, ...)
 
+        if type(value) == "table" then
+            value = vim.inspect(value)
+        else
+            value = tostring(value)
+        end
+
+        table.insert(parts, value)
+    end
+
+    append_log({
+        os.date("[%Y-%m-%d %H:%M:%S] ")
+            .. table.concat(parts, " ")
+    })
+end
+
+local function log_block(title, content)
+    local lines = {
+        "",
+        ("========== %s =========="):format(
+            title
+        ),
+    }
+
+    if type(content) == "string" then
+        vim.list_extend(
+            lines,
+            vim.split(content, "\n", {
+                plain = true,
+            })
+        )
+    else
+        table.insert(lines, vim.inspect(content))
+    end
+
+    table.insert(
+        lines,
+        "==================================="
+    )
+
+    table.insert(lines, "")
+
+    append_log(lines)
+end
+
+local function clear_log()
+    vim.fn.writefile({}, M.config.log_file)
+end
+
+-- ============================================================================
+-- HELPERS
+-- ============================================================================
+
+local function sanitize(text)
+    text = text or ""
+
+    text = text:gsub("^```[%w]*\n", "")
+    text = text:gsub("\n```$", "")
+
+    return vim.trim(text)
+end
+
+local function get_context(ctx)
+    local prefix =
+        ctx.cursor_before_line or ""
+
+    local suffix =
+        ctx.cursor_after_line or ""
+
+    prefix = prefix:sub(
+        -M.config.context.max_prefix_chars
+    )
+
+    return prefix, suffix
+end
+
+local function build_prompt(ctx)
+    local prefix, suffix =
+        get_context(ctx)
+
+    return table.concat({
+        "<|fim_prefix|>",
+        prefix,
+        "<|fim_suffix|>",
+        suffix,
+        "<|fim_middle|>",
+    }, "\n")
+end
+
+local function build_body(prompt)
+    return vim.json.encode({
+        model = M.config.model,
+
+        prompt = prompt,
+
+        stream = false,
+
+        options = {
+            temperature =
+                M.config.generation.temperature,
+
+            top_p =
+                M.config.generation.top_p,
+
+            num_predict =
+                M.config.generation.max_tokens,
+        },
+    })
+end
+
+local function build_command(body)
     return {
-        label = extra.label or text:gsub("\n", "↳ "),
-        insertText = text,
-        kind = is_multiline
-            and vim.lsp.protocol.CompletionItemKind.Snippet
-            or vim.lsp.protocol.CompletionItemKind.Text,
-        insertTextFormat = is_multiline
-            and vim.lsp.protocol.InsertTextFormat.Snippet
-            or nil,
-        documentation = extra.documentation,
+        "curl",
+
+        "-s",
+
+        "-X",
+        "POST",
+
+        M.config.server_url .. "/api/generate",
+
+        "-H",
+        "Content-Type: application/json",
+
+        "-d",
+        body,
     }
 end
 
--- ---------------------------------------------------------------------------
--- State
--- ---------------------------------------------------------------------------
+local function make_item(text)
+    local multiline =
+        text:find("\n") ~= nil
 
-local is_enabled = true
-local current_job = nil
-local timer = nil
+    return {
+        label = text:gsub("\n", " ↩ "),
 
--- ---------------------------------------------------------------------------
--- Public API
--- ---------------------------------------------------------------------------
+        insertText = text,
 
-M.is_enabled = function()
-    return is_enabled
+        filterText = "",
+
+        kind = multiline
+            and vim.lsp.protocol
+                .CompletionItemKind.Snippet
+            or vim.lsp.protocol
+                .CompletionItemKind.Text,
+
+        insertTextFormat = multiline
+            and vim.lsp.protocol
+                .InsertTextFormat.Snippet
+            or vim.lsp.protocol
+                .InsertTextFormat.PlainText,
+    }
 end
 
-M.toggle = function()
-    is_enabled = not is_enabled
-    vim.notify("OpenCode " .. (is_enabled and "enabled" or "disabled"))
+local function parse_response(lines)
+    local raw = table.concat(lines, "\n")
+
+    log_block("RAW RESPONSE", raw)
+
+    if raw == "" then
+        log("EMPTY RESPONSE")
+
+        return {}
+    end
+
+    local ok, decoded =
+        pcall(vim.json.decode, raw)
+
+    if not ok then
+        log("JSON PARSE FAILED")
+
+        return {}
+    end
+
+    local text =
+        decoded.response
+        or decoded.content
+        or decoded.text
+
+    if not text then
+        log("NO TEXT FIELD FOUND")
+
+        return {}
+    end
+
+    text = sanitize(text)
+
+    if text == "" then
+        log("EMPTY COMPLETION")
+
+        return {}
+    end
+
+    log_block("COMPLETION", text)
+
+    return {
+        make_item(text),
+    }
 end
 
-M.setup = function(opts)
-    M.config = vim.tbl_deep_extend("force", M.config, opts or {})
+-- ============================================================================
+-- PUBLIC API
+-- ============================================================================
+
+function M.setup(opts)
+    M.config = vim.tbl_deep_extend(
+        "force",
+        M.config,
+        opts or {}
+    )
+
+    clear_log()
+
+    log("OPENCODE CMP INITIALIZED")
+    log("SERVER:", M.config.server_url)
+    log("MODEL:", M.config.model)
 end
 
--- ---------------------------------------------------------------------------
--- Source
--- ---------------------------------------------------------------------------
+function M.toggle()
+    enabled = not enabled
+
+    vim.notify(
+        ("OpenCode completion %s"):format(
+            enabled and "enabled"
+                or "disabled"
+        )
+    )
+
+    log(
+        "TOGGLE:",
+        enabled and "enabled"
+            or "disabled"
+    )
+end
+
+function M.is_enabled()
+    return enabled
+end
+
+function M.open_log()
+    vim.cmd(
+        "edit "
+            .. vim.fn.fnameescape(
+                M.config.log_file
+            )
+    )
+end
+
+-- ============================================================================
+-- SOURCE
+-- ============================================================================
 
 local source = {}
 
 function source.new()
-    return setmetatable({}, { __index = source })
+    return setmetatable({}, {
+        __index = source,
+    })
 end
 
-function source.is_available()
-    return M.is_enabled()
+function source:is_available()
+    return enabled
 end
 
-function source.get_trigger_characters()
-    return {}
+function source:get_trigger_characters()
+    return {
+        ".", ":", ">", "$",
+        "(", "{", "[",
+        " ", "\n",
+    }
 end
 
-function source.complete(_, params, callback)
-    if not M.is_enabled() then
-        return callback({ items = {} })
+function source:complete(params, callback)
+    if not enabled then
+        return callback({
+            items = {},
+        })
     end
 
     local ctx = params.context
-    if #vim.trim(ctx.cursor_before_line) < M.config.min_keyword_length then
-        return callback({ items = {} })
+
+    if not M.config.filetypes[ctx.filetype] then
+        return callback({
+            items = {},
+        })
     end
+
+    log("")
+    log(
+        "========================================"
+    )
+
+    log("COMPLETE REQUEST")
+    log("FILETYPE:", ctx.filetype)
+    log("BEFORE:", ctx.cursor_before_line)
 
     if current_job then
         pcall(vim.fn.jobstop, current_job)
+
+        current_job = nil
     end
 
-    if timer then
-        timer:stop()
-        timer:close()
+    if current_timer then
+        current_timer:stop()
+        current_timer:close()
+
+        current_timer = nil
     end
+
+    local prompt = build_prompt(ctx)
+
+    log_block("PROMPT", prompt)
+
+    local body = build_body(prompt)
+
+    log_block("REQUEST BODY", body)
 
     local stdout = {}
-    local request = M.config.build_request(ctx)
 
-    timer = vim.loop.new_timer()
-    timer:start(M.config.debounce_ms, 0, vim.schedule_wrap(function()
-        timer:stop()
-        timer:close()
-        timer = nil
+    current_timer = vim.loop.new_timer()
 
-        current_job = vim.fn.jobstart(build_command(), {
-            on_stdout = function(_, data)
-                if data then vim.list_extend(stdout, data) end
-            end,
-            on_exit = function(_, code)
+    current_timer:start(
+        M.config.debounce_ms,
+        0,
+        vim.schedule_wrap(function()
+            current_timer:stop()
+            current_timer:close()
+
+            current_timer = nil
+
+            local cmd =
+                build_command(body)
+
+            log_block(
+                "CURL COMMAND",
+                vim.inspect(cmd)
+            )
+
+            current_job = vim.fn.jobstart(
+                cmd,
+                {
+                    stdout_buffered = true,
+
+                    on_stdout = function(_, data)
+                        if not data then
+                            return
+                        end
+
+                        vim.list_extend(
+                            stdout,
+                            data
+                        )
+                    end,
+
+                    on_stderr = function(_, data)
+                        if not data then
+                            return
+                        end
+
+                        log_block(
+                            "STDERR",
+                            vim.inspect(data)
+                        )
+                    end,
+
+                    on_exit = function(_, code)
+                        log("JOB EXIT:", code)
+
+                        current_job = nil
+
+                        if code ~= 0 then
+                            log("REQUEST FAILED")
+
+                            return callback({
+                                items = {},
+                            })
+                        end
+
+                        local items =
+                            parse_response(
+                                stdout
+                            )
+
+                        log(
+                            "ITEM COUNT:",
+                            #items
+                        )
+
+                        callback({
+                            items = items,
+                            isIncomplete = false,
+                        })
+                    end,
+                }
+            )
+
+            if current_job <= 0 then
+                log("FAILED TO START JOB")
+
                 current_job = nil
 
-                if code ~= 0 then
-                    return callback({ items = {} })
-                end
-
-                local items = M.config.parse_response(stdout)
-
-                callback({
-                    items = items,
-                    isIncomplete = false,
+                return callback({
+                    items = {},
                 })
-            end,
-        })
+            end
 
-        if current_job <= 0 then
-            current_job = nil
-            return callback({ items = {} })
-        end
-
-        vim.fn.chansend(current_job, request)
-        vim.fn.chanclose(current_job, "stdin")
-    end))
+            log(
+                "JOB STARTED:",
+                current_job
+            )
+        end)
+    )
 end
+
+-- ============================================================================
+-- EXPORT
+-- ============================================================================
 
 M.source = source
 
