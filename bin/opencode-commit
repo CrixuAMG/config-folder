@@ -1,0 +1,18 @@
+#!/bin/bash
+
+DIFF=$(git diff --cached 2>/dev/null)
+if [ -z "$DIFF" ]; then
+    DIFF=$(git diff 2>/dev/null)
+fi
+
+if [ -z "$DIFF" ]; then
+    echo "No changes detected" >&2
+    exit 1
+fi
+
+TMPFILE=$(mktemp)
+echo "$DIFF" > "$TMPFILE"
+
+script -q -c "opencode run 'Generate a conventional commit message summarizing these changes in <file>. Output ONLY the commit subject line (max 72 chars), nothing else:' < '$TMPFILE'" /dev/null 2>/dev/null | sed 's/\x1b\[[0-9;]*m//g' | grep -v '^>\|Script\|build ·\|^\s*$' | head -1
+
+rm -f "$TMPFILE"

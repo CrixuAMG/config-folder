@@ -8,7 +8,7 @@ customCommands:
     description: "AI commit message (opencode)"
     context: "files"
     command: |
-      MSG=$(opencode-commit 2>/dev/null)
+      MSG=$($HOME/.config/bin/opencode-commit 2>/dev/null)
       if [ -n "$MSG" ]; then
         git commit -e -m "$MSG"
       else
