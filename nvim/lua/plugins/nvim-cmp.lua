@@ -9,6 +9,7 @@ return {
             "saadparwaiz1/cmp_luasnip",
             "L3MON4D3/LuaSnip",
             "rafamadriz/friendly-snippets",
+            "kristijanhusak/vim-dadbod-completion",
         },
         config = function()
             local cmp = require("cmp")
@@ -85,6 +86,7 @@ return {
                     { name = "nvim_lsp", priority = 1000 },
                     { name = "path",     priority = 950 },
                     { name = "opencode", priority = 900 },
+                    { name = "vim-dadbod-completion", priority = 875 },
                     { name = "luasnip",  priority = 700 },
                     { name = "buffer",   priority = 500, keyword_length = 3, max_item_count = 10 },
                 },
