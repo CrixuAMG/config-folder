@@ -1,18 +1,44 @@
-#!/bin/bash
+#!/usr/bin/env python3
+import subprocess, sys, json, re
 
-DIFF=$(git diff --cached 2>/dev/null)
-if [ -z "$DIFF" ]; then
-    DIFF=$(git diff 2>/dev/null)
-fi
+diff = subprocess.run(
+    ["git", "diff", "--cached"], capture_output=True, text=True
+).stdout
+if not diff.strip():
+    diff = subprocess.run(
+        ["git", "diff"], capture_output=True, text=True
+    ).stdout
+if not diff.strip():
+    print("No changes detected", file=sys.stderr)
+    sys.exit(1)
 
-if [ -z "$DIFF" ]; then
-    echo "No changes detected" >&2
-    exit 1
-fi
+branch = subprocess.run(
+    ["git", "branch", "--show-current"], capture_output=True, text=True
+).stdout.strip()
+m = re.search(r"[A-Z]+-\d+", branch)
+prefix = m.group(0) if m else None
 
-TMPFILE=$(mktemp)
-echo "$DIFF" > "$TMPFILE"
+diff_trunc = "\n".join(diff.split("\n")[:200])
+prompt = (
+    "Generate a conventional git commit message for these changes:\n\n"
+    f"{diff_trunc}\n\n"
+    "Output ONLY the commit subject line (max 72 chars), nothing else."
+)
 
-script -q -c "opencode run 'Generate a conventional commit message summarizing these changes in <file>. Output ONLY the commit subject line (max 72 chars), nothing else:' < '$TMPFILE'" /dev/null 2>/dev/null | sed 's/\x1b\[[0-9;]*m//g' | grep -v '^>\|Script\|build ·\|^\s*$' | head -1
+result = subprocess.run(
+    ["script", "-q", "-c", f"opencode run {json.dumps(prompt)}", "/dev/null"],
+    capture_output=True, text=True, timeout=60
+)
 
-rm -f "$TMPFILE"
+msg = ""
+for line in result.stdout.splitlines():
+    line = line.strip()
+    if not line or line.startswith(">") or "build" in line:
+        continue
+    line = line.replace("\x1b[0m", "").strip()
+    if line:
+        msg = line
+        break
+
+if msg:
+    print(f"{prefix}: {msg}" if prefix else msg)

@@ -52,6 +52,11 @@
 !starship.toml
 !vial.vil
 !atuin/config.toml
+!lazygit/
+!lazygit/**
+
+!bin/
+!bin/**
 
 ########################################
 # Ignore editor / IDE files
