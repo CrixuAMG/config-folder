@@ -15,6 +15,26 @@ customCommands:
         echo "Failed to generate message"
       fi
     output: terminal
+  - key: "<c-g>"
+    description: "AI reword commit (opencode)"
+    context: "commits"
+    command: |
+      MSG=$($HOME/.config/bin/opencode-reword {{.SelectedCommit.Hash}} 2>/dev/null)
+      if [ -n "$MSG" ]; then
+        HASH="{{.SelectedCommit.Hash}}"
+        if [ "$HASH" = "$(git rev-parse HEAD 2>/dev/null)" ]; then
+          git commit --amend -m "$MSG"
+        else
+          UPSTREAM="$HASH^"
+          git rev-parse "$UPSTREAM" >/dev/null 2>&1 || UPSTREAM="--root"
+          GIT_SEQUENCE_EDITOR="sed -i '0,/^pick/s//reword/'" \
+          GIT_EDITOR="sh -c 'echo \"$MSG\" > \"\$1\"' --" \
+          git rebase -i "$UPSTREAM"
+        fi
+      else
+        echo "Failed to generate message"
+      fi
+    output: terminal
 git:
   autoForwardBranches: 'allBranches'
   branchPrefix: 'feature/'
