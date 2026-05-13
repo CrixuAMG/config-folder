@@ -57,7 +57,7 @@ for line in result.stdout.splitlines():
     if not line or line.startswith(">") or "build" in line:
         continue
     if line:
-        msg = line
+        msg = line.replace('`', '')
         break
 
 if msg:
