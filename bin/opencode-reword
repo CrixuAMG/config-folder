@@ -29,6 +29,15 @@ branch = subprocess.run(
 m = re.search(r"[A-Z]+-\d+", branch)
 prefix = m.group(0) if m else None
 
+if not prefix:
+    orig_msg = subprocess.run(
+        ["git", "log", "--format=%s", "-1", commit_hash],
+        capture_output=True, text=True
+    ).stdout.strip()
+    m2 = re.match(r"([A-Z]+-\d+)", orig_msg)
+    if m2:
+        prefix = m2.group(1)
+
 diff_trunc = "\n".join(diff.split("\n")[:200])
 prompt = (
     "Generate a conventional git commit message for these changes:\n\n"
@@ -41,12 +50,12 @@ result = subprocess.run(
     capture_output=True, text=True, timeout=60
 )
 
+ansi_re = re.compile(r'\x1b\[[0-9;]*[a-zA-Z]')
 msg = ""
 for line in result.stdout.splitlines():
-    line = line.strip()
+    line = ansi_re.sub('', line).strip()
     if not line or line.startswith(">") or "build" in line:
         continue
-    line = line.replace("\x1b[0m", "").strip()
     if line:
         msg = line
         break

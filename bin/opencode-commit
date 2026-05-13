@@ -30,12 +30,12 @@ result = subprocess.run(
     capture_output=True, text=True, timeout=60
 )
 
+ansi_re = re.compile(r'\x1b\[[0-9;]*[a-zA-Z]')
 msg = ""
 for line in result.stdout.splitlines():
-    line = line.strip()
+    line = ansi_re.sub('', line).strip()
     if not line or line.startswith(">") or "build" in line:
         continue
-    line = line.replace("\x1b[0m", "").strip()
     if line:
         msg = line
         break
