@@ -41,4 +41,4 @@ for line in result.stdout.splitlines():
         break
 
 if msg:
-    print(f"{prefix}: {msg}" if prefix else msg)
+    print(f"{prefix} {msg}" if prefix else msg)
