@@ -10,7 +10,7 @@ customCommands:
     command: |
       MSG=$($HOME/.config/bin/opencode-commit 2>/dev/null)
       if [ -n "$MSG" ]; then
-        git commit -e -m "$MSG"
+        git commit -m "$MSG"
       else
         echo "Failed to generate message"
       fi
