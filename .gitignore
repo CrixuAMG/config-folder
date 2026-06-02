@@ -87,3 +87,4 @@ nvim/lua/plugins/jira*
 ########################################
 kitty/session.json
 kitty/sessions/*.kitty
+/bin/__pycache__
