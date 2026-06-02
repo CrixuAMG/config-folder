@@ -6,6 +6,12 @@ set("n", "<M-j>", "<cmd>cnext<CR>", {
 set("n", "<M-k>", "<cmd>cprev<CR>", {
     desc = "Previous quickfix item"
 })
+set("n", "dg", "<cmd>diffget<CR>", {
+    desc = "Diff get"
+})
+set("n", "dg", "<cmd>diffput<CR>", {
+    desc = "Diff put"
+})
 
 set("n", "<leader>so", ":write<CR> :source<CR>", {
     desc = "Write and source current file"
