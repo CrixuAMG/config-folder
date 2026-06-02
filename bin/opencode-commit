@@ -19,11 +19,33 @@ m = re.search(r"[A-Z]+-\d+", branch)
 prefix = m.group(0) if m else None
 
 diff_trunc = "\n".join(diff.split("\n")[:200])
-prompt = (
-    "Generate a conventional git commit message for these changes:\n\n"
-    f"{diff_trunc}\n\n"
-    "Output ONLY the commit subject line (max 72 chars), nothing else."
-)
+
+files_changed = len([
+    l for l in subprocess.run(
+        ["git", "diff", "--cached", "--name-only"], capture_output=True, text=True
+    ).stdout.splitlines() if l.strip()
+]) or len([
+    l for l in subprocess.run(
+        ["git", "diff", "--name-only"], capture_output=True, text=True
+    ).stdout.splitlines() if l.strip()
+])
+large = files_changed > 3 or len(diff.splitlines()) > 100
+
+if large:
+    prompt = (
+        "Generate a conventional git commit message for these changes:\n\n"
+        f"{diff_trunc}\n\n"
+        "Output the commit subject on line 1 (max 72 chars, conventional commit "
+        "style), then a blank line, then a body with bullet points (- prefix) "
+        "explaining the key changes, each line wrapped at 72 chars. "
+        "Output ONLY the message text, no code fences, no extra commentary."
+    )
+else:
+    prompt = (
+        "Generate a conventional git commit message for these changes:\n\n"
+        f"{diff_trunc}\n\n"
+        "Output ONLY the commit subject line (max 72 chars), nothing else."
+    )
 
 result = subprocess.run(
     ["script", "-q", "-c", f"opencode run {shlex.quote(prompt)}", "/dev/null"],
@@ -31,14 +53,33 @@ result = subprocess.run(
 )
 
 ansi_re = re.compile(r'\x1b\[[0-9;]*[a-zA-Z]')
-msg = ""
-for line in result.stdout.splitlines():
-    line = ansi_re.sub('', line).strip()
-    if not line or line.startswith(">") or "build" in line:
+clean_lines = []
+started = False
+for raw in result.stdout.splitlines():
+    line = ansi_re.sub('', raw).rstrip()
+    stripped = line.strip()
+    if stripped.startswith(">"):
         continue
-    if line:
-        msg = line.replace('`', '')
-        break
+    if not started:
+        if not stripped or "build" in stripped.lower():
+            continue
+        started = True
+    clean_lines.append(line.replace('`', ''))
 
-if msg:
-    print(f"{prefix} {msg}" if prefix else msg)
+while clean_lines and not clean_lines[-1].strip():
+    clean_lines.pop()
+
+if not clean_lines:
+    sys.exit(1)
+
+subject = clean_lines[0].strip()
+header = f"{prefix} {subject}" if prefix else subject
+print(header)
+
+if large and len(clean_lines) > 1:
+    body_lines = clean_lines[1:]
+    while body_lines and not body_lines[0].strip():
+        body_lines.pop(0)
+    if body_lines:
+        print()
+        print("\n".join(body_lines))
