@@ -1,7 +1,8 @@
 #!/bin/bash
 # macOS-specific setup and configuration
 
-source "$(dirname "$0")/_installer/common.sh"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/common.sh"
 
 install_macos_casks() {
     print_info "Installing macOS casks..."

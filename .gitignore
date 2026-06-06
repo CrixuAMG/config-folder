@@ -34,6 +34,9 @@
 !nushell/
 !nushell/**
 
+!zsh/
+!zsh/**
+
 !docs/
 !docs/**
 
@@ -46,10 +49,14 @@
 !sketchybar/
 !sketchybar/**
 
+!borders/
+!borders/**
+
 ########################################
 # Allow standalone config files
 ########################################
 !starship.toml
+!KEYMAPS.md
 !vial.vil
 !atuin/config.toml
 !lazygit/

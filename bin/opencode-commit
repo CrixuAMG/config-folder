@@ -47,16 +47,19 @@ else:
         "Output ONLY the commit subject line (max 72 chars), nothing else."
     )
 
-result = subprocess.run(
-    ["script", "-q", "-c", f"opencode run {shlex.quote(prompt)}", "/dev/null"],
-    capture_output=True, text=True, timeout=60
-)
+if sys.platform == "darwin":
+    script_cmd = ["script", "-q", "/dev/null", "opencode", "run", prompt]
+else:
+    script_cmd = ["script", "-q", "-c", f"opencode run {shlex.quote(prompt)}", "/dev/null"]
+
+result = subprocess.run(script_cmd, capture_output=True, text=True, timeout=60)
 
 ansi_re = re.compile(r'\x1b\[[0-9;]*[a-zA-Z]')
 clean_lines = []
 started = False
 for raw in result.stdout.splitlines():
-    line = ansi_re.sub('', raw).rstrip()
+    line = ansi_re.sub('', raw)
+    line = ''.join(ch for ch in line if ch.isprintable() or ch.isspace()).rstrip()
     stripped = line.strip()
     if stripped.startswith(">"):
         continue

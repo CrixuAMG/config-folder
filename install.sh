@@ -32,6 +32,9 @@ echo ""
 source "$INSTALLER_DIR/homebrew.sh"
 install_homebrew
 install_brew_packages
+install_brew_casks
+cleanup_brew
+restart_window_manager_services
 
 # Install additional packages
 echo ""
