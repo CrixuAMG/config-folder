@@ -28,9 +28,36 @@ yabai -m mouse_drop_action swap
 # enable sketchybar
 yabai -m config external_bar all:32:0
 
-# disable for these applications
+# disable for these applications (manage=off = floating)
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Karabiner-Elements$" manage=off
 yabai -m rule --add app="^TigerVNC Viewer$" manage=off
+yabai -m rule --add app="^Spotify$" manage=off
+yabai -m rule --add app="^Music$" manage=off
+yabai -m rule --add app="^QuickTime Player$" manage=off
+yabai -m rule --add app="^Activity Monitor$" manage=off
+yabai -m rule --add app="^Software Update$" manage=off
+yabai -m rule --add app="^App Store$" manage=off
+yabai -m rule --add app="^Font Book$" manage=off
+yabai -m rule --add app="^Image Capture$" manage=off
+yabai -m rule --add app="^Dictionary$" manage=off
+yabai -m rule --add app="^(About This Mac|AirDrop|Bluetooth|Sound|Network|Sharing|Screen Time|Extensions|General|Appearance|Control Center|Privacy|Desktop|Notifications|Wallet)$" manage=off
+yabai -m rule --add app="^Photo Booth$" manage=off
+yabai -m rule --add label="Finder" app="^Finder$" manage=off
+yabai -m rule --add app="^System Information$" manage=off
+yabai -m rule --add app="^Console$" manage=off
+yabai -m rule --add app="^Disk Utility$" manage=off
+yabai -m rule --add app="^ColorSync Utility$" manage=off
+yabai -m rule --add app="^Script Editor$" manage=off
+yabai -m rule --add app="^Grapher$" manage=off
+yabai -m rule --add app="^Stickies$" manage=off
+yabai -m rule --add app="^Preview$" manage=off
+
+# focus follows mouse (autofocus: only when changing windows via mouse)
+yabai -m config focus_follows_mouse autofocus
+
+# signal: auto-float dialogs and sheets that are child windows
+yabai -m signal --add event=window_created action="yabai -m window \$YABAI_WINDOW_ID --layer above" app="^System Settings$"
+yabai -m signal --add event=window_created action="yabai -m window \$YABAI_WINDOW_ID --layer above" app="^Finder$"
 

@@ -1,7 +1,8 @@
 #!/bin/bash
 # Homebrew installation and package management
 
-source "$(dirname "$0")/_installer/common.sh"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/common.sh"
 
 install_homebrew() {
     print_info "Checking for Homebrew..."
@@ -43,7 +44,6 @@ install_brew_packages() {
         FelixKratz/formulae/sketchybar
         opencode
         gammons/tap/slk
-	bartender
     )
 
     brew install "${packages[@]}"
@@ -51,9 +51,29 @@ install_brew_packages() {
     print_success "Homebrew packages installed"
 }
 
+install_brew_casks() {
+    print_info "Installing casks via Homebrew..."
+
+    local casks=(
+        bartender
+    )
+
+    brew install --cask "${casks[@]}"
+
+    print_success "Homebrew casks installed"
+}
+
+cleanup_brew() {
+    print_info "Cleaning up Homebrew..."
+    brew cleanup
+    print_success "Homebrew cleaned up"
+}
+
 # Run if executed directly
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     install_homebrew
     install_brew_packages
+    install_brew_casks
+    cleanup_brew
 fi
 

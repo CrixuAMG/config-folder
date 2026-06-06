@@ -1,7 +1,8 @@
 #!/bin/bash
 # Configuration file setup
 
-source "$(dirname "$0")/_installer/common.sh"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/common.sh"
 
 setup_config_files() {
     print_section "Setting up configuration files"

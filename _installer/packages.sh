@@ -1,7 +1,8 @@
 #!/bin/bash
 # Additional package installations (Python, Yarn, etc.)
 
-source "$(dirname "$0")/_installer/common.sh"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$SCRIPT_DIR/common.sh"
 
 install_python_packages() {
     print_info "Installing Python packages..."
@@ -17,11 +18,11 @@ install_python_packages() {
 install_yarn_packages() {
     print_info "Installing Yarn packages..."
 
-    if command_exists yarn; then
-        yarn global add neovim
+    if command_exists npm; then
+        npm install -g neovim
         print_success "Yarn packages installed"
     else
-        print_warning "yarn not found, skipping Yarn packages"
+        print_warning "npm not found, skipping Yarn packages"
     fi
 }
 
