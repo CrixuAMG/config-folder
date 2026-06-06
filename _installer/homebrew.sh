@@ -43,6 +43,7 @@ install_brew_packages() {
         FelixKratz/formulae/sketchybar
         opencode
         gammons/tap/slk
+	bartender
     )
 
     brew install "${packages[@]}"
