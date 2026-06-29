@@ -4,18 +4,6 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/common.sh"
 
-install_macos_casks() {
-    print_info "Installing macOS casks..."
-
-    local casks=(
-        alt-tab
-    )
-
-    brew install --cask "${casks[@]}"
-
-    print_success "macOS casks installed"
-}
-
 setup_lazygit_macos() {
     print_info "Setting up Lazygit..."
 
@@ -34,9 +22,6 @@ setup_lazygit_macos() {
 
 setup_macos_specific() {
     print_section "macOS-Specific Setup"
-
-    # Install casks
-    install_macos_casks
 
     # Setup Lazygit
     setup_lazygit_macos
