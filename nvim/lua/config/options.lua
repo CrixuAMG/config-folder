@@ -60,6 +60,9 @@ opt.wildignore:append({
     "*/public/*",
 })
 
+-- Required to make namespace searching in php work
+opt.grepprg = "rg --vimgrep --fixed-strings --smart-case"
+
 -- Force 4-space indentation for all filetypes (override plugin defaults)
 vim.api.nvim_create_autocmd("FileType", {
     pattern = { "scss", "css", "vue", "yaml" },
