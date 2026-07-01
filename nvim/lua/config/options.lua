@@ -39,6 +39,15 @@ opt.signcolumn = "yes"
 
 opt.clipboard:append("unnamedplus")
 
+-- Fallback to OSC 52 clipboard when no X11 tool is available (e.g., Docker)
+if vim.fn.executable("xsel") ~= 1 and vim.fn.executable("xclip") ~= 1 then
+    vim.g.clipboard = {
+        name = "osc52",
+        copy = { ["+"] = "osc52.yank", ["*"] = "osc52.yank" },
+        paste = { ["+"] = "osc52.yank", ["*"] = "osc52.yank" },
+    }
+end
+
 opt.splitright = true
 opt.splitbelow = true
 

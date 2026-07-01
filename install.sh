@@ -24,8 +24,12 @@ fi
 
 # Install fonts
 echo ""
-source "$INSTALLER_DIR/fonts.sh"
-install_fonts
+if [[ "$OS" == "macos" ]]; then
+    source "$INSTALLER_DIR/fonts.sh"
+    install_fonts
+else
+    print_info "Skipping font installation on Linux"
+fi
 
 # Install Homebrew
 echo ""
@@ -45,7 +49,11 @@ install_yarn_packages
 echo ""
 install_zoxide
 echo ""
-install_kitty
+if [[ "$OS" == "macos" ]]; then
+    install_kitty
+else
+    print_info "Skipping Kitty installation on Linux"
+fi
 
 # Platform-specific setup
 echo ""

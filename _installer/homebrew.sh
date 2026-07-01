@@ -4,6 +4,8 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/common.sh"
 
+OS=$(detect_os)
+
 install_homebrew() {
     print_info "Checking for Homebrew..."
 
@@ -24,14 +26,19 @@ tap_brew_repos() {
     print_info "Tapping required Homebrew repositories..."
 
     local taps=(
-        "koekeishiya/formulae"
-        "FelixKratz/formulae"
         "gammons/tap"
     )
 
+    if [[ "$OS" == "macos" ]]; then
+        taps+=(
+            "koekeishiya/formulae"
+            "FelixKratz/formulae"
+        )
+    fi
+
     for tap in "${taps[@]}"; do
         if ! brew tap | grep -qix "$tap"; then
-            brew tap "$tap"
+            brew tap --quiet "$tap" || brew tap "$tap"
             print_success "Tapped $tap"
         else
             print_info "$tap already tapped"
@@ -53,7 +60,7 @@ brew_install_formula() {
         return 0
     fi
 
-    brew install --formula "$package"
+    HOMEBREW_NO_AUTO_UPDATE=1 brew install --formula --yes "$package"
 }
 
 install_brew_packages() {
@@ -79,13 +86,18 @@ install_brew_packages() {
         tree
         tree-sitter
         tree-sitter-cli
-        koekeishiya/formulae/yabai
-        koekeishiya/formulae/skhd
-        FelixKratz/formulae/sketchybar
-        FelixKratz/formulae/borders
         opencode
         gammons/tap/slk
     )
+
+    if [[ "$OS" == "macos" ]]; then
+        packages+=(
+            koekeishiya/formulae/yabai
+            koekeishiya/formulae/skhd
+            FelixKratz/formulae/sketchybar
+            FelixKratz/formulae/borders
+        )
+    fi
 
     for package in "${packages[@]}"; do
         brew_install_formula "$package"
@@ -95,6 +107,11 @@ install_brew_packages() {
 }
 
 install_brew_casks() {
+    if [[ "$OS" != "macos" ]]; then
+        print_info "Skipping cask installation on Linux"
+        return
+    fi
+
     print_info "Installing casks via Homebrew..."
 
     local casks=(
@@ -113,6 +130,11 @@ cleanup_brew() {
 }
 
 restart_window_manager_services() {
+    if [[ "$OS" != "macos" ]]; then
+        print_info "Skipping window manager restart on Linux"
+        return
+    fi
+
     print_info "Restarting window manager services..."
 
     if command_exists yabai; then
