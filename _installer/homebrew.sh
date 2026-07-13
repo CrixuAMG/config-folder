@@ -29,13 +29,6 @@ tap_brew_repos() {
         "gammons/tap"
     )
 
-    if [[ "$OS" == "macos" ]]; then
-        taps+=(
-            "koekeishiya/formulae"
-            "FelixKratz/formulae"
-        )
-    fi
-
     for tap in "${taps[@]}"; do
         if ! brew tap | grep -qix "$tap"; then
             brew tap --quiet "$tap" || brew tap "$tap"
@@ -86,18 +79,10 @@ install_brew_packages() {
         tree
         tree-sitter
         tree-sitter-cli
+        lazygit
         opencode
         gammons/tap/slk
     )
-
-    if [[ "$OS" == "macos" ]]; then
-        packages+=(
-            koekeishiya/formulae/yabai
-            koekeishiya/formulae/skhd
-            FelixKratz/formulae/sketchybar
-            FelixKratz/formulae/borders
-        )
-    fi
 
     for package in "${packages[@]}"; do
         brew_install_formula "$package"
@@ -136,34 +121,6 @@ restart_window_manager_services() {
     fi
 
     print_info "Restarting window manager services..."
-
-    if command_exists yabai; then
-        yabai --restart-service
-        print_success "yabai restarted"
-    else
-        print_warning "yabai not found, skipping restart"
-    fi
-
-    if command_exists skhd; then
-        skhd --restart-service
-        print_success "skhd restarted"
-    else
-        print_warning "skhd not found, skipping restart"
-    fi
-
-    if command_exists sketchybar; then
-        brew services restart sketchybar
-        print_success "sketchybar restarted"
-    else
-        print_warning "sketchybar not found, skipping restart"
-    fi
-
-    if command_exists borders; then
-        brew services restart borders
-        print_success "borders restarted"
-    else
-        print_warning "borders not found, skipping restart"
-    fi
 }
 
 # Run if executed directly

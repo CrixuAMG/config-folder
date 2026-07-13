@@ -9,10 +9,8 @@ def main [] {
     print "║         KEYMAP OVERZICHT — TOETSCOMBINATIES         ║"
     print "╚══════════════════════════════════════════════════════╝\n"
 
-    parse-skhdrc
     parse-kitty
     parse-lazygit
-    parse-yabai
 
     print "\n╔══════════════════════════════════════════════════════╗"
     print "║  Legenda:  alt = ⌥ option  |  ctrl = ⌃ control     ║"
@@ -25,41 +23,6 @@ def fmt-key [raw] {
     | str replace --all "alt" $"(ansi blue)⌥(ansi reset)"
     | str replace --all "ctrl" $"(ansi purple)⌃(ansi reset)"
     | str replace --all "shift" $"(ansi green)⇧(ansi reset)"
-}
-
-def parse-skhdrc [] {
-    let path = ([$env.HOME ".config" "skhd" "skhdrc"] | path join)
-    if (not ($path | path exists)) {
-        print $"(ansi yellow)⚠ skhdrc niet gevonden(op $path)(ansi reset)\n"
-        return
-    }
-
-    let raw = open $path | lines
-    let bindings = $raw | reduce -f [] {|line, acc|
-        let trimmed = ($line | str trim)
-        if ($trimmed | str contains " : ") {
-            let parts = ($trimmed | split row " : ")
-            let key = ($parts.0 | str trim)
-            let cmd = if (($parts | length) >= 2) { (($parts | skip 1 | str join " : ") | str trim) } else { "" }
-            $acc | append { key: $key, cmd: $cmd }
-        } else { $acc }
-    }
-
-    if (($bindings | length) == 0) { return }
-
-    print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-    print "  (ansi green)skhd(yansi reset) — vensterbeheer & sneltoetsen"
-    print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-
-    $bindings | each {|b|
-        let parts = ($b.key | split row "+")
-        let mods = ($parts | each {|p| fmt-key ($p | str trim)} | str join "")
-        let cmd_short = ($b.cmd
-            | str replace "yabai -m " ""
-            | str replace "open -a " "")
-        print $"  (ansi cyan)($mods)(ansi reset)  →  (ansi yellow)($cmd_short)(ansi reset)"
-    }
-    print ""
 }
 
 def parse-kitty [] {
@@ -113,29 +76,4 @@ def parse-lazygit [] {
         print $"  (ansi cyan)($key)(ansi reset)  →  (ansi yellow)($c.description)(ansi reset)  (ansi dark_gray)[($c.context)](ansi reset)"
     }
     print ""
-}
-
-def parse-yabai [] {
-    let path = ([$env.HOME ".config" "yabai" "yabairc"] | path join)
-    if (not ($path | path exists)) {
-        print $"(ansi yellow)⚠ yabairc niet gevonden(op $path)(ansi reset)\n"
-        return
-    }
-
-    let lines = (open $path | lines)
-    let configs = ($lines | where ($in | str starts-with "yabai -m config "))
-    let rules = ($lines | where ($in | str starts-with "yabai -m rule "))
-
-    if (($configs | length) > 0) {
-        print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        print "  (ansi green)yabai(yansi reset) — configuratie"
-        print "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-        $configs | each {|line|
-            let trimmed = ($line | str replace "yabai -m config " "")
-            let parts = ($trimmed | split row " ")
-            let val = ($parts | skip 1 | str join " ")
-            print $"  (ansi cyan)($parts.0)(ansi reset) = (ansi yellow)($val)(ansi reset)"
-        }
-        print ""
-    }
 }

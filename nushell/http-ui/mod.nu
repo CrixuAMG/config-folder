@@ -61,7 +61,7 @@ export def main [
     let request = ($stdout | from json)
 
     let url = $request.url
-    let method = ($request.method | str downcase)
+    let method = ($request.method | str lowercase)
     let headers = $request.headers
     let body = $request.body
     let content_type = ($request.content_type? | default "")

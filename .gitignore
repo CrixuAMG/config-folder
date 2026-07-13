@@ -42,15 +42,6 @@
 
 !_installer/
 !_installer/**
-!yabai/
-!yabai/**
-!skhd/
-!skhd/**
-!sketchybar/
-!sketchybar/**
-
-!borders/
-!borders/**
 
 ########################################
 # Allow standalone config files
