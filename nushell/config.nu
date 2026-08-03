@@ -1081,3 +1081,41 @@ source-env (if ("~/.cargo/env.nu" | path expand | path exists) { "~/.cargo/env.n
 
 # HTTP UI - interactive JetBrains/IntelliJ .http file runner
 use ~/.config/nushell/http-ui
+
+if ($env.HOME | path join "Code" | path exists) {
+    cd ($env.HOME | path join "Code")
+}
+
+def gsarestart [] {
+    launchctl kickstart -k $"gui/(^id -u)/com.microsoft.globalsecureaccess"
+}
+
+def devrestart [] {
+    gsarestart
+
+    docker exec -i dev.ldev.nl bash -lc '
+        set -e
+
+        fetch_configs
+
+        rsyslog_start &
+        postfix_start &
+        filebeat_start &
+        varnish_start &
+        blackfire_start &
+        php_fpm_start &
+        httpd_start &
+        mariadb_start &
+        rabbitmq_start &
+        redis_start &
+        supervisord_start &
+        sshd_start &
+        wireguard_start &
+        haproxy_start &
+
+        wg-quick down wg0 || true
+        wg-quick up wg0
+
+        wait
+    '
+}
