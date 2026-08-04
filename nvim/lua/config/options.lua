@@ -39,14 +39,20 @@ opt.signcolumn = "yes"
 
 opt.clipboard:append("unnamedplus")
 
--- -- Fallback to OSC 52 clipboard when no X11 tool is available (e.g., Docker)
--- if vim.fn.executable("xsel") ~= 1 and vim.fn.executable("xclip") ~= 1 then
---     vim.g.clipboard = {
---         name = "osc52",
---         copy = { ["+"] = "osc52.yank", ["*"] = "osc52.yank" },
---         paste = { ["+"] = "osc52.yank", ["*"] = "osc52.yank" },
---     }
--- end
+-- Use Kitty's OSC 52 clipboard from inside Docker.
+local osc52 = require("vim.ui.clipboard.osc52")
+vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+        ["+"] = osc52.copy("+"),
+        ["*"] = osc52.copy("*"),
+    },
+    paste = {
+        ["+"] = osc52.paste("+"),
+        ["*"] = osc52.paste("*"),
+    },
+    cache_enabled = 0,
+}
 
 opt.splitright = true
 opt.splitbelow = true
@@ -82,5 +88,4 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.bo.expandtab   = true
     end,
 })
-
 
