@@ -1091,31 +1091,49 @@ def gsarestart [] {
 }
 
 def devrestart [] {
+    print "Restarting Global Secure Access..."
     gsarestart
 
-    docker exec -i dev.ldev.nl bash -lc '
+    print "Refreshing network, configs and development services..."
+    let restart = (do -i {
+        ^docker exec -i dev.ldev.nl bash -lc '
         set -e
+        set -u
+        set -o pipefail
 
+        wg-quick down wg0 2>/dev/null || true
+        wg-quick up wg0
         fetch_configs
 
-        rsyslog_start &
-        postfix_start &
-        filebeat_start &
-        varnish_start &
-        blackfire_start &
-        php_fpm_start &
-        httpd_start &
-        mariadb_start &
-        rabbitmq_start &
-        redis_start &
-        supervisord_start &
-        sshd_start &
-        wireguard_start &
-        haproxy_start &
+        # HAProxy provides the entry points used by the other services.
+        haproxy_start
 
-        wg-quick down wg0 || true
-        wg-quick up wg0
+        # Run sequentially: several start scripts fetch configs or need
+        # another service to be ready, and background failures are otherwise
+        # easy to miss.
+        rsyslog_start
+        postfix_start
+        filebeat_start
+        varnish_start
+        blackfire_start
+        mariadb_start
+        rabbitmq_start
+        redis_start
+        php_fpm_start
+        httpd_start
+        supervisord_start
+        sshd_start
+        '
+    } | complete)
 
-        wait
-    '
+    if $restart.exit_code != 0 {
+        print "devrestart failed"
+        let output = ($restart.stderr | str trim)
+        if $output != "" {
+            print $output
+        }
+        return
+    }
+
+    print "Development environment ready"
 }

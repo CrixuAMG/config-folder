@@ -1,5 +1,6 @@
 return {
     "mistricky/codesnap.nvim",
+    event = "BufReadPre",
     build = "make",
     -- Disable in Docker (GLIBC version mismatch with generator.so)
     cond = vim.fn.filereadable("/.dockerenv") == 0,
