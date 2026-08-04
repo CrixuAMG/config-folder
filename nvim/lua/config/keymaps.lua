@@ -1,5 +1,26 @@
 local set = vim.keymap.set
 
+local function copy(value)
+    vim.fn.setreg("+", value)
+    vim.notify("Copied: " .. value)
+end
+
+set("n", "<leader>fy", function()
+    copy(vim.fn.expand("%:."))
+end, { desc = "Copy relative path" })
+
+set("n", "<leader>fY", function()
+    copy(vim.fn.expand("%:p"))
+end, { desc = "Copy full path" })
+
+set("n", "<leader>fN", function()
+    copy(vim.fn.expand("%:t"))
+end, { desc = "Copy filename" })
+
+set("n", "<leader>fl", function()
+    copy(vim.fn.expand("%:.") .. ":" .. vim.fn.line("."))
+end, { desc = "Copy path and line" })
+
 set("n", "<M-j>", "<cmd>cnext<CR>", {
     desc = "Next quickfix item"
 })
@@ -41,4 +62,3 @@ vim.api.nvim_create_autocmd("FileType", {
         })
     end,
 })
-

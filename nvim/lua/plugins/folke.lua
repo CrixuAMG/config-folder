@@ -3,9 +3,6 @@ return {
         "folke/snacks.nvim",
         priority = 1000,
         lazy = false,
-        dependencies = {
-            "RileyGabrielson/inspire.nvim"
-        },
         ---@type snacks.Config
         opts = {
             dashboard = {

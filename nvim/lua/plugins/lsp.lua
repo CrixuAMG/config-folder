@@ -23,12 +23,14 @@ local mason_servers = {
 return {
     {
         "williamboman/mason.nvim",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("mason").setup()
         end
     },
     {
         "williamboman/mason-lspconfig.nvim",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require("mason-lspconfig").setup({
                 ensure_installed = mason_servers,
@@ -39,8 +41,8 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
+        event = { "BufReadPre", "BufNewFile" },
         dependencies = {
-            "hrsh7th/nvim-cmp",
             "hrsh7th/cmp-nvim-lsp",
         },
         config = function()
@@ -141,12 +143,16 @@ return {
     },
     {
         'owallb/mason-auto-install.nvim',
+        event = "VeryLazy",
         dependencies = {
             'williamboman/mason.nvim',
-            'neovim/nvim-lspconfig',
         },
         opts = {
-            packages = { 'stylua', 'prettier', 'vue-language-server' }
+            packages = {
+                { 'stylua', filetypes = { 'lua' } },
+                { 'prettier', filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'html', 'css', 'scss', 'json', 'yaml', 'markdown' } },
+                { 'vue-language-server', filetypes = { 'vue' } },
+            }
         },
     }
 }
