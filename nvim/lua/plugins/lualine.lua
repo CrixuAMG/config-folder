@@ -1,16 +1,23 @@
 return {
     {
-        'nvim-lualine/lualine.nvim',
-        enabled = false,
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        event = "VeryLazy",
-        config = function()
-            require('lualine').setup()
-        end
-    },
-    {
         "sschleemilch/slimline.nvim",
         opts = {
+            components = {
+                left = {
+                    "mode",
+                    "path",
+                    "git",
+                    function()
+                        return require("pathfinder").statusline()
+                    end,
+                },
+                center = {},
+                right = {
+                    "diagnostics",
+                    "filetype_lsp",
+                    "progress",
+                },
+            },
             spaces = {
                 components = "",
                 left = "",
@@ -24,6 +31,6 @@ return {
                 left = "",
                 right = "",
             },
-        }
+        },
     },
 }
