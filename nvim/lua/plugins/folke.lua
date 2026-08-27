@@ -28,6 +28,16 @@ return {
             },
             picker = {
                 enabled = true,
+                sources = {
+                    files = {
+                        ignored = false,
+                        exclude = { "node_modules", "vendor" },
+                    },
+                    grep = {
+                        ignored = false,
+                        exclude = { "node_modules", "vendor" },
+                    },
+                },
             },
             quickfile = {
                 enabled = true,

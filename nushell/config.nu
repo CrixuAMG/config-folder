@@ -913,7 +913,21 @@ alias db = rainfrog --driver=mysql --username=root --password=password --host=lo
 
 # Docker management
 alias rd = docker compose -f ~/Code/docker/ldev/docker-compose.yaml restart
-alias ad = docker exec -it -w /var/www/html dev.ldev.nl zsh -l
+def ad [] {
+    let code_dir = ($env.HOME | path join "Code")
+    let workdir = if (($env.PWD == $code_dir) or ($env.PWD | str starts-with $"($code_dir)(char path_sep)")) {
+        let relative_path = ($env.PWD | path relative-to $code_dir)
+        if ($relative_path | is-empty) {
+            "/var/www/html"
+        } else {
+            $"/var/www/html/($relative_path)"
+        }
+    } else {
+        "/var/www/html"
+    }
+
+    docker exec -it -w $workdir dev.ldev.nl zsh -l
+}
 
 alias log = /var/www/html/brand-websites/bin/console serp:test:tail-logs
 alias au = /var/www/html/auto-updater/autoupdater.sh
