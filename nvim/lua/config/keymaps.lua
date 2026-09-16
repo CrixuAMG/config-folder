@@ -34,6 +34,10 @@ set("n", "dg", "<cmd>diffput<CR>", {
     desc = "Diff put"
 })
 
+set("n", "<leader>J", "a<CR><Esc>", {
+    desc = "Split line after cursor"
+})
+
 set("n", "<leader>so", ":write<CR> :source<CR>", {
     desc = "Write and source current file"
 })
