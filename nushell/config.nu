@@ -500,7 +500,7 @@ $env.config = {
             event: { send: openeditor }
         }
         {
-            name: move_up
+            name: move_up_arrow
             modifier: none
             keycode: up
             mode: [emacs, vi_normal, vi_insert]
@@ -512,7 +512,7 @@ $env.config = {
             }
         }
         {
-            name: move_down
+            name: move_down_arrow
             modifier: none
             keycode: down
             mode: [emacs, vi_normal, vi_insert]
@@ -524,7 +524,7 @@ $env.config = {
             }
         }
         {
-            name: move_left
+            name: move_left_arrow
             modifier: none
             keycode: left
             mode: [emacs, vi_normal, vi_insert]
@@ -536,7 +536,7 @@ $env.config = {
             }
         }
         {
-            name: move_right_or_take_history_hint
+            name: move_right_or_take_history_hint_arrow
             modifier: none
             keycode: right
             mode: [emacs, vi_normal, vi_insert]
@@ -549,14 +549,14 @@ $env.config = {
             }
         }
         {
-            name: move_one_word_left
+            name: move_one_word_left_control
             modifier: control
             keycode: left
             mode: [emacs, vi_normal, vi_insert]
             event: { edit: movewordleft }
         }
         {
-            name: move_one_word_right_or_take_history_hint
+            name: move_one_word_right_or_take_history_hint_control
             modifier: control
             keycode: right
             mode: [emacs, vi_normal, vi_insert]
@@ -568,21 +568,21 @@ $env.config = {
             }
         }
         {
-            name: move_to_line_start
+            name: move_to_line_start_home
             modifier: none
             keycode: home
             mode: [emacs, vi_normal, vi_insert]
             event: { edit: movetolinestart }
         }
         {
-            name: move_to_line_start
+            name: move_to_line_start_ctrl_a
             modifier: control
             keycode: char_a
             mode: [emacs, vi_normal, vi_insert]
             event: { edit: movetolinestart }
         }
         {
-            name: move_to_line_end_or_take_history_hint
+            name: move_to_line_end_or_take_history_hint_end
             modifier: none
             keycode: end
             mode: [emacs, vi_normal, vi_insert]
@@ -594,7 +594,7 @@ $env.config = {
             }
         }
         {
-            name: move_to_line_end_or_take_history_hint
+            name: move_to_line_end_or_take_history_hint_ctrl_e
             modifier: control
             keycode: char_e
             mode: [emacs, vi_normal, vi_insert]
@@ -606,7 +606,7 @@ $env.config = {
             }
         }
         {
-            name: move_to_line_start
+            name: move_to_line_start_ctrl_home
             modifier: control
             keycode: home
             mode: [emacs, vi_normal, vi_insert]
@@ -620,7 +620,7 @@ $env.config = {
             event: { edit: movetolineend }
         }
         {
-            name: move_down
+            name: move_down_ctrl_n
             modifier: control
             keycode: char_n
             mode: [emacs, vi_normal, vi_insert]
@@ -632,7 +632,7 @@ $env.config = {
             }
         }
         {
-            name: move_up
+            name: move_up_ctrl_p
             modifier: control
             keycode: char_p
             mode: [emacs, vi_normal, vi_insert]
@@ -644,49 +644,49 @@ $env.config = {
             }
         }
         {
-            name: delete_one_character_backward
+            name: delete_one_character_backward_backspace
             modifier: none
             keycode: backspace
             mode: [emacs, vi_insert]
             event: { edit: backspace }
         }
         {
-            name: delete_one_word_backward
+            name: delete_one_word_backward_ctrl_backspace
             modifier: control
             keycode: backspace
             mode: [emacs, vi_insert]
             event: { edit: backspaceword }
         }
         {
-            name: delete_one_character_forward
+            name: delete_one_character_forward_delete
             modifier: none
             keycode: delete
             mode: [emacs, vi_insert]
             event: { edit: delete }
         }
         {
-            name: delete_one_character_forward
+            name: delete_one_character_forward_ctrl_delete
             modifier: control
             keycode: delete
             mode: [emacs, vi_insert]
             event: { edit: delete }
         }
         {
-            name: delete_one_character_backward
+            name: delete_one_character_backward_ctrl_h
             modifier: control
             keycode: char_h
             mode: [emacs, vi_insert]
             event: { edit: backspace }
         }
         {
-            name: delete_one_word_backward
+            name: delete_one_word_backward_ctrl_w
             modifier: control
             keycode: char_w
             mode: [emacs, vi_insert]
             event: { edit: backspaceword }
         }
         {
-            name: move_left
+            name: move_left_vi_backspace
             modifier: none
             keycode: backspace
             mode: vi_normal
@@ -700,7 +700,7 @@ $env.config = {
             event: { send: enter }
         }
         {
-            name: move_left
+            name: move_left_ctrl_b
             modifier: control
             keycode: char_b
             mode: emacs
@@ -712,7 +712,7 @@ $env.config = {
             }
         }
         {
-            name: move_right_or_take_history_hint
+            name: move_right_or_take_history_hint_ctrl_f
             modifier: control
             keycode: char_f
             mode: emacs
@@ -774,14 +774,14 @@ $env.config = {
             event: { edit: swapgraphemes }
         }
         {
-            name: move_one_word_left
+            name: move_one_word_left_alt_arrow
             modifier: alt
             keycode: left
             mode: emacs
             event: { edit: movewordleft }
         }
         {
-            name: move_one_word_right_or_take_history_hint
+            name: move_one_word_right_or_take_history_hint_alt_arrow
             modifier: alt
             keycode: right
             mode: emacs
@@ -793,14 +793,14 @@ $env.config = {
             }
         }
         {
-            name: move_one_word_left
+            name: move_one_word_left_alt_b
             modifier: alt
             keycode: char_b
             mode: emacs
             event: { edit: movewordleft }
         }
         {
-            name: move_one_word_right_or_take_history_hint
+            name: move_one_word_right_or_take_history_hint_alt_f
             modifier: alt
             keycode: char_f
             mode: emacs
@@ -819,14 +819,14 @@ $env.config = {
             event: { edit: deleteword }
         }
         {
-            name: delete_one_word_backward
+            name: delete_one_word_backward_alt_backspace
             modifier: alt
             keycode: backspace
             mode: emacs
             event: { edit: backspaceword }
         }
         {
-            name: delete_one_word_backward
+            name: delete_one_word_backward_alt_m
             modifier: alt
             keycode: char_m
             mode: emacs
@@ -898,7 +898,7 @@ $env.config = {
     ]
 }
 
-source ~/.local/share/atuin/init.nu
+source ~/.config/nushell/atuin-init.nu
 source ~/.zoxide.nu
 
 mkdir ($nu.data-dir | path join "vendor/autoload")
@@ -909,38 +909,7 @@ starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.n
 alias vim = nvim
 alias lg = lazygit
 alias z = zellij
-alias db = rainfrog --driver=mysql --username=root --password=password --host=localhost --port=3306 --database=artemis
-
-# Docker management
-alias rd = docker compose -f ~/Code/docker/ldev/docker-compose.yaml restart
-def ad [] {
-    let code_dir = ($env.HOME | path join "Code")
-    let workdir = if (($env.PWD == $code_dir) or ($env.PWD | str starts-with $"($code_dir)(char path_sep)")) {
-        let relative_path = ($env.PWD | path relative-to $code_dir)
-        if ($relative_path | is-empty) {
-            "/var/www/html"
-        } else {
-            $"/var/www/html/($relative_path)"
-        }
-    } else {
-        "/var/www/html"
-    }
-
-    docker exec -it -w $workdir dev.ldev.nl zsh -l
-}
-
-alias log = /var/www/html/brand-websites/bin/console serp:test:tail-logs
-alias au = /var/www/html/auto-updater/autoupdater.sh
-
-def oracle [...args] {
-    cd /var/www/html/oracle
-    if ($args | is-empty) {
-        yarn
-    } else {
-        yarn ...$args
-    }
-    cd -
-}
+alias db = rainfrog --driver=mysql --username=root --password=password --host=localhost --port=3306
 
 def toggle_xdebug [] {
     let file_path = "/etc/php.d/15-xdebug.ini"
@@ -1082,15 +1051,6 @@ def --env exit [] {
     ^exit
 }
 
-def run-bg [cmd: string] {
-    if (which $cmd | is-empty) {
-        print $"Error: program '($cmd)' not found"
-    } else {
-        ^$cmd &      # run in background
-    }
-}
-alias chrome = google-chrome-stable
-
 source-env (if ("~/.cargo/env.nu" | path expand | path exists) { "~/.cargo/env.nu" } else { null })
 
 # HTTP UI - interactive JetBrains/IntelliJ .http file runner
@@ -1100,54 +1060,13 @@ if ($env.HOME | path join "Code" | path exists) {
     cd ($env.HOME | path join "Code")
 }
 
-def gsarestart [] {
-    launchctl kickstart -k $"gui/(^id -u)/com.microsoft.globalsecureaccess"
-}
+$env.config.edit_mode = 'vi'
 
-def devrestart [] {
-    print "Restarting Global Secure Access..."
-    gsarestart
+# Laravel Herd
+$env.HERD_PHP_84_INI_SCAN_DIR = $"($env.HOME)/Library/Application Support/Herd/config/php/84"
+$env.NVM_DIR = $"($env.HOME)/Library/Application Support/Herd/config/nvm"
 
-    print "Refreshing network, configs and development services..."
-    let restart = (do -i {
-        ^docker exec -i dev.ldev.nl bash -lc '
-        set -e
-        set -u
-        set -o pipefail
-
-        wg-quick down wg0 2>/dev/null || true
-        wg-quick up wg0
-        fetch_configs
-
-        # HAProxy provides the entry points used by the other services.
-        haproxy_start
-
-        # Run sequentially: several start scripts fetch configs or need
-        # another service to be ready, and background failures are otherwise
-        # easy to miss.
-        rsyslog_start
-        postfix_start
-        filebeat_start
-        varnish_start
-        blackfire_start
-        mariadb_start
-        rabbitmq_start
-        redis_start
-        php_fpm_start
-        httpd_start
-        supervisord_start
-        sshd_start
-        '
-    } | complete)
-
-    if $restart.exit_code != 0 {
-        print "devrestart failed"
-        let output = ($restart.stderr | str trim)
-        if $output != "" {
-            print $output
-        }
-        return
-    }
-
-    print "Development environment ready"
-}
+$env.PATH = (
+    $env.PATH
+    | prepend $"($env.HOME)/Library/Application Support/Herd/bin"
+)
