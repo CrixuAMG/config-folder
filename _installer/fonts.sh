@@ -20,14 +20,6 @@ install_fonts() {
     else
         print_success "Fonts directory already exists, skipping font installation"
     fi
-
-    print_info "Installing Hack Nerd Font via Homebrew..."
-    if command_exists brew; then
-        brew install font-hack-nerd-font
-        print_success "Hack Nerd Font installed successfully!"
-    else
-        print_warning "Homebrew not found, skipping Hack Nerd Font installation"
-    fi
 }
 
 # Run if executed directly

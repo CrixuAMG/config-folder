@@ -22,25 +22,6 @@ install_homebrew() {
     fi
 }
 
-tap_brew_repos() {
-    print_info "Tapping required Homebrew repositories..."
-
-    local taps=(
-        "gammons/tap"
-    )
-
-    for tap in "${taps[@]}"; do
-        if ! brew tap | grep -qix "$tap"; then
-            brew tap --quiet "$tap" || brew tap "$tap"
-            print_success "Tapped $tap"
-        else
-            print_info "$tap already tapped"
-        fi
-
-        brew trust "$tap" 2>/dev/null || true
-    done
-}
-
 brew_install_formula() {
     local package="$1"
 
@@ -58,9 +39,6 @@ brew_install_formula() {
 
 install_brew_packages() {
     print_info "Installing packages via Homebrew..."
-
-    # Make sure the required third-party taps are available
-    tap_brew_repos
 
     local packages=(
         neovim
@@ -81,7 +59,6 @@ install_brew_packages() {
         tree-sitter-cli
         lazygit
         opencode
-        gammons/tap/slk
     )
 
     for package in "${packages[@]}"; do
@@ -101,6 +78,9 @@ install_brew_casks() {
 
     local casks=(
         bartender
+        dockdoor-pro
+        look
+        plex
     )
 
     brew install --cask "${casks[@]}"

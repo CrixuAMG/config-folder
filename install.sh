@@ -43,8 +43,6 @@ restart_window_manager_services
 # Install additional packages
 echo ""
 source "$INSTALLER_DIR/packages.sh"
-install_python_packages
-echo ""
 install_yarn_packages
 echo ""
 install_zoxide

@@ -1,28 +1,17 @@
 #!/bin/bash
-# Additional package installations (Python, Yarn, etc.)
+# Additional package installations
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$SCRIPT_DIR/common.sh"
 
-install_python_packages() {
-    print_info "Installing Python packages..."
-
-    if command_exists pip || command_exists pip3; then
-        ${PIP:-pip3} install --user pynvim
-        print_success "Python packages installed"
-    else
-        print_warning "pip not found, skipping Python packages"
-    fi
-}
-
 install_yarn_packages() {
     print_info "Installing Yarn packages..."
 
-    if command_exists npm; then
-        npm install -g neovim
+    if command_exists yarn; then
+        yarn global add neovim
         print_success "Yarn packages installed"
     else
-        print_warning "npm not found, skipping Yarn packages"
+        print_warning "yarn not found, skipping Yarn packages"
     fi
 }
 
@@ -50,7 +39,6 @@ install_kitty() {
 
 # Run if executed directly
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    install_python_packages
     install_yarn_packages
     install_zoxide
     install_kitty
