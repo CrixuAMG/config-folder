@@ -59,6 +59,7 @@ install_brew_packages() {
         tree-sitter-cli
         lazygit
         opencode
+        scroll-reverser
     )
 
     for package in "${packages[@]}"; do
@@ -81,6 +82,7 @@ install_brew_casks() {
         dockdoor-pro
         look
         plex
+        sxitch
     )
 
     brew install --cask "${casks[@]}"

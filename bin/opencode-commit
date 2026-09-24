@@ -38,13 +38,15 @@ if large:
         "Output the commit subject on line 1 (max 72 chars, conventional commit "
         "style), then a blank line, then a body with bullet points (- prefix) "
         "explaining the key changes, each line wrapped at 72 chars. "
-        "Output ONLY the message text, no code fences, no extra commentary."
+        "Output ONLY the message text, no code fences, no extra commentary. "
+        "Write a normal conventional commit; do not use caveman or terse style."
     )
 else:
     prompt = (
         "Generate a conventional git commit message for these changes:\n\n"
         f"{diff_trunc}\n\n"
-        "Output ONLY the commit subject line (max 72 chars), nothing else."
+        "Output ONLY the commit subject line (max 72 chars), nothing else. "
+        "Write a normal conventional commit; do not use caveman or terse style."
     )
 
 if sys.platform == "darwin":
@@ -55,22 +57,17 @@ else:
 result = subprocess.run(script_cmd, capture_output=True, text=True, timeout=60)
 
 ansi_re = re.compile(r'\x1b\[[0-9;]*[a-zA-Z]')
+osc_re = re.compile(r'\x1b\].*?(?:\x1b\\|\x07)')
+caret_re = re.compile(r'^\^[A-Z@\[\]\\^_?]+$')
 clean_lines = []
-started = False
 for raw in result.stdout.splitlines():
-    line = ansi_re.sub('', raw)
+    line = osc_re.sub('', raw)
+    line = ansi_re.sub('', line)
     line = ''.join(ch for ch in line if ch.isprintable() or ch.isspace()).rstrip()
     stripped = line.strip()
-    if stripped.startswith(">"):
+    if not stripped or stripped.startswith(">") or caret_re.match(stripped):
         continue
-    if not started:
-        if not stripped or "build" in stripped.lower():
-            continue
-        started = True
     clean_lines.append(line.replace('`', ''))
-
-while clean_lines and not clean_lines[-1].strip():
-    clean_lines.pop()
 
 if not clean_lines:
     sys.exit(1)
