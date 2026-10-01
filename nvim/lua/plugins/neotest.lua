@@ -22,14 +22,7 @@ return {
                 adapters = {
                     require("neotest-phpunit")({
                         phpunit_cmd = function()
-                            -- Determine the project root directory
-                            local project_root = vim.fn.getcwd()
-
-                            if string.find(project_root, "/var/www/html/brand-websites") then
-                                return "bin/phpunit-all"
-                            else
-                                return "bin/phpunit"
-                            end
+                            return "bin/phpunit"
                         end,
                         filter_dirs = { "vendor" }
                     })

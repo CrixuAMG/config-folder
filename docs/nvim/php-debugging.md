@@ -23,7 +23,6 @@ This guide covers PHPUnit testing and Xdebug step debugging in Neovim inside the
 
 The PHPUnit adapter is configured in `nvim/lua/plugins/neotest.lua`. It automatically uses:
 - `bin/phpunit` for most projects
-- `bin/phpunit-all` for brand-websites
 
 ## Step Debugging (DAP + Xdebug)
 

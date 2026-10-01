@@ -108,6 +108,8 @@ $env.NU_PLUGIN_DIRS = [
 $env.PATH = ($env.PATH | append "~/.local/bin")
 $env.PATH = ($env.PATH | append "/Applications/Herd.app/Contents/Resources/bin")
 
+$env.XDG_CONFIG_HOME = ($env.HOME | path join ".config")
+
 $env.EDITOR = "nvim"
 
 # To load from a custom file you can use:

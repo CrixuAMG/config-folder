@@ -8,7 +8,6 @@ local sn = ls.snippet_node
 local f = ls.function_node
 
 ls.add_snippets("scss", {
-    -- Media query with map.get (brand-websites/helix pattern)
     s("mmin", {
         t("@media #{map.get($media-min, "),
         c(1, {
