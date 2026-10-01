@@ -31,6 +31,10 @@
 !bat/
 !bat/**
 
+# Global gitignore (git's default core.excludesFile location: ~/.config/git/ignore)
+!git/
+!git/**
+
 !nushell/
 !nushell/**
 

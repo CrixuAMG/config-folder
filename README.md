@@ -23,6 +23,20 @@ Open Neovim with this config:
 NVIM_APPNAME=CrixuAMG/config-folder/nvim nvim
 ```
 
+## Managed dotfiles
+
+These files are kept in this repository and installed as symlinks by `install.sh`:
+
+| File in `$HOME` | Source in this repo | Notes |
+| --- | --- | --- |
+| `~/.zshrc` | `zsh/.zshrc` | Shell startup, ends with `exec nu -l` |
+| `~/.gitconfig` | `.gitconfig` | Global git config (paths use `~` so they stay portable) |
+| — | `git/ignore` | Global gitignore; git >= 2.32 reads `~/.config/git/ignore` by default, so no symlink is needed |
+
+Edit them here, never in `$HOME`: the symlinks pick up your changes immediately. If a real file already exists in `$HOME`, `install.sh` prints a diff and asks before replacing it, and keeps a timestamped backup (`~/.zshrc.bak-<date>`).
+
+Inside this repository, paths are relative to the repo or use `$HOME`/`~` instead of absolute paths, so the configuration keeps working on other machines.
+
 ## Plugins
 
 ### color
