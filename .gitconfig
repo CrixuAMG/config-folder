@@ -26,3 +26,6 @@
 	colorMoved = default
 	# Wraps git's external diff arguments and calls `sem`; `~` keeps the path portable
 	external = ~/.local/bin/sem-diff-wrapper
+
+[rerere]
+	enabled = true
