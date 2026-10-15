@@ -79,7 +79,6 @@ install_brew_casks() {
     local casks=(
         bartender
         dockdoor-pro
-        look
         plex
         scroll-reverser
     )
