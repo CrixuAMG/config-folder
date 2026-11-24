@@ -1,5 +1,5 @@
 return {
-    "mistweaverco/kulala.nvim",
+    "dont-be-evil-company/kulala.nvim",
     keys = {
         { "<leader>Rs", desc = "Send request" },
         { "<leader>Ra", desc = "Send all requests" },
