@@ -4,6 +4,7 @@ local servers = {
     "cssls",
     "cssmodules_ls",
     "bashls",
+    "gopls",
     "ts_ls",
     "tailwindcss",
     "vue_ls",
@@ -16,6 +17,7 @@ local mason_servers = {
     "cssls",
     "cssmodules_ls",
     "bashls",
+    "gopls",
     "ts_ls",
     "tailwindcss",
 }
@@ -71,6 +73,10 @@ return {
             })
 
             vim.lsp.config("bashls", {
+                capabilities = capabilities,
+            })
+
+            vim.lsp.config("gopls", {
                 capabilities = capabilities,
             })
 
