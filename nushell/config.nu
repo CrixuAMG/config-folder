@@ -910,6 +910,7 @@ alias vim = nvim
 alias lg = lazygit
 alias z = zellij
 alias db = rainfrog --driver=mysql --username=root --password=password --host=localhost --port=3306
+alias a = php artisan
 
 def toggle_xdebug [] {
     let file_path = "/etc/php.d/15-xdebug.ini"
@@ -1062,11 +1063,7 @@ if ($env.HOME | path join "Code" | path exists) {
 
 $env.config.edit_mode = 'vi'
 
-# Laravel Herd
-$env.HERD_PHP_84_INI_SCAN_DIR = $"($env.HOME)/Library/Application Support/Herd/config/php/84"
-$env.NVM_DIR = $"($env.HOME)/Library/Application Support/Herd/config/nvm"
-
 $env.PATH = (
     $env.PATH
-    | prepend $"($env.HOME)/Library/Application Support/Herd/bin"
+    | prepend $"($env.HOME)/Library/Application Support/Flock/bin"
 )

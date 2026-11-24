@@ -106,7 +106,7 @@ $env.NU_PLUGIN_DIRS = [
 # $env.PATH = ($env.PATH | uniq)
 
 $env.PATH = ($env.PATH | append "~/.local/bin")
-$env.PATH = ($env.PATH | append "/Applications/Herd.app/Contents/Resources/bin")
+$env.PATH = ($env.PATH | append "~/Library/Application Support/Flock/bin")
 
 $env.XDG_CONFIG_HOME = ($env.HOME | path join ".config")
 
